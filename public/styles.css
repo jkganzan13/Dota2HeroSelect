@@ -7,6 +7,7 @@
 	width: 40px;
 	height: 90px;
 	object-fit: cover;
+  margin-left: 2px;
 }
 
 #logo {
@@ -27,3 +28,45 @@
   left: 45%;
   transform: translate(-50%, -50%);
 }
+
+.attributeContainer {
+  margin-top: 2%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+}
+
+.app {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.verticalText {
+  width: 5%;
+  white-space: nowrap;
+}
+
+.rotate {
+  position: absolute;
+  -moz-transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+  -webkit-transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+  transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+}
+
+.verticalLine {
+  width: 200%;
+  position: absolute;
+  transform: translateX(-25%) translateY(-50%);
+}
+
+.heroContainer {
+  width: 90%;
+  float: right;
+}
+
+.clearFloat {
+  clear: both;
+}
+
