@@ -2,7 +2,7 @@ import React from 'react';
 
 const Logo = () => {
 	return (
-		<img className="centered" id="logo" src={require('../assets/logo.png')} alt="logo" />
+		<img className="centered" id="logo" src={require('../assets/images/logo.png')} />
 	)
 }
 
