@@ -1,3 +1,53 @@
+/*Tags*/
+body {
+  margin: 0;
+}
+
+/*IDs*/
+#logo {
+    content: url('../images/logo.png');
+    margin: 20px;
+    width: 100px; 
+    height: 100px;    
+    -webkit-animation: spin 4s infinite linear;
+}
+
+#root {
+    background: url('../images/background.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+/*Classes*/
+@-webkit-keyframes spin {
+  0%  {-webkit-transform: rotate(0deg);}
+  100% {-webkit-transform: rotate(360deg);} 
+}
+
+.app {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.attributeContainer {
+  padding-top: 2%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+}
+
+.attributeContainer:last-child {
+  padding-bottom: 2%;
+}
+
+.centered {
+  position: absolute;
+  top: 40%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+}
+
 .hero {
 	float: left;
 	margin-right: 5px;
@@ -7,23 +57,35 @@
 	width: 40px;
 	height: 90px;
 	object-fit: cover;
+  margin-left: 2px;
 }
 
-#logo {
-    margin: 20px;
-    width: 100px; 
-    height: 100px;    
-    -webkit-animation: spin 4s infinite linear;
+.heroContainer {
+  width: 90%;
+  float: right;
 }
 
-@-webkit-keyframes spin {
-	0%  {-webkit-transform: rotate(0deg);}
-	100% {-webkit-transform: rotate(360deg);}	
-}
-
-.centered {
+.rotate {
   position: absolute;
-  top: 40%;
-  left: 45%;
-  transform: translate(-50%, -50%);
+  -moz-transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+  -webkit-transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+  transform: translateX(-50%) translateY(-50%) rotate(-90deg);
 }
+
+.verticalLine {
+  width: 150px;
+  position: absolute;
+  transform: translateX(-25%) translateY(-50%);
+} 
+
+.verticalText {
+  width: 5%;
+  white-space: nowrap;
+}
+
+@font-face { font-family: 'Trajan'; src: url('../fonts/Trajan.ttf') format('truetype'); }
+.text {
+  font-family: 'Trajan';
+  color:  #909090;
+}
+

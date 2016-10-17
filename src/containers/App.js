@@ -2,9 +2,9 @@ import React, { Component, PropTypes } from 'react'
 import * as _ from 'lodash'
 import { connect } from 'react-redux'
 import { fetchHeroes } from '../actions'
-import Hero from '../components/Hero'
+
 import Logo from '../components/Logo'
-import VerticalText from '../components/VerticalText'
+import HeroesContainer from './HeroesContainer'
 
 
 class App extends Component {
@@ -17,31 +17,22 @@ class App extends Component {
   	dispatch(fetchHeroes());
   }
 
+  renderContainers() {
+    const { heroes } = this.props;
+    let heroesContainer = []
+    _.forOwn(heroes, (heroesByAttributes, attr) => 
+      heroesContainer.push(<HeroesContainer heroesByAttributes={heroesByAttributes} attr={attr} key={attr} />)
+    );
+    return heroesContainer;
+  }
+
   render() {
-  	// const { strHeroes, agiHeroes, intHeroes, isLoading } = this.props;
-    const { heroes, isLoading } = this.props;
-
-    let heroesByAttributes = [];
-
-    for (let attr in heroes) {
-      if(heroes.hasOwnProperty(attr)) {
-        heroesByAttributes.push(
-          <div className="attributeContainer" key={attr}>
-            <VerticalText attribute={attr} />
-            <div className="heroContainer">
-              {_.map(heroes[attr], (hero, index) => 
-                <Hero heroName={ hero.name } key={index} />
-              )}
-            </div>
-          </div>
-        );
-      }
-    }
+    const { isLoading } = this.props;
   	
     return (
       <div className="app">
       	{isLoading && <Logo />}
-        {!isLoading && heroesByAttributes}
+        {!isLoading && this.renderContainers()}
       </div>
     );	
   }
@@ -55,9 +46,6 @@ App.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    // strHeroes: state.dota2.strHeroes,
-    // agiHeroes: state.dota2.agiHeroes,
-    // intHeroes: state.dota2.intHeroes,
     heroes: state.dota2.heroes,
     isLoading: state.dota2.isLoading
   }
