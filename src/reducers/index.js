@@ -11,9 +11,6 @@ function dota2(state = { heroes: {}, isLoading: false }, action) {
 			 return Object.assign({}, state, {
 			 	isLoading: false,
 			 	heroes: action.heroes
-			 	// strHeroes: action.heroes.str,
-			 	// agiHeroes: action.heroes.agi,
-			 	// intHeroes: action.heroes.int
 			 });
 		default:
 			return state;

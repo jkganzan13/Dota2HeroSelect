@@ -3,10 +3,10 @@ import React, { PropTypes } from 'react';
 const VerticalText = ({ attribute }) => {
 	return (
 		<div className="verticalText">
-			<span className="rotate">
-				{attribute}
+			<div className="rotate">
+				<span className="text" > {attribute} </span>
               	<hr className="verticalLine" />
-			</span>
+			</div>
       	</div>
 	)
 }
