@@ -1,0 +1,449 @@
+[ {
+    "attribute" : "AGILITY",
+    "id" : 1,
+    "name" : "antimage"
+  }, {
+    "attribute" : "STRENGTH",
+    "id" : 2,
+    "name" : "axe"
+  }, {
+    "attribute" : "INTELLIGENCE",
+    "id" : 3,
+    "name" : "bane"
+  }, {
+    "attribute" : "AGILITY",
+    "id" : 4,
+    "name" : "bloodseeker"
+  }, {
+    "attribute" : "INTELLIGENCE",
+    "id" : 5,
+    "name" : "crystal_maiden"
+  }, {
+    "attribute" : "AGILITY",
+    "id" : 6,
+    "name" : "drow_ranger"
+  }, {
+    "attribute" : "STRENGTH",
+    "id" : 7,
+    "name" : "earthshaker"
+  }, {
+    "attribute" : "AGILITY",
+    "id" : 8,
+    "name" : "juggernaut"
+  }, {
+    "attribute" : "AGILITY",
+    "id" : 9,
+    "name" : "mirana"
+  }, {
+    "attribute" : "AGILITY",
+    "id" : 11,
+    "name" : "nevermore"
+  }, {
+    "attribute" : "AGILITY",
+    "id" : 10,
+    "name" : "morphling"
+  }, {
+    "attribute" : "AGILITY",
+    "id" : 12,
+    "name" : "phantom_lancer"
+  }, {
+    "attribute" : "INTELLIGENCE",
+    "id" : 13,
+    "name" : "puck"
+  }, {
+    "attribute" : "STRENGTH",
+    "id" : 14,
+    "name" : "pudge"
+  }, {
+    "attribute" : "AGILITY",
+    "id" : 15,
+    "name" : "razor"
+  }, {
+    "attribute" : "STRENGTH",
+    "id" : 16,
+    "name" : "sand_king"
+  }, {
+    "attribute" : "INTELLIGENCE",
+    "id" : 17,
+    "name" : "storm_spirit"
+  }, {
+    "attribute" : "STRENGTH",
+    "id" : 18,
+    "name" : "sven"
+  }, {
+    "attribute" : "STRENGTH",
+    "id" : 19,
+    "name" : "tiny"
+  }, {
+    "attribute" : "AGILITY",
+    "id" : 20,
+    "name" : "vengefulspirit"
+  }, {
+    "attribute" : "INTELLIGENCE",
+    "id" : 21,
+    "name" : "windrunner"
+  }, {
+    "attribute" : "INTELLIGENCE",
+    "id" : 22,
+    "name" : "zuus"
+  }, {
+    "attribute" : "STRENGTH",
+    "id" : 23,
+    "name" : "kunkka"
+  }, {
+    "attribute" : "INTELLIGENCE",
+    "id" : 25,
+    "name" : "lina"
+  }, {
+    "attribute" : "INTELLIGENCE",
+    "id" : 31,
+    "name" : "lich"
+  }, {
+    "attribute" : "INTELLIGENCE",
+    "id" : 26,
+    "name" : "lion"
+  }, {
+    "attribute" : "INTELLIGENCE",
+    "id" : 27,
+    "name" : "shadow_shaman"
+  }, {
+    "attribute" : "STRENGTH",
+    "id" : 28,
+    "name" : "slardar"
+  }, {
+    "attribute" : "STRENGTH",
+    "id" : 29,
+    "name" : "tidehunter"
+  }, {
+    "attribute" : "INTELLIGENCE",
+    "id" : 30,
+    "name" : "witch_doctor"
+  }, {
+    "attribute" : "AGILITY",
+    "id" : 32,
+    "name" : "riki"
+  }, {
+    "attribute" : "INTELLIGENCE",
+    "id" : 33,
+    "name" : "enigma"
+  }, {
+    "attribute" : "INTELLIGENCE",
+    "id" : 34,
+    "name" : "tinker"
+  }, {
+    "attribute" : "AGILITY",
+    "id" : 35,
+    "name" : "sniper"
+  }, {
+    "attribute" : "INTELLIGENCE",
+    "id" : 36,
+    "name" : "necrolyte"
+  }, {
+    "attribute" : "INTELLIGENCE",
+    "id" : 37,
+    "name" : "warlock"
+  }, {
+    "attribute" : "STRENGTH",
+    "id" : 38,
+    "name" : "beastmaster"
+  }, {
+    "attribute" : "INTELLIGENCE",
+    "id" : 39,
+    "name" : "queenofpain"
+  }, {
+    "attribute" : "AGILITY",
+    "id" : 40,
+    "name" : "venomancer"
+  }, {
+    "attribute" : "AGILITY",
+    "id" : 41,
+    "name" : "faceless_void"
+  }, {
+    "attribute" : "STRENGTH",
+    "id" : 42,
+    "name" : "skeleton_king"
+  }, {
+    "attribute" : "INTELLIGENCE",
+    "id" : 43,
+    "name" : "death_prophet"
+  }, {
+    "attribute" : "AGILITY",
+    "id" : 44,
+    "name" : "phantom_assassin"
+  }, {
+    "attribute" : "INTELLIGENCE",
+    "id" : 45,
+    "name" : "pugna"
+  }, {
+    "attribute" : "AGILITY",
+    "id" : 46,
+    "name" : "templar_assassin"
+  }, {
+    "attribute" : "AGILITY",
+    "id" : 47,
+    "name" : "viper"
+  }, {
+    "attribute" : "AGILITY",
+    "id" : 48,
+    "name" : "luna"
+  }, {
+    "attribute" : "STRENGTH",
+    "id" : 49,
+    "name" : "dragon_knight"
+  }, {
+    "attribute" : "INTELLIGENCE",
+    "id" : 50,
+    "name" : "dazzle"
+  }, {
+    "attribute" : "STRENGTH",
+    "id" : 51,
+    "name" : "rattletrap"
+  }, {
+    "attribute" : "INTELLIGENCE",
+    "id" : 52,
+    "name" : "leshrac"
+  }, {
+    "attribute" : "INTELLIGENCE",
+    "id" : 53,
+    "name" : "furion"
+  }, {
+    "attribute" : "STRENGTH",
+    "id" : 54,
+    "name" : "life_stealer"
+  }, {
+    "attribute" : "INTELLIGENCE",
+    "id" : 55,
+    "name" : "dark_seer"
+  }, {
+    "attribute" : "AGILITY",
+    "id" : 56,
+    "name" : "clinkz"
+  }, {
+    "attribute" : "STRENGTH",
+    "id" : 57,
+    "name" : "omniknight"
+  }, {
+    "attribute" : "INTELLIGENCE",
+    "id" : 58,
+    "name" : "enchantress"
+  }, {
+    "attribute" : "STRENGTH",
+    "id" : 59,
+    "name" : "huskar"
+  }, {
+    "attribute" : "STRENGTH",
+    "id" : 60,
+    "name" : "night_stalker"
+  }, {
+    "attribute" : "AGILITY",
+    "id" : 61,
+    "name" : "broodmother"
+  }, {
+    "attribute" : "AGILITY",
+    "id" : 62,
+    "name" : "bounty_hunter"
+  }, {
+    "attribute" : "AGILITY",
+    "id" : 63,
+    "name" : "weaver"
+  }, {
+    "attribute" : "INTELLIGENCE",
+    "id" : 64,
+    "name" : "jakiro"
+  }, {
+    "attribute" : "INTELLIGENCE",
+    "id" : 65,
+    "name" : "batrider"
+  }, {
+    "attribute" : "INTELLIGENCE",
+    "id" : 66,
+    "name" : "chen"
+  }, {
+    "attribute" : "AGILITY",
+    "id" : 67,
+    "name" : "spectre"
+  }, {
+    "attribute" : "STRENGTH",
+    "id" : 69,
+    "name" : "doom_bringer"
+  }, {
+    "attribute" : "INTELLIGENCE",
+    "id" : 68,
+    "name" : "ancient_apparition"
+  }, {
+    "attribute" : "AGILITY",
+    "id" : 70,
+    "name" : "ursa"
+  }, {
+    "attribute" : "STRENGTH",
+    "id" : 71,
+    "name" : "spirit_breaker"
+  }, {
+    "attribute" : "AGILITY",
+    "id" : 72,
+    "name" : "gyrocopter"
+  }, {
+    "attribute" : "STRENGTH",
+    "id" : 73,
+    "name" : "alchemist"
+  }, {
+    "attribute" : "INTELLIGENCE",
+    "id" : 74,
+    "name" : "invoker"
+  }, {
+    "attribute" : "INTELLIGENCE",
+    "id" : 75,
+    "name" : "silencer"
+  }, {
+    "attribute" : "INTELLIGENCE",
+    "id" : 76,
+    "name" : "obsidian_destroyer"
+  }, {
+    "attribute" : "STRENGTH",
+    "id" : 77,
+    "name" : "lycan"
+  }, {
+    "attribute" : "STRENGTH",
+    "id" : 78,
+    "name" : "brewmaster"
+  }, {
+    "attribute" : "INTELLIGENCE",
+    "id" : 79,
+    "name" : "shadow_demon"
+  }, {
+    "attribute" : "AGILITY",
+    "id" : 80,
+    "name" : "lone_druid"
+  }, {
+    "attribute" : "STRENGTH",
+    "id" : 81,
+    "name" : "chaos_knight"
+  }, {
+    "attribute" : "AGILITY",
+    "id" : 82,
+    "name" : "meepo"
+  }, {
+    "attribute" : "STRENGTH",
+    "id" : 83,
+    "name" : "treant"
+  }, {
+    "attribute" : "INTELLIGENCE",
+    "id" : 84,
+    "name" : "ogre_magi"
+  }, {
+    "attribute" : "STRENGTH",
+    "id" : 85,
+    "name" : "undying"
+  }, {
+    "attribute" : "INTELLIGENCE",
+    "id" : 86,
+    "name" : "rubick"
+  }, {
+    "attribute" : "INTELLIGENCE",
+    "id" : 87,
+    "name" : "disruptor"
+  }, {
+    "attribute" : "AGILITY",
+    "id" : 88,
+    "name" : "nyx_assassin"
+  }, {
+    "attribute" : "AGILITY",
+    "id" : 89,
+    "name" : "naga_siren"
+  }, {
+    "attribute" : "INTELLIGENCE",
+    "id" : 90,
+    "name" : "keeper_of_the_light"
+  }, {
+    "attribute" : "STRENGTH",
+    "id" : 91,
+    "name" : "wisp"
+  }, {
+    "attribute" : "INTELLIGENCE",
+    "id" : 92,
+    "name" : "visage"
+  }, {
+    "attribute" : "AGILITY",
+    "id" : 93,
+    "name" : "slark"
+  }, {
+    "attribute" : "AGILITY",
+    "id" : 94,
+    "name" : "medusa"
+  }, {
+    "attribute" : "AGILITY",
+    "id" : 95,
+    "name" : "troll_warlord"
+  }, {
+    "attribute" : "STRENGTH",
+    "id" : 96,
+    "name" : "centaur"
+  }, {
+    "attribute" : "STRENGTH",
+    "id" : 97,
+    "name" : "magnataur"
+  }, {
+    "attribute" : "STRENGTH",
+    "id" : 98,
+    "name" : "shredder"
+  }, {
+    "attribute" : "STRENGTH",
+    "id" : 99,
+    "name" : "bristleback"
+  }, {
+    "attribute" : "STRENGTH",
+    "id" : 100,
+    "name" : "tusk"
+  }, {
+    "attribute" : "INTELLIGENCE",
+    "id" : 101,
+    "name" : "skywrath_mage"
+  }, {
+    "attribute" : "STRENGTH",
+    "id" : 102,
+    "name" : "abaddon"
+  }, {
+    "attribute" : "STRENGTH",
+    "id" : 103,
+    "name" : "elder_titan"
+  }, {
+    "attribute" : "STRENGTH",
+    "id" : 104,
+    "name" : "legion_commander"
+  }, {
+    "attribute" : "AGILITY",
+    "id" : 106,
+    "name" : "ember_spirit"
+  }, {
+    "attribute" : "STRENGTH",
+    "id" : 107,
+    "name" : "earth_spirit"
+  }, {
+    "attribute" : "AGILITY",
+    "id" : 109,
+    "name" : "terrorblade"
+  }, {
+    "attribute" : "STRENGTH",
+    "id" : 110,
+    "name" : "phoenix"
+  }, {
+    "attribute" : "INTELLIGENCE",
+    "id" : 111,
+    "name" : "oracle"
+  }, {
+    "attribute" : "INTELLIGENCE",
+    "id" : 105,
+    "name" : "techies"
+  }, {
+    "attribute" : "INTELLIGENCE",
+    "id" : 112,
+    "name" : "winter_wyvern"
+  }, {
+    "attribute" : "AGILITY",
+    "id" : 113,
+    "name" : "arc_warden"
+  }, {
+    "attribute" : "STRENGTH",
+    "id" : 108,
+    "name" : "abyssal_underlord"
+  } ]

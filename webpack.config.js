@@ -20,8 +20,9 @@ var config = {
           presets: ["es2015", "stage-0", "react"]
         }
       },
+      { test: /\.json$/, loader : 'json' },
       { test: /\.(png|jpg)$/, loader: 'url?limit=10000000000' },
-      { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader?limit=10000000000" }
+      { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url?limit=10000000000" }
   	]
   }
 };
