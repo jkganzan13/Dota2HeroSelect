@@ -1,19 +1,20 @@
+import * as _ from 'lodash';
 import fetch from 'isomorphic-fetch';
-import * as _ from 'lodash'
+import heroes from '../api/heroes.json';
 
 export const GET_HEROES = 'GET_HEROES';
 export const REQUEST_DATA = 'REQUEST_DATA';
-
-function requestData(){
-	return {
-		type: REQUEST_DATA
-	}
-}
 
 function getHeroes(sortedHeroes){
 	return {
 		type: GET_HEROES,
 		heroes: sortedHeroes
+	}
+}
+
+function requestData(){
+	return {
+		type: REQUEST_DATA
 	}
 }
 
@@ -32,11 +33,6 @@ function sortHeroes(heroes){
 export function fetchHeroes(){	
 	return dispatch => {
 		dispatch(requestData());
-		return fetch('http://localhost:4000/dota2/heroes')
-			.then(response => response.json())
-			.then(json => {
-				//setTimeout(() => dispatch(getHeroes(json)), 3000)
-				dispatch(getHeroes(sortHeroes(json.heroes)));
-			});
+		setTimeout(() => dispatch(getHeroes(sortHeroes(heroes))), 3000);
 	}
 }
