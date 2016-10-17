@@ -1,8 +1,8 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
 
 const Logo = () => {
 	return (
-		<img className="centered" id="logo" src={require('../assets/logo.png')} />
+		<img className="centered" id="logo" src={require('../assets/images/logo.png')} />
 	)
 }
 

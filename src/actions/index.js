@@ -10,11 +10,23 @@ function requestData(){
 	}
 }
 
-function getHeroes(json){
+function getHeroes(sortedHeroes){
 	return {
 		type: GET_HEROES,
-		heroes: json.heroes
+		heroes: sortedHeroes
 	}
+}
+
+function sortHeroes(heroes){
+	let sortedHeroes = {};
+	sortedHeroes.STRENGTH = [];
+	sortedHeroes.AGILITY = [];
+	sortedHeroes.INTELLIGENCE = [];
+
+	_.forEach(heroes, hero => {
+		sortedHeroes[hero.attribute].push(hero);
+	});
+	return sortedHeroes;
 }
 
 export function fetchHeroes(){	
@@ -23,7 +35,8 @@ export function fetchHeroes(){
 		return fetch('http://localhost:4000/dota2/heroes')
 			.then(response => response.json())
 			.then(json => {
-				setTimeout(() => dispatch(getHeroes(json)), 3000)
+				//setTimeout(() => dispatch(getHeroes(json)), 3000)
+				dispatch(getHeroes(sortHeroes(json.heroes)));
 			});
 	}
 }

@@ -1,13 +1,15 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 
-export default class Hero extends Component {
-	render() {
-		const { heroName } = this.props;
-
-		return (
-			<div className="hero">
-				<img src={`http://cdn.dota2.com/apps/dota2/images/heroes/${heroName}_vert.jpg`} />
-			</div>
-		)
-	}
+const Hero = ({ heroName }) => {
+	return (
+		<div className="hero">
+			<img src={`http://cdn.dota2.com/apps/dota2/images/heroes/${heroName}_vert.jpg`} alt={heroName} />
+		</div>
+	)
 }
+
+Hero.propTypes = {
+	heroName: PropTypes.string.isRequired
+}
+
+export default Hero;
