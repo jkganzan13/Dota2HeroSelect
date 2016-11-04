@@ -1,7 +1,9 @@
 import { combineReducers } from 'redux';
-import { REQUEST_DATA, GET_HEROES } from '../actions';
+import * as R from 'ramda';
 
-function dota2(state = { heroes: {}, isLoading: false }, action) {
+import { REQUEST_DATA, GET_HEROES, UPDATE_FILTERS, REMOVE_FILTERS } from '../actions';
+
+function dota2(state = { heroes: {}, isLoading: false, activeFilters: [] }, action) {
 	switch (action.type) {
 		case REQUEST_DATA:
 			return Object.assign({}, state, {
@@ -12,13 +14,33 @@ function dota2(state = { heroes: {}, isLoading: false }, action) {
 			 	isLoading: false,
 			 	heroes: action.heroes
 			 });
+		case UPDATE_FILTERS:
+			return Object.assign({}, state, {
+				activeFilters: filters(state.activeFilters, action)
+			});
+		case REMOVE_FILTERS:
+			return Object.assign({}, state, {
+				activeFilters: filters(state.activeFilters, action)
+			});
 		default:
 			return state;
 	}
 }
 
+function filters(state = [], action) {
+	switch(action.type) {
+		case UPDATE_FILTERS:
+			if (R.contains(action.filterType, state)) {
+				return state;
+			}
+			return [ ...state, action.filterType];
+		case REMOVE_FILTERS:
+			return R.without([action.filterType], state)
+	}
+}
+
 const rootReducer = combineReducers({
 	dota2
-})
+});
 
 export default rootReducer

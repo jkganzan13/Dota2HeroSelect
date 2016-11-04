@@ -23,6 +23,10 @@ body {
   100% {-webkit-transform: rotate(360deg);} 
 }
 
+.activeFilter {
+  font-size: 50px;
+}
+
 .app {
   margin-left: 10%;
   margin-right: 10%;
@@ -63,6 +67,22 @@ body {
 .heroContainer {
   width: 90%;
   float: right;
+}
+
+.filterContainer {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row; /* works with row or column */
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+
+.filters {
+    margin-left: 10px;
+    cursor: pointer;
 }
 
 .rotate {
