@@ -24,7 +24,12 @@ body {
 }
 
 .activeFilter {
-  font-size: 50px;
+    text-shadow: #ffffff 0 0 30px;
+    filter: glow(color=#eeee00,strength=3);
+}
+
+.activeHero {
+    filter: grayscale(100%);
 }
 
 .app {
@@ -58,9 +63,9 @@ body {
 }
 
 .hero img {
-	width: 40px;
-	height: 90px;
-	object-fit: cover;
+    width: 40px;
+    height: 90px;
+    object-fit: cover;
   margin-left: 2px;
 }
 
@@ -78,6 +83,7 @@ body {
     align-items: center;
     -webkit-justify-content: center;
     justify-content: center;
+    margin-top: 10px;
 }
 
 .filters {
@@ -105,7 +111,7 @@ body {
 
 @font-face { font-family: 'Trajan'; src: url('../fonts/Trajan.ttf') format('truetype'); }
 .text {
-  font-family: 'Trajan';
+    font-family: 'Trajan', serif;
   color:  #909090;
 }
 

@@ -12,7 +12,7 @@ export default class HeroesContainer extends Component {
 				<VerticalText attribute={attr} />
 				<div className="heroContainer">
 					{_.map(heroesByAttributes, (hero, index) => 
-					  <Hero heroName={ hero.name } key={index} />
+					  <Hero key={index} hero={hero} />
 					)}
 				</div>
 	    	</div>

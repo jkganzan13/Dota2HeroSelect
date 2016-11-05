@@ -1,15 +1,21 @@
 import React, { PropTypes } from 'react';
 
-const Hero = ({ heroName }) => {
+const Hero = ({ hero }) => {
 	return (
-		<div className="hero">
-			<img src={`http://cdn.dota2.com/apps/dota2/images/heroes/${heroName}_vert.jpg`} alt={heroName} className="grayscale" />
+		<div className={"hero " + (hero.isActive ? "activeHero" : "")}>
+			<img src={`http://cdn.dota2.com/apps/dota2/images/heroes/${hero.name}_vert.jpg`} alt={hero.name} className="grayscale" />
 		</div>
 	)
-}
+};
 
 Hero.propTypes = {
-	heroName: PropTypes.string.isRequired
-}
+	hero: PropTypes.shape({
+		attribute : PropTypes.string.isRequired,
+		id : PropTypes.number.isRequired,
+		name : PropTypes.string.isRequired,
+		atkRange : PropTypes.string.isRequired,
+		roles : PropTypes.array.isRequired
+	}).isRequired
+};
 
 export default Hero;

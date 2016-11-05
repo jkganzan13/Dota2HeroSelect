@@ -1,14 +1,19 @@
 import { combineReducers } from 'redux';
 import * as R from 'ramda';
 
-import { REQUEST_DATA, GET_HEROES, UPDATE_FILTERS, REMOVE_FILTERS } from '../actions';
+import { REQUEST_DATA, GET_HEROES } from '../actions';
+import { FILTER_HEROES, REMOVE_FILTERS, UPDATE_FILTERS } from '../actions/filters';
 
 function dota2(state = { heroes: {}, isLoading: false, activeFilters: [] }, action) {
 	switch (action.type) {
 		case REQUEST_DATA:
 			return Object.assign({}, state, {
 			 	isLoading: true
-			 }); 
+			 });
+		case FILTER_HEROES:
+			return Object.assign({}, state, {
+				heroes: action.heroes
+			});
 		case GET_HEROES:
 			 return Object.assign({}, state, {
 			 	isLoading: false,
@@ -16,11 +21,11 @@ function dota2(state = { heroes: {}, isLoading: false, activeFilters: [] }, acti
 			 });
 		case UPDATE_FILTERS:
 			return Object.assign({}, state, {
-				activeFilters: filters(state.activeFilters, action)
+				activeFilters: filters(state.activeFilters, action),
 			});
 		case REMOVE_FILTERS:
 			return Object.assign({}, state, {
-				activeFilters: filters(state.activeFilters, action)
+				activeFilters: filters(state.activeFilters, action),
 			});
 		default:
 			return state;

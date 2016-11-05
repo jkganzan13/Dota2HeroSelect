@@ -6,7 +6,7 @@ import Support from '../components/filters/Support';
 import Melee from '../components/filters/Melee';
 import Ranged from '../components/filters/Ranged';
 
-import { removeFilter, updateFilter } from '../actions'
+import { removeFilter, updateFilter } from '../actions/filters'
 
 export default class FiltersContainer extends Component {
     constructor(props) {
@@ -19,7 +19,7 @@ export default class FiltersContainer extends Component {
         {
             return this.props.dispatch(removeFilter(filterType))
         }
-        return this.props.dispatch(updateFilter(filterType));
+        return this.props.dispatch(updateFilter(filterType, this.props.heroes));
     }
 
     isActiveFilter(filterType) {

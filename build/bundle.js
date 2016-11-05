@@ -24562,6 +24562,8 @@
 	
 	var _actions = __webpack_require__(/*! ../actions */ 205);
 	
+	var _filters = __webpack_require__(/*! ../actions/filters */ 220);
+	
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
@@ -24575,16 +24577,20 @@
 				return Object.assign({}, state, {
 					isLoading: true
 				});
+			case _filters.FILTER_HEROES:
+				return Object.assign({}, state, {
+					heroes: action.heroes
+				});
 			case _actions.GET_HEROES:
 				return Object.assign({}, state, {
 					isLoading: false,
 					heroes: action.heroes
 				});
-			case _actions.UPDATE_FILTERS:
+			case _filters.UPDATE_FILTERS:
 				return Object.assign({}, state, {
 					activeFilters: filters(state.activeFilters, action)
 				});
-			case _actions.REMOVE_FILTERS:
+			case _filters.REMOVE_FILTERS:
 				return Object.assign({}, state, {
 					activeFilters: filters(state.activeFilters, action)
 				});
@@ -24598,12 +24604,12 @@
 		var action = arguments[1];
 	
 		switch (action.type) {
-			case _actions.UPDATE_FILTERS:
+			case _filters.UPDATE_FILTERS:
 				if (R.contains(action.filterType, state)) {
 					return state;
 				}
 				return [].concat(_toConsumableArray(state), [action.filterType]);
-			case _actions.REMOVE_FILTERS:
+			case _filters.REMOVE_FILTERS:
 				return R.without([action.filterType], state);
 		}
 	}
@@ -33466,10 +33472,8 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.CLEAR_FILTERS = exports.REMOVE_FILTERS = exports.UPDATE_FILTERS = exports.REQUEST_DATA = exports.GET_HEROES = undefined;
+	exports.REQUEST_DATA = exports.GET_HEROES = undefined;
 	exports.fetchHeroes = fetchHeroes;
-	exports.removeFilter = removeFilter;
-	exports.updateFilter = updateFilter;
 	
 	var _lodash = __webpack_require__(/*! lodash */ 206);
 	
@@ -33493,9 +33497,6 @@
 	
 	var GET_HEROES = exports.GET_HEROES = 'GET_HEROES';
 	var REQUEST_DATA = exports.REQUEST_DATA = 'REQUEST_DATA';
-	var UPDATE_FILTERS = exports.UPDATE_FILTERS = 'UPDATE_FILTERS';
-	var REMOVE_FILTERS = exports.REMOVE_FILTERS = 'REMOVE_FILTERS';
-	var CLEAR_FILTERS = exports.CLEAR_FILTERS = 'CLEAR_FILTERS';
 	
 	function getHeroes(sortedHeroes) {
 		return {
@@ -33529,24 +33530,6 @@
 			setTimeout(function () {
 				return dispatch(getHeroes(sortHeroes(_heroes2.default)));
 			}, 3000);
-		};
-	}
-	
-	function removeFilter(filterType) {
-		return function (dispatch) {
-			return dispatch({
-				type: REMOVE_FILTERS,
-				filterType: filterType
-			});
-		};
-	}
-	
-	function updateFilter(filterType) {
-		return function (dispatch) {
-			return dispatch({
-				type: UPDATE_FILTERS,
-				filterType: filterType
-			});
 		};
 	}
 
@@ -52554,7 +52537,7 @@
 						'div',
 						{ className: 'heroContainer' },
 						_.map(heroesByAttributes, function (hero, index) {
-							return _react2.default.createElement(_Hero2.default, { heroName: hero.name, key: index });
+							return _react2.default.createElement(_Hero2.default, { key: index, hero: hero });
 						})
 					)
 				);
@@ -52592,17 +52575,23 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var Hero = function Hero(_ref) {
-		var heroName = _ref.heroName;
+		var hero = _ref.hero;
 	
 		return _react2.default.createElement(
 			"div",
-			{ className: "hero" },
-			_react2.default.createElement("img", { src: "http://cdn.dota2.com/apps/dota2/images/heroes/" + heroName + "_vert.jpg", alt: heroName, className: "grayscale" })
+			{ className: "hero " + (hero.isActive ? "activeHero" : "") },
+			_react2.default.createElement("img", { src: "http://cdn.dota2.com/apps/dota2/images/heroes/" + hero.name + "_vert.jpg", alt: hero.name, className: "grayscale" })
 		);
 	};
 	
 	Hero.propTypes = {
-		heroName: _react.PropTypes.string.isRequired
+		hero: _react.PropTypes.shape({
+			attribute: _react.PropTypes.string.isRequired,
+			id: _react.PropTypes.number.isRequired,
+			name: _react.PropTypes.string.isRequired,
+			atkRange: _react.PropTypes.string.isRequired,
+			roles: _react.PropTypes.array.isRequired
+		}).isRequired
 	};
 	
 	exports.default = Hero;
@@ -52692,7 +52681,7 @@
 	
 	var _Ranged2 = _interopRequireDefault(_Ranged);
 	
-	var _actions = __webpack_require__(/*! ../actions */ 205);
+	var _filters = __webpack_require__(/*! ../actions/filters */ 220);
 	
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
@@ -52721,9 +52710,9 @@
 	        key: 'onClickFilter',
 	        value: function onClickFilter(filterType) {
 	            if (R.contains(filterType, this.props.activeFilters)) {
-	                return this.props.dispatch((0, _actions.removeFilter)(filterType));
+	                return this.props.dispatch((0, _filters.removeFilter)(filterType));
 	            }
-	            return this.props.dispatch((0, _actions.updateFilter)(filterType));
+	            return this.props.dispatch((0, _filters.updateFilter)(filterType, this.props.heroes));
 	        }
 	    }, {
 	        key: 'isActiveFilter',
@@ -52906,6 +52895,101 @@
 	};
 	
 	exports.default = Ranged;
+
+/***/ },
+/* 220 */
+/*!********************************!*\
+  !*** ./src/actions/filters.js ***!
+  \********************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.UPDATE_FILTERS = exports.REMOVE_FILTERS = exports.FILTER_HEROES = exports.CLEAR_FILTERS = undefined;
+	exports.removeFilter = removeFilter;
+	exports.updateFilter = updateFilter;
+	
+	var _lodash = __webpack_require__(/*! lodash */ 206);
+	
+	var _ = _interopRequireWildcard(_lodash);
+	
+	var _ramda = __webpack_require__(/*! ramda */ 204);
+	
+	var R = _interopRequireWildcard(_ramda);
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	
+	var CLEAR_FILTERS = exports.CLEAR_FILTERS = 'CLEAR_FILTERS';
+	var FILTER_HEROES = exports.FILTER_HEROES = 'FILTER_HEROES';
+	var REMOVE_FILTERS = exports.REMOVE_FILTERS = 'REMOVE_FILTERS';
+	var UPDATE_FILTERS = exports.UPDATE_FILTERS = 'UPDATE_FILTERS';
+	
+	function filterHeroes(state) {
+	    var _state$dota = state.dota2;
+	    var activeFilters = _state$dota.activeFilters;
+	    var heroes = _state$dota.heroes;
+	
+	
+	    var filterAll = function filterAll(hero) {
+	        var filtersInRoles = function filtersInRoles() {
+	            return _.intersection(hero.roles, activeFilters);
+	        };
+	        var hasFilters = function hasFilters() {
+	            return _.difference(activeFilters, filtersInRoles());
+	        };
+	        //hero.isActive = !R.isEmpty(activeFilters) && R.isEmpty(hasFilters()) //&& R.contains(hero.atkRange, activeFilters);
+	        if (R.isEmpty(activeFilters)) {
+	            hero.isActive = false;
+	        } else {
+	            if (R.isEmpty(hasFilters())) hero.isActive = true;else if (hasFilters().length == 1) {
+	                hero.isActive = R.contains(hero.atkRange, hasFilters());
+	            } else {
+	                hero.isActive = false;
+	            }
+	        }
+	        return hero;
+	    };
+	
+	    var filterHeroesByAttr = function filterHeroesByAttr(heroesByAttr) {
+	        return R.map(filterAll, heroesByAttr);
+	    };
+	
+	    return {
+	        type: FILTER_HEROES,
+	        heroes: R.map(filterHeroesByAttr, heroes)
+	    };
+	}
+	
+	function removeFilters(filterType) {
+	    return {
+	        type: REMOVE_FILTERS,
+	        filterType: filterType
+	    };
+	}
+	
+	function updateFilters(filterType) {
+	    return {
+	        type: UPDATE_FILTERS,
+	        filterType: filterType
+	    };
+	}
+	
+	function removeFilter(filterType) {
+	    return function (dispatch, getState) {
+	        dispatch(removeFilters(filterType));
+	        dispatch(filterHeroes(getState()));
+	    };
+	}
+	
+	function updateFilter(filterType) {
+	    return function (dispatch, getState) {
+	        dispatch(updateFilters(filterType));
+	        dispatch(filterHeroes(getState()));
+	    };
+	}
 
 /***/ }
 /******/ ]);
