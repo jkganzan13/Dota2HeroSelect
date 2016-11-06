@@ -38,7 +38,7 @@ class App extends Component {
       <div className="app">
       	{isLoading && <Logo />}
         {!isLoading && this.renderHeroContainers()}
-        <FilterContainer {...this.props} />
+        {!isLoading && <FilterContainer {...this.props} />}
       </div>
     );	
   }

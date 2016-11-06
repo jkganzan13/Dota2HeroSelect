@@ -11,19 +11,31 @@ import { removeFilter, updateFilter } from '../actions/filters'
 export default class FiltersContainer extends Component {
     constructor(props) {
         super(props);
-        this.onClickFilter = this.onClickFilter.bind(this);
         this.isActiveFilter = this.isActiveFilter.bind(this);
-    }
-    onClickFilter(filterType) {
-        if (R.contains(filterType, this.props.activeFilters))
-        {
-            return this.props.dispatch(removeFilter(filterType))
-        }
-        return this.props.dispatch(updateFilter(filterType, this.props.heroes));
+        this.onClickFilter = this.onClickFilter.bind(this);
     }
 
     isActiveFilter(filterType) {
         return R.contains(filterType, this.props.activeFilters)
+    }
+
+    onClickFilter(filterType) {
+        const { dispatch, heroes } = this.props;
+        if (this.isActiveFilter(filterType))
+        {
+            return dispatch(removeFilter(filterType))
+        }
+        this.toggleAtkRangeFilter(dispatch, filterType);
+        return dispatch(updateFilter(filterType, heroes));
+    }
+
+    toggleAtkRangeFilter (dispatch, filterType) {
+        if (filterType == "ranged" && this.isActiveFilter("melee")) {
+            dispatch(removeFilter("melee"));
+        }
+        if (filterType == "melee" && this.isActiveFilter("ranged")) {
+            dispatch(removeFilter("ranged"));
+        }
     }
 
 	render() {

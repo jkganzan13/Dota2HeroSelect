@@ -52521,7 +52521,7 @@
 	        { className: 'app' },
 	        isLoading && _react2.default.createElement(_Logo2.default, null),
 	        !isLoading && this.renderHeroContainers(),
-	        _react2.default.createElement(_FilterContainer2.default, this.props)
+	        !isLoading && _react2.default.createElement(_FilterContainer2.default, this.props)
 	      );
 	    }
 	  }]);
@@ -52803,23 +52803,38 @@
 	
 	        var _this = _possibleConstructorReturn(this, (FiltersContainer.__proto__ || Object.getPrototypeOf(FiltersContainer)).call(this, props));
 	
-	        _this.onClickFilter = _this.onClickFilter.bind(_this);
 	        _this.isActiveFilter = _this.isActiveFilter.bind(_this);
+	        _this.onClickFilter = _this.onClickFilter.bind(_this);
 	        return _this;
 	    }
 	
 	    _createClass(FiltersContainer, [{
-	        key: 'onClickFilter',
-	        value: function onClickFilter(filterType) {
-	            if (R.contains(filterType, this.props.activeFilters)) {
-	                return this.props.dispatch((0, _filters.removeFilter)(filterType));
-	            }
-	            return this.props.dispatch((0, _filters.updateFilter)(filterType, this.props.heroes));
-	        }
-	    }, {
 	        key: 'isActiveFilter',
 	        value: function isActiveFilter(filterType) {
 	            return R.contains(filterType, this.props.activeFilters);
+	        }
+	    }, {
+	        key: 'onClickFilter',
+	        value: function onClickFilter(filterType) {
+	            var _props = this.props;
+	            var dispatch = _props.dispatch;
+	            var heroes = _props.heroes;
+	
+	            if (this.isActiveFilter(filterType)) {
+	                return dispatch((0, _filters.removeFilter)(filterType));
+	            }
+	            this.toggleAtkRangeFilter(dispatch, filterType);
+	            return dispatch((0, _filters.updateFilter)(filterType, heroes));
+	        }
+	    }, {
+	        key: 'toggleAtkRangeFilter',
+	        value: function toggleAtkRangeFilter(dispatch, filterType) {
+	            if (filterType == "ranged" && this.isActiveFilter("melee")) {
+	                dispatch((0, _filters.removeFilter)("melee"));
+	            }
+	            if (filterType == "melee" && this.isActiveFilter("ranged")) {
+	                dispatch((0, _filters.removeFilter)("ranged"));
+	            }
 	        }
 	    }, {
 	        key: 'render',
