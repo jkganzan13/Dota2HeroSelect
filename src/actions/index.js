@@ -1,4 +1,5 @@
 import * as _ from 'lodash';
+import * as R from 'ramda';
 import fetch from 'isomorphic-fetch';
 import heroes from '../api/heroes.json';
 
@@ -25,6 +26,7 @@ function sortHeroes(heroes){
 	sortedHeroes.INTELLIGENCE = [];
 
 	_.forEach(heroes, hero => {
+		hero.isActive = false;
 		sortedHeroes[hero.attribute].push(hero);
 	});
 	return sortedHeroes;

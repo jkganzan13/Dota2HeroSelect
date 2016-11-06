@@ -1,0 +1,56 @@
+import React, { Component, PropTypes } from 'react';
+import * as R from 'ramda';
+
+import Carry from '../components/filters/Carry';
+import Support from '../components/filters/Support';
+import Melee from '../components/filters/Melee';
+import Ranged from '../components/filters/Ranged';
+
+import { removeFilter, updateFilter } from '../actions/filters'
+
+export default class FiltersContainer extends Component {
+    constructor(props) {
+        super(props);
+        this.isActiveFilter = this.isActiveFilter.bind(this);
+        this.onClickFilter = this.onClickFilter.bind(this);
+    }
+
+    isActiveFilter(filterType) {
+        return R.contains(filterType, this.props.activeFilters)
+    }
+
+    onClickFilter(filterType) {
+        const { dispatch, heroes } = this.props;
+        if (this.isActiveFilter(filterType))
+        {
+            return dispatch(removeFilter(filterType))
+        }
+        this.toggleAtkRangeFilter(dispatch, filterType);
+        return dispatch(updateFilter(filterType, heroes));
+    }
+
+    toggleAtkRangeFilter (dispatch, filterType) {
+        if (filterType == "ranged" && this.isActiveFilter("melee")) {
+            dispatch(removeFilter("melee"));
+        }
+        if (filterType == "melee" && this.isActiveFilter("ranged")) {
+            dispatch(removeFilter("ranged"));
+        }
+    }
+
+	render() {
+		return (
+			<div className="filterContainer">
+                <Carry onClickFilter={this.onClickFilter} isActiveFilter={this.isActiveFilter} />
+                <Support onClickFilter={this.onClickFilter} isActiveFilter={this.isActiveFilter} />
+                <Melee onClickFilter={this.onClickFilter} isActiveFilter={this.isActiveFilter} />
+                <Ranged onClickFilter={this.onClickFilter} isActiveFilter={this.isActiveFilter} />
+			</div>
+		);
+	}
+}
+
+FiltersContainer.propTypes = {
+    activeFilters: PropTypes.array.isRequired,
+    dispatch: PropTypes.func.isRequired
+};

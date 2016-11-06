@@ -9,8 +9,10 @@
     "babel-preset-react": "^6.16.0",
     "babel-preset-stage-0": "^6.16.0",
     "file-loader": "^0.9.0",
+    "jquery-gray": "^1.5.0",
     "json-loader": "^0.5.4",
     "lodash": "^4.16.4",
+    "ramda": "^0.22.1",
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
     "react-redux": "^4.4.5",
@@ -20,7 +22,7 @@
     "webpack": "^1.13.2"
   },
   "scripts": {
-    "dev": "webpack -p && webpack-dev-server --content-base",
+    "dev": "webpack -d --watch",
     "build": "webpack -p"
   },
   "devDependencies": {
