@@ -24,9 +24,6 @@ var config = {
       { test: /\.(png|jpg)$/, loader: 'url?limit=10000000000' },
       { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url?limit=10000000000" }
   	]
-  },
-  devServer: {
-    stats: 'errors-only',
   }
 };
 

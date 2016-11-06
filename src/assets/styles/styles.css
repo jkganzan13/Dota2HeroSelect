@@ -28,10 +28,6 @@ body {
     filter: glow(color=#eeee00,strength=3);
 }
 
-.activeHero {
-    filter: grayscale(100%);
-}
-
 .app {
   margin-left: 10%;
   margin-right: 10%;
@@ -55,6 +51,10 @@ body {
   top: 40%;
   left: 45%;
   transform: translate(-50%, -50%);
+}
+
+.disableHero {
+    filter: grayscale(100%);
 }
 
 .hero {
@@ -111,7 +111,8 @@ body {
 
 @font-face { font-family: 'Trajan'; src: url('../fonts/Trajan.ttf') format('truetype'); }
 .text {
-    font-family: 'Trajan', serif;
+    font-family: 'Trajan'
+    , serif;
   color:  #909090;
 }
 

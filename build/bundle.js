@@ -71,7 +71,7 @@
 	
 	var _reducers2 = _interopRequireDefault(_reducers);
 	
-	var _App = __webpack_require__(/*! ./containers/App */ 210);
+	var _App = __webpack_require__(/*! ./containers/App */ 211);
 	
 	var _App2 = _interopRequireDefault(_App);
 	
@@ -24562,7 +24562,7 @@
 	
 	var _actions = __webpack_require__(/*! ../actions */ 205);
 	
-	var _filters = __webpack_require__(/*! ../actions/filters */ 220);
+	var _filters = __webpack_require__(/*! ../actions/filters */ 210);
 	
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
@@ -52332,6 +52332,102 @@
 
 /***/ },
 /* 210 */
+/*!********************************!*\
+  !*** ./src/actions/filters.js ***!
+  \********************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.UPDATE_FILTERS = exports.REMOVE_FILTERS = exports.FILTER_HEROES = exports.CLEAR_FILTERS = undefined;
+	exports.removeFilter = removeFilter;
+	exports.updateFilter = updateFilter;
+	
+	var _lodash = __webpack_require__(/*! lodash */ 206);
+	
+	var _ = _interopRequireWildcard(_lodash);
+	
+	var _ramda = __webpack_require__(/*! ramda */ 204);
+	
+	var R = _interopRequireWildcard(_ramda);
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	
+	var CLEAR_FILTERS = exports.CLEAR_FILTERS = 'CLEAR_FILTERS';
+	var FILTER_HEROES = exports.FILTER_HEROES = 'FILTER_HEROES';
+	var REMOVE_FILTERS = exports.REMOVE_FILTERS = 'REMOVE_FILTERS';
+	var UPDATE_FILTERS = exports.UPDATE_FILTERS = 'UPDATE_FILTERS';
+	
+	function filterHeroes(state) {
+	    var _state$dota = state.dota2;
+	    var activeFilters = _state$dota.activeFilters;
+	    var heroes = _state$dota.heroes;
+	
+	
+	    var filterAll = function filterAll(hero) {
+	        var filtersInRoles = function filtersInRoles() {
+	            return _.intersection(hero.roles, activeFilters);
+	        };
+	        var hasFilters = function hasFilters() {
+	            return _.difference(activeFilters, filtersInRoles());
+	        };
+	
+	        if (R.isEmpty(activeFilters)) {
+	            hero.isActive = false;
+	        } else {
+	            if (R.isEmpty(hasFilters())) hero.isActive = true;else if (hasFilters().length == 1) {
+	                hero.isActive = R.contains(hero.atkRange, hasFilters());
+	            } else {
+	                hero.isActive = false;
+	            }
+	        }
+	
+	        return hero;
+	    };
+	
+	    var filterHeroesByAttr = function filterHeroesByAttr(heroesByAttr) {
+	        return R.map(filterAll, heroesByAttr);
+	    };
+	
+	    return {
+	        type: FILTER_HEROES,
+	        heroes: R.map(filterHeroesByAttr, heroes)
+	    };
+	}
+	
+	function removeFilters(filterType) {
+	    return {
+	        type: REMOVE_FILTERS,
+	        filterType: filterType
+	    };
+	}
+	
+	function updateFilters(filterType) {
+	    return {
+	        type: UPDATE_FILTERS,
+	        filterType: filterType
+	    };
+	}
+	
+	function removeFilter(filterType) {
+	    return function (dispatch, getState) {
+	        dispatch(removeFilters(filterType));
+	        dispatch(filterHeroes(getState()));
+	    };
+	}
+	
+	function updateFilter(filterType) {
+	    return function (dispatch, getState) {
+	        dispatch(updateFilters(filterType));
+	        dispatch(filterHeroes(getState()));
+	    };
+	}
+
+/***/ },
+/* 211 */
 /*!*******************************!*\
   !*** ./src/containers/App.js ***!
   \*******************************/
@@ -52357,15 +52453,15 @@
 	
 	var _actions = __webpack_require__(/*! ../actions */ 205);
 	
-	var _Logo = __webpack_require__(/*! ../components/Logo */ 211);
+	var _Logo = __webpack_require__(/*! ../components/Logo */ 212);
 	
 	var _Logo2 = _interopRequireDefault(_Logo);
 	
-	var _HeroesContainer = __webpack_require__(/*! ./HeroesContainer */ 212);
+	var _HeroesContainer = __webpack_require__(/*! ./HeroesContainer */ 213);
 	
 	var _HeroesContainer2 = _interopRequireDefault(_HeroesContainer);
 	
-	var _FilterContainer = __webpack_require__(/*! ./FilterContainer */ 215);
+	var _FilterContainer = __webpack_require__(/*! ./FilterContainer */ 216);
 	
 	var _FilterContainer2 = _interopRequireDefault(_FilterContainer);
 	
@@ -52382,32 +52478,35 @@
 	var App = function (_Component) {
 	  _inherits(App, _Component);
 	
-	  function App() {
+	  function App(props) {
 	    _classCallCheck(this, App);
 	
-	    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+	
+	    _this.isFilterActive = _this.isFilterActive.bind(_this);
+	    return _this;
 	  }
 	
 	  _createClass(App, [{
 	    key: 'componentDidMount',
-	
-	    // constructor(props){
-	    // 	super(props)
-	    // }
-	
 	    value: function componentDidMount() {
-	      var dispatch = this.props.dispatch;
-	
-	      dispatch((0, _actions.fetchHeroes)());
+	      this.props.dispatch((0, _actions.fetchHeroes)());
 	    }
 	  }, {
-	    key: 'renderContainers',
-	    value: function renderContainers() {
+	    key: 'isFilterActive',
+	    value: function isFilterActive() {
+	      return this.props.activeFilters.length > 0;
+	    }
+	  }, {
+	    key: 'renderHeroContainers',
+	    value: function renderHeroContainers() {
+	      var _this2 = this;
+	
 	      var heroes = this.props.heroes;
 	
 	      var heroesContainer = [];
 	      _.forOwn(heroes, function (heroesByAttributes, attr) {
-	        return heroesContainer.push(_react2.default.createElement(_HeroesContainer2.default, { heroesByAttributes: heroesByAttributes, attr: attr, key: attr }));
+	        return heroesContainer.push(_react2.default.createElement(_HeroesContainer2.default, { key: attr, attr: attr, heroesByAttributes: heroesByAttributes, isFilterActive: _this2.isFilterActive }));
 	      });
 	      return heroesContainer;
 	    }
@@ -52421,7 +52520,7 @@
 	        'div',
 	        { className: 'app' },
 	        isLoading && _react2.default.createElement(_Logo2.default, null),
-	        !isLoading && this.renderContainers(),
+	        !isLoading && this.renderHeroContainers(),
 	        _react2.default.createElement(_FilterContainer2.default, this.props)
 	      );
 	    }
@@ -52447,7 +52546,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(App);
 
 /***/ },
-/* 211 */
+/* 212 */
 /*!********************************!*\
   !*** ./src/components/Logo.js ***!
   \********************************/
@@ -52472,7 +52571,7 @@
 	exports.default = Logo;
 
 /***/ },
-/* 212 */
+/* 213 */
 /*!*******************************************!*\
   !*** ./src/containers/HeroesContainer.js ***!
   \*******************************************/
@@ -52494,11 +52593,11 @@
 	
 	var _ = _interopRequireWildcard(_lodash);
 	
-	var _Hero = __webpack_require__(/*! ../components/Hero */ 213);
+	var _Hero = __webpack_require__(/*! ../components/Hero */ 214);
 	
 	var _Hero2 = _interopRequireDefault(_Hero);
 	
-	var _VerticalText = __webpack_require__(/*! ../components/VerticalText */ 214);
+	var _VerticalText = __webpack_require__(/*! ../components/VerticalText */ 215);
 	
 	var _VerticalText2 = _interopRequireDefault(_VerticalText);
 	
@@ -52525,8 +52624,9 @@
 			key: 'render',
 			value: function render() {
 				var _props = this.props;
-				var heroesByAttributes = _props.heroesByAttributes;
 				var attr = _props.attr;
+				var heroesByAttributes = _props.heroesByAttributes;
+				var isFilterActive = _props.isFilterActive;
 	
 	
 				return _react2.default.createElement(
@@ -52537,7 +52637,7 @@
 						'div',
 						{ className: 'heroContainer' },
 						_.map(heroesByAttributes, function (hero, index) {
-							return _react2.default.createElement(_Hero2.default, { key: index, hero: hero });
+							return _react2.default.createElement(_Hero2.default, { key: index, hero: hero, isFilterActive: isFilterActive });
 						})
 					)
 				);
@@ -52556,7 +52656,7 @@
 	};
 
 /***/ },
-/* 213 */
+/* 214 */
 /*!********************************!*\
   !*** ./src/components/Hero.js ***!
   \********************************/
@@ -52576,10 +52676,12 @@
 	
 	var Hero = function Hero(_ref) {
 		var hero = _ref.hero;
+		var isFilterActive = _ref.isFilterActive;
+	
 	
 		return _react2.default.createElement(
 			"div",
-			{ className: "hero " + (hero.isActive ? "activeHero" : "") },
+			{ className: "hero " + (isFilterActive() && !hero.isActive ? "disableHero" : "") },
 			_react2.default.createElement("img", { src: "http://cdn.dota2.com/apps/dota2/images/heroes/" + hero.name + "_vert.jpg", alt: hero.name, className: "grayscale" })
 		);
 	};
@@ -52597,7 +52699,7 @@
 	exports.default = Hero;
 
 /***/ },
-/* 214 */
+/* 215 */
 /*!****************************************!*\
   !*** ./src/components/VerticalText.js ***!
   \****************************************/
@@ -52643,7 +52745,7 @@
 	exports.default = VerticalText;
 
 /***/ },
-/* 215 */
+/* 216 */
 /*!*******************************************!*\
   !*** ./src/containers/FilterContainer.js ***!
   \*******************************************/
@@ -52665,23 +52767,23 @@
 	
 	var R = _interopRequireWildcard(_ramda);
 	
-	var _Carry = __webpack_require__(/*! ../components/filters/Carry */ 216);
+	var _Carry = __webpack_require__(/*! ../components/filters/Carry */ 217);
 	
 	var _Carry2 = _interopRequireDefault(_Carry);
 	
-	var _Support = __webpack_require__(/*! ../components/filters/Support */ 217);
+	var _Support = __webpack_require__(/*! ../components/filters/Support */ 218);
 	
 	var _Support2 = _interopRequireDefault(_Support);
 	
-	var _Melee = __webpack_require__(/*! ../components/filters/Melee */ 218);
+	var _Melee = __webpack_require__(/*! ../components/filters/Melee */ 219);
 	
 	var _Melee2 = _interopRequireDefault(_Melee);
 	
-	var _Ranged = __webpack_require__(/*! ../components/filters/Ranged */ 219);
+	var _Ranged = __webpack_require__(/*! ../components/filters/Ranged */ 220);
 	
 	var _Ranged2 = _interopRequireDefault(_Ranged);
 	
-	var _filters = __webpack_require__(/*! ../actions/filters */ 220);
+	var _filters = __webpack_require__(/*! ../actions/filters */ 210);
 	
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
@@ -52745,7 +52847,7 @@
 	};
 
 /***/ },
-/* 216 */
+/* 217 */
 /*!*****************************************!*\
   !*** ./src/components/filters/Carry.js ***!
   \*****************************************/
@@ -52783,7 +52885,7 @@
 	exports.default = Carry;
 
 /***/ },
-/* 217 */
+/* 218 */
 /*!*******************************************!*\
   !*** ./src/components/filters/Support.js ***!
   \*******************************************/
@@ -52821,7 +52923,7 @@
 	exports.default = Support;
 
 /***/ },
-/* 218 */
+/* 219 */
 /*!*****************************************!*\
   !*** ./src/components/filters/Melee.js ***!
   \*****************************************/
@@ -52859,7 +52961,7 @@
 	exports.default = Melee;
 
 /***/ },
-/* 219 */
+/* 220 */
 /*!******************************************!*\
   !*** ./src/components/filters/Ranged.js ***!
   \******************************************/
@@ -52895,101 +52997,6 @@
 	};
 	
 	exports.default = Ranged;
-
-/***/ },
-/* 220 */
-/*!********************************!*\
-  !*** ./src/actions/filters.js ***!
-  \********************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	exports.UPDATE_FILTERS = exports.REMOVE_FILTERS = exports.FILTER_HEROES = exports.CLEAR_FILTERS = undefined;
-	exports.removeFilter = removeFilter;
-	exports.updateFilter = updateFilter;
-	
-	var _lodash = __webpack_require__(/*! lodash */ 206);
-	
-	var _ = _interopRequireWildcard(_lodash);
-	
-	var _ramda = __webpack_require__(/*! ramda */ 204);
-	
-	var R = _interopRequireWildcard(_ramda);
-	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-	
-	var CLEAR_FILTERS = exports.CLEAR_FILTERS = 'CLEAR_FILTERS';
-	var FILTER_HEROES = exports.FILTER_HEROES = 'FILTER_HEROES';
-	var REMOVE_FILTERS = exports.REMOVE_FILTERS = 'REMOVE_FILTERS';
-	var UPDATE_FILTERS = exports.UPDATE_FILTERS = 'UPDATE_FILTERS';
-	
-	function filterHeroes(state) {
-	    var _state$dota = state.dota2;
-	    var activeFilters = _state$dota.activeFilters;
-	    var heroes = _state$dota.heroes;
-	
-	
-	    var filterAll = function filterAll(hero) {
-	        var filtersInRoles = function filtersInRoles() {
-	            return _.intersection(hero.roles, activeFilters);
-	        };
-	        var hasFilters = function hasFilters() {
-	            return _.difference(activeFilters, filtersInRoles());
-	        };
-	        //hero.isActive = !R.isEmpty(activeFilters) && R.isEmpty(hasFilters()) //&& R.contains(hero.atkRange, activeFilters);
-	        if (R.isEmpty(activeFilters)) {
-	            hero.isActive = false;
-	        } else {
-	            if (R.isEmpty(hasFilters())) hero.isActive = true;else if (hasFilters().length == 1) {
-	                hero.isActive = R.contains(hero.atkRange, hasFilters());
-	            } else {
-	                hero.isActive = false;
-	            }
-	        }
-	        return hero;
-	    };
-	
-	    var filterHeroesByAttr = function filterHeroesByAttr(heroesByAttr) {
-	        return R.map(filterAll, heroesByAttr);
-	    };
-	
-	    return {
-	        type: FILTER_HEROES,
-	        heroes: R.map(filterHeroesByAttr, heroes)
-	    };
-	}
-	
-	function removeFilters(filterType) {
-	    return {
-	        type: REMOVE_FILTERS,
-	        filterType: filterType
-	    };
-	}
-	
-	function updateFilters(filterType) {
-	    return {
-	        type: UPDATE_FILTERS,
-	        filterType: filterType
-	    };
-	}
-	
-	function removeFilter(filterType) {
-	    return function (dispatch, getState) {
-	        dispatch(removeFilters(filterType));
-	        dispatch(filterHeroes(getState()));
-	    };
-	}
-	
-	function updateFilter(filterType) {
-	    return function (dispatch, getState) {
-	        dispatch(updateFilters(filterType));
-	        dispatch(filterHeroes(getState()));
-	    };
-	}
 
 /***/ }
 /******/ ]);
