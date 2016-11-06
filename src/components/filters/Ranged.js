@@ -8,7 +8,7 @@ const Ranged = props => {
 
     return (
         <div onClick={onClickFilter} className={"text filters " + isActiveFilter()}>
-            Ranged
+            RANGED
         </div>
     );
 };

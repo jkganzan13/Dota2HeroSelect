@@ -11,7 +11,7 @@ const Carry = props => {
 
     return (
         <div onClick={onClickFilter} className={"text filters " + isActiveFilter()}>
-            Carry
+            CARRY
         </div>
     );
 }

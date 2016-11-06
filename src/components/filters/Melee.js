@@ -8,7 +8,7 @@ const Melee = props => {
 
     return (
         <div onClick={onClickFilter} className={"text filters " + isActiveFilter()}>
-            Melee
+            MELEE
         </div>
     );
 };
