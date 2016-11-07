@@ -5,6 +5,13 @@ import Carry from '../components/filters/Carry';
 import Support from '../components/filters/Support';
 import Melee from '../components/filters/Melee';
 import Ranged from '../components/filters/Ranged';
+import Nuker from '../components/filters/Nuker';
+import Disabler from '../components/filters/Disabler';
+import Jungler from '../components/filters/Jungler';
+import Durable from '../components/filters/Durable';
+import Escape from '../components/filters/Escape';
+import Pusher from '../components/filters/Pusher';
+import Initiator from '../components/filters/Initiator';
 
 import { removeFilter, updateFilter } from '../actions/filters'
 
@@ -41,6 +48,14 @@ export default class FiltersContainer extends Component {
 	render() {
 		return (
 			<div className="filterContainer">
+                <Nuker onClickFilter={this.onClickFilter} isActiveFilter={this.isActiveFilter} />
+                <Disabler onClickFilter={this.onClickFilter} isActiveFilter={this.isActiveFilter} />
+                <Jungler onClickFilter={this.onClickFilter} isActiveFilter={this.isActiveFilter} />
+                <Durable onClickFilter={this.onClickFilter} isActiveFilter={this.isActiveFilter} />
+                <Escape onClickFilter={this.onClickFilter} isActiveFilter={this.isActiveFilter} />
+                <Pusher onClickFilter={this.onClickFilter} isActiveFilter={this.isActiveFilter} />
+                <Initiator onClickFilter={this.onClickFilter} isActiveFilter={this.isActiveFilter} />
+
                 <Carry onClickFilter={this.onClickFilter} isActiveFilter={this.isActiveFilter} />
                 <Support onClickFilter={this.onClickFilter} isActiveFilter={this.isActiveFilter} />
                 <Melee onClickFilter={this.onClickFilter} isActiveFilter={this.isActiveFilter} />

@@ -52783,6 +52783,34 @@
 	
 	var _Ranged2 = _interopRequireDefault(_Ranged);
 	
+	var _Nuker = __webpack_require__(/*! ../components/filters/Nuker */ 221);
+	
+	var _Nuker2 = _interopRequireDefault(_Nuker);
+	
+	var _Disabler = __webpack_require__(/*! ../components/filters/Disabler */ 222);
+	
+	var _Disabler2 = _interopRequireDefault(_Disabler);
+	
+	var _Jungler = __webpack_require__(/*! ../components/filters/Jungler */ 223);
+	
+	var _Jungler2 = _interopRequireDefault(_Jungler);
+	
+	var _Durable = __webpack_require__(/*! ../components/filters/Durable */ 224);
+	
+	var _Durable2 = _interopRequireDefault(_Durable);
+	
+	var _Escape = __webpack_require__(/*! ../components/filters/Escape */ 225);
+	
+	var _Escape2 = _interopRequireDefault(_Escape);
+	
+	var _Pusher = __webpack_require__(/*! ../components/filters/Pusher */ 226);
+	
+	var _Pusher2 = _interopRequireDefault(_Pusher);
+	
+	var _Initiator = __webpack_require__(/*! ../components/filters/Initiator */ 227);
+	
+	var _Initiator2 = _interopRequireDefault(_Initiator);
+	
 	var _filters = __webpack_require__(/*! ../actions/filters */ 210);
 	
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
@@ -52842,6 +52870,13 @@
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'filterContainer' },
+	                _react2.default.createElement(_Nuker2.default, { onClickFilter: this.onClickFilter, isActiveFilter: this.isActiveFilter }),
+	                _react2.default.createElement(_Disabler2.default, { onClickFilter: this.onClickFilter, isActiveFilter: this.isActiveFilter }),
+	                _react2.default.createElement(_Jungler2.default, { onClickFilter: this.onClickFilter, isActiveFilter: this.isActiveFilter }),
+	                _react2.default.createElement(_Durable2.default, { onClickFilter: this.onClickFilter, isActiveFilter: this.isActiveFilter }),
+	                _react2.default.createElement(_Escape2.default, { onClickFilter: this.onClickFilter, isActiveFilter: this.isActiveFilter }),
+	                _react2.default.createElement(_Pusher2.default, { onClickFilter: this.onClickFilter, isActiveFilter: this.isActiveFilter }),
+	                _react2.default.createElement(_Initiator2.default, { onClickFilter: this.onClickFilter, isActiveFilter: this.isActiveFilter }),
 	                _react2.default.createElement(_Carry2.default, { onClickFilter: this.onClickFilter, isActiveFilter: this.isActiveFilter }),
 	                _react2.default.createElement(_Support2.default, { onClickFilter: this.onClickFilter, isActiveFilter: this.isActiveFilter }),
 	                _react2.default.createElement(_Melee2.default, { onClickFilter: this.onClickFilter, isActiveFilter: this.isActiveFilter }),
@@ -52894,7 +52929,7 @@
 	    return _react2.default.createElement(
 	        'div',
 	        { onClick: onClickFilter, className: "text filters " + isActiveFilter() },
-	        'Carry'
+	        'CARRY'
 	    );
 	};
 	exports.default = Carry;
@@ -52931,7 +52966,7 @@
 	    return _react2.default.createElement(
 	        'div',
 	        { onClick: onClickFilter, className: "text filters " + isActiveFilter() },
-	        'Support'
+	        'SUPPORT'
 	    );
 	};
 	
@@ -52969,7 +53004,7 @@
 	    return _react2.default.createElement(
 	        'div',
 	        { onClick: onClickFilter, className: "text filters " + isActiveFilter() },
-	        'Melee'
+	        'MELEE'
 	    );
 	};
 	
@@ -53007,11 +53042,277 @@
 	    return _react2.default.createElement(
 	        'div',
 	        { onClick: onClickFilter, className: "text filters " + isActiveFilter() },
-	        'Ranged'
+	        'RANGED'
 	    );
 	};
 	
 	exports.default = Ranged;
+
+/***/ },
+/* 221 */
+/*!*****************************************!*\
+  !*** ./src/components/filters/Nuker.js ***!
+  \*****************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _react = __webpack_require__(/*! react */ 2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var ROLE = 'nuker';
+	
+	var Nuker = function Nuker(props) {
+	    var onClickFilter = function onClickFilter() {
+	
+	        return props.onClickFilter(ROLE);
+	    };
+	    var isActiveFilter = function isActiveFilter() {
+	        return props.isActiveFilter(ROLE) ? 'activeFilter' : '';
+	    };
+	
+	    return _react2.default.createElement(
+	        'div',
+	        { onClick: onClickFilter, className: "text filters " + isActiveFilter() },
+	        'Nuker'
+	    );
+	};
+	exports.default = Nuker;
+
+/***/ },
+/* 222 */
+/*!********************************************!*\
+  !*** ./src/components/filters/Disabler.js ***!
+  \********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _react = __webpack_require__(/*! react */ 2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var ROLE = 'disabler';
+	
+	var Disabler = function Disabler(props) {
+	    var onClickFilter = function onClickFilter() {
+	
+	        return props.onClickFilter(ROLE);
+	    };
+	    var isActiveFilter = function isActiveFilter() {
+	        return props.isActiveFilter(ROLE) ? 'activeFilter' : '';
+	    };
+	
+	    return _react2.default.createElement(
+	        'div',
+	        { onClick: onClickFilter, className: "text filters " + isActiveFilter() },
+	        'Disabler'
+	    );
+	};
+	exports.default = Disabler;
+
+/***/ },
+/* 223 */
+/*!*******************************************!*\
+  !*** ./src/components/filters/Jungler.js ***!
+  \*******************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _react = __webpack_require__(/*! react */ 2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var ROLE = 'jungler';
+	
+	var Jungler = function Jungler(props) {
+	    var onClickFilter = function onClickFilter() {
+	
+	        return props.onClickFilter(ROLE);
+	    };
+	    var isActiveFilter = function isActiveFilter() {
+	        return props.isActiveFilter(ROLE) ? 'activeFilter' : '';
+	    };
+	
+	    return _react2.default.createElement(
+	        'div',
+	        { onClick: onClickFilter, className: "text filters " + isActiveFilter() },
+	        'Jungler'
+	    );
+	};
+	exports.default = Jungler;
+
+/***/ },
+/* 224 */
+/*!*******************************************!*\
+  !*** ./src/components/filters/Durable.js ***!
+  \*******************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _react = __webpack_require__(/*! react */ 2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var ROLE = 'durable';
+	
+	var Durable = function Durable(props) {
+	    var onClickFilter = function onClickFilter() {
+	
+	        return props.onClickFilter(ROLE);
+	    };
+	    var isActiveFilter = function isActiveFilter() {
+	        return props.isActiveFilter(ROLE) ? 'activeFilter' : '';
+	    };
+	
+	    return _react2.default.createElement(
+	        'div',
+	        { onClick: onClickFilter, className: "text filters " + isActiveFilter() },
+	        'Durable'
+	    );
+	};
+	exports.default = Durable;
+
+/***/ },
+/* 225 */
+/*!******************************************!*\
+  !*** ./src/components/filters/Escape.js ***!
+  \******************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _react = __webpack_require__(/*! react */ 2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var ROLE = 'escape';
+	
+	var Escape = function Escape(props) {
+	    var onClickFilter = function onClickFilter() {
+	
+	        return props.onClickFilter(ROLE);
+	    };
+	    var isActiveFilter = function isActiveFilter() {
+	        return props.isActiveFilter(ROLE) ? 'activeFilter' : '';
+	    };
+	
+	    return _react2.default.createElement(
+	        'div',
+	        { onClick: onClickFilter, className: "text filters " + isActiveFilter() },
+	        'Escape'
+	    );
+	};
+	exports.default = Escape;
+
+/***/ },
+/* 226 */
+/*!******************************************!*\
+  !*** ./src/components/filters/Pusher.js ***!
+  \******************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _react = __webpack_require__(/*! react */ 2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var ROLE = 'pusher';
+	
+	var Pusher = function Pusher(props) {
+	    var onClickFilter = function onClickFilter() {
+	
+	        return props.onClickFilter(ROLE);
+	    };
+	    var isActiveFilter = function isActiveFilter() {
+	        return props.isActiveFilter(ROLE) ? 'activeFilter' : '';
+	    };
+	
+	    return _react2.default.createElement(
+	        'div',
+	        { onClick: onClickFilter, className: "text filters " + isActiveFilter() },
+	        'Pusher'
+	    );
+	};
+	exports.default = Pusher;
+
+/***/ },
+/* 227 */
+/*!*********************************************!*\
+  !*** ./src/components/filters/Initiator.js ***!
+  \*********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _react = __webpack_require__(/*! react */ 2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var ROLE = 'initiator';
+	
+	var Initiator = function Initiator(props) {
+	    var onClickFilter = function onClickFilter() {
+	
+	        return props.onClickFilter(ROLE);
+	    };
+	    var isActiveFilter = function isActiveFilter() {
+	        return props.isActiveFilter(ROLE) ? 'activeFilter' : '';
+	    };
+	
+	    return _react2.default.createElement(
+	        'div',
+	        { onClick: onClickFilter, className: "text filters " + isActiveFilter() },
+	        'Initiator'
+	    );
+	};
+	exports.default = Initiator;
 
 /***/ }
 /******/ ]);

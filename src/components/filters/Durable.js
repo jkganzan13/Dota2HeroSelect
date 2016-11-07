@@ -1,16 +1,18 @@
 import React, { PropTypes } from 'react';
 
-const ROLE = 'support';
+const ROLE = 'durable';
 
-const Support = props => {
-    const onClickFilter = () => props.onClickFilter(ROLE);
+const Durable = props => {
+    const onClickFilter = () => {
+
+        return props.onClickFilter(ROLE);
+    };
     const isActiveFilter = () => (props.isActiveFilter(ROLE)) ? 'activeFilter' : '';
 
     return (
         <div onClick={onClickFilter} className={"text filters " + isActiveFilter()}>
-            SUPPORT
+            Durable
         </div>
     );
-};
-
-export default Support;
+}
+export default Durable;
