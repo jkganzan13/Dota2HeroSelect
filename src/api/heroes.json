@@ -75,7 +75,7 @@
     "id" : 13,
     "name" : "puck",
     "atkRange" : "ranged",
-    "roles" : ["disabler" "nuker", "initiator", "nuker"]
+    "roles" : ["disabler", "nuker", "initiator", "nuker"]
   }, {
     "attribute" : "STRENGTH",
     "id" : 14,

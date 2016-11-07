@@ -5,23 +5,28 @@ import { fetchHeroes } from '../actions'
 
 import Logo from '../components/Logo'
 import HeroesContainer from './HeroesContainer'
+import FilterContainer from './FilterContainer'
 
 
 class App extends Component {
-  // constructor(props){
-  // 	super(props)
-  // }
-
-  componentDidMount(){
-  	const { dispatch } = this.props;
-  	dispatch(fetchHeroes());
+  constructor(props){
+  	super(props);
+    this.isFilterActive = this.isFilterActive.bind(this);
   }
 
-  renderContainers() {
+  componentDidMount(){
+  	this.props.dispatch(fetchHeroes());
+  }
+
+  isFilterActive() {
+    return this.props.activeFilters.length > 0;
+  }
+
+  renderHeroContainers() {
     const { heroes } = this.props;
-    let heroesContainer = []
+    let heroesContainer = [];
     _.forOwn(heroes, (heroesByAttributes, attr) => 
-      heroesContainer.push(<HeroesContainer heroesByAttributes={heroesByAttributes} attr={attr} key={attr} />)
+      heroesContainer.push(<HeroesContainer key={attr} attr={attr} heroesByAttributes={heroesByAttributes} isFilterActive={this.isFilterActive} />)
     );
     return heroesContainer;
   }
@@ -32,23 +37,25 @@ class App extends Component {
     return (
       <div className="app">
       	{isLoading && <Logo />}
-        {!isLoading && this.renderContainers()}
+        {!isLoading && this.renderHeroContainers()}
+        {!isLoading && <FilterContainer {...this.props} />}
       </div>
     );	
   }
 }
 
 App.propTypes = {
-	dispatch: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired,
   heroes: PropTypes.object.isRequired,
   isLoading: PropTypes.bool.isRequired
-}
+};
 
 const mapStateToProps = state => {
   return {
+    activeFilters: state.dota2.activeFilters,
     heroes: state.dota2.heroes,
     isLoading: state.dota2.isLoading
   }
-}
+};
 
 export default connect(mapStateToProps)(App)

@@ -1,6 +1,11 @@
 /*Tags*/
 body {
-  margin: 0;
+    margin: 0;
+    background: url('../images/background.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 /*IDs*/
@@ -12,15 +17,15 @@ body {
     -webkit-animation: spin 4s infinite linear;
 }
 
-#root {
-    background: url('../images/background.jpg') no-repeat center center;
-    background-size: cover;
-}
-
 /*Classes*/
 @-webkit-keyframes spin {
   0%  {-webkit-transform: rotate(0deg);}
   100% {-webkit-transform: rotate(360deg);} 
+}
+
+.activeFilter {
+    text-shadow: #ffffff 0 0 30px;
+    filter: glow(color=#eeee00,strength=3);
 }
 
 .app {
@@ -48,21 +53,42 @@ body {
   transform: translate(-50%, -50%);
 }
 
+.disableHero {
+    filter: grayscale(100%);
+}
+
 .hero {
 	float: left;
 	margin-right: 5px;
 }
 
 .hero img {
-	width: 40px;
-	height: 90px;
-	object-fit: cover;
+    width: 40px;
+    height: 90px;
+    object-fit: cover;
   margin-left: 2px;
 }
 
 .heroContainer {
   width: 90%;
   float: right;
+}
+
+.filterContainer {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row; /* works with row or column */
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.filters {
+    margin-left: 10px;
+    cursor: pointer;
 }
 
 .rotate {
@@ -85,7 +111,8 @@ body {
 
 @font-face { font-family: 'Trajan'; src: url('../fonts/Trajan.ttf') format('truetype'); }
 .text {
-  font-family: 'Trajan';
+    font-family: 'Trajan'
+    , serif;
   color:  #909090;
 }
 
