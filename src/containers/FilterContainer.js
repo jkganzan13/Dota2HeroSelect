@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import * as R from 'ramda';
+import { Col, Row } from 'react-flexbox-grid';
 
 import Carry from '../components/filters/Carry';
 import Support from '../components/filters/Support';
@@ -47,20 +48,36 @@ export default class FiltersContainer extends Component {
 
 	render() {
 		return (
-			<div className="filterContainer">
-                <Nuker onClickFilter={this.onClickFilter} isActiveFilter={this.isActiveFilter} />
-                <Disabler onClickFilter={this.onClickFilter} isActiveFilter={this.isActiveFilter} />
-                <Jungler onClickFilter={this.onClickFilter} isActiveFilter={this.isActiveFilter} />
-                <Durable onClickFilter={this.onClickFilter} isActiveFilter={this.isActiveFilter} />
-                <Escape onClickFilter={this.onClickFilter} isActiveFilter={this.isActiveFilter} />
-                <Pusher onClickFilter={this.onClickFilter} isActiveFilter={this.isActiveFilter} />
-                <Initiator onClickFilter={this.onClickFilter} isActiveFilter={this.isActiveFilter} />
-
-                <Carry onClickFilter={this.onClickFilter} isActiveFilter={this.isActiveFilter} />
-                <Support onClickFilter={this.onClickFilter} isActiveFilter={this.isActiveFilter} />
-                <Melee onClickFilter={this.onClickFilter} isActiveFilter={this.isActiveFilter} />
-                <Ranged onClickFilter={this.onClickFilter} isActiveFilter={this.isActiveFilter} />
-			</div>
+			<Row>
+                <Col xs={12}>
+                    <Row between="xs">
+                        <Nuker onClickFilter={this.onClickFilter} isActiveFilter={this.isActiveFilter} />
+                        <Disabler onClickFilter={this.onClickFilter} isActiveFilter={this.isActiveFilter} />
+                        <Jungler onClickFilter={this.onClickFilter} isActiveFilter={this.isActiveFilter} />
+                        <Durable onClickFilter={this.onClickFilter} isActiveFilter={this.isActiveFilter} />
+                        <Escape onClickFilter={this.onClickFilter} isActiveFilter={this.isActiveFilter} />
+                        <Pusher onClickFilter={this.onClickFilter} isActiveFilter={this.isActiveFilter} />
+                        <Initiator onClickFilter={this.onClickFilter} isActiveFilter={this.isActiveFilter} />
+                    </Row>
+                </Col>
+                <Col xs={12}>
+                    <Row between="xs">
+                        <Col xs={4}>
+                            <Row around="xs">
+                                <Carry onClickFilter={this.onClickFilter} isActiveFilter={this.isActiveFilter} />
+                                <Support onClickFilter={this.onClickFilter} isActiveFilter={this.isActiveFilter} />
+                            </Row>
+                        </Col>
+                        <Col xs={4}></Col>
+                        <Col xs={4}>
+                            <Row around="xs">
+                                <Melee onClickFilter={this.onClickFilter} isActiveFilter={this.isActiveFilter} />
+                                <Ranged onClickFilter={this.onClickFilter} isActiveFilter={this.isActiveFilter} />
+                            </Row>
+                        </Col>
+                    </Row>
+                </Col>
+			</Row>
 		);
 	}
 }
