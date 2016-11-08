@@ -1,18 +1,11 @@
 import React, { Component, PropTypes } from 'react';
+import * as _ from 'lodash';
 import * as R from 'ramda';
 import { Col, Row } from 'react-flexbox-grid';
 
-import Carry from '../components/filters/Carry';
-import Support from '../components/filters/Support';
-import Melee from '../components/filters/Melee';
-import Ranged from '../components/filters/Ranged';
-import Nuker from '../components/filters/Nuker';
-import Disabler from '../components/filters/Disabler';
-import Jungler from '../components/filters/Jungler';
-import Durable from '../components/filters/Durable';
-import Escape from '../components/filters/Escape';
-import Pusher from '../components/filters/Pusher';
-import Initiator from '../components/filters/Initiator';
+import { ATK_RANGE, MAIN_ROLES, SUB_ROLES } from '../constants/Filters';
+
+import Filters from '../components/filters/Filters';
 
 import { removeFilter, updateFilter } from '../actions/filters'
 
@@ -51,28 +44,26 @@ export default class FiltersContainer extends Component {
 			<Row>
                 <Col xs={12}>
                     <Row between="xs">
-                        <Nuker onClickFilter={this.onClickFilter} isActiveFilter={this.isActiveFilter} />
-                        <Disabler onClickFilter={this.onClickFilter} isActiveFilter={this.isActiveFilter} />
-                        <Jungler onClickFilter={this.onClickFilter} isActiveFilter={this.isActiveFilter} />
-                        <Durable onClickFilter={this.onClickFilter} isActiveFilter={this.isActiveFilter} />
-                        <Escape onClickFilter={this.onClickFilter} isActiveFilter={this.isActiveFilter} />
-                        <Pusher onClickFilter={this.onClickFilter} isActiveFilter={this.isActiveFilter} />
-                        <Initiator onClickFilter={this.onClickFilter} isActiveFilter={this.isActiveFilter} />
+                        {_.map(SUB_ROLES, (role, index) =>
+                            <Filters key={index} isActiveFilter={this.isActiveFilter} onClickFilter={this.onClickFilter} role={role} />
+                        )}
                     </Row>
                 </Col>
                 <Col xs={12}>
                     <Row between="xs">
                         <Col xs={4}>
                             <Row around="xs">
-                                <Carry onClickFilter={this.onClickFilter} isActiveFilter={this.isActiveFilter} />
-                                <Support onClickFilter={this.onClickFilter} isActiveFilter={this.isActiveFilter} />
+                                {_.map(MAIN_ROLES, (role, index) =>
+                                    <Filters key={index} isActiveFilter={this.isActiveFilter} onClickFilter={this.onClickFilter} role={role} />
+                                )}
                             </Row>
                         </Col>
                         <Col xs={4}></Col>
                         <Col xs={4}>
                             <Row around="xs">
-                                <Melee onClickFilter={this.onClickFilter} isActiveFilter={this.isActiveFilter} />
-                                <Ranged onClickFilter={this.onClickFilter} isActiveFilter={this.isActiveFilter} />
+                                {_.map(ATK_RANGE, (role, index) =>
+                                    <Filters key={index} isActiveFilter={this.isActiveFilter} onClickFilter={this.onClickFilter} role={role} />
+                                )}
                             </Row>
                         </Col>
                     </Row>

@@ -25,4 +25,4 @@ export default class HeroesContainer extends Component {
 HeroesContainer.propTypes = {
 	heroesByAttributes: PropTypes.array.isRequired,
 	attr: PropTypes.string.isRequired
-}
+};
