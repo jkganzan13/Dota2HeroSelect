@@ -5,7 +5,7 @@ const VerticalText = ({ attribute }) => {
 		<div className="verticalText">
 			<div className="rotate">
 				<span className="text" > {attribute} </span>
-              	<hr className="verticalLine" />
+              	{/*<hr className="verticalLine" />*/}
 			</div>
       	</div>
 	)

@@ -41,20 +41,20 @@ export default class FiltersContainer extends Component {
 
 	render() {
 		return (
-			<Row>
-                <Col xs={12}>
+			<Row className="filterContainer">
+                <Col xs={12} className="filterRow">
                     <Row between="xs">
                         {_.map(SUB_ROLES, (role, index) =>
-                            <Filters key={index} isActiveFilter={this.isActiveFilter} onClickFilter={this.onClickFilter} role={role} />
+                            <Filters key={index} filterClasses={"subRoleTxt filters "} isActiveFilter={this.isActiveFilter} onClickFilter={this.onClickFilter} role={role} />
                         )}
                     </Row>
                 </Col>
-                <Col xs={12}>
+                <Col xs={12} className="mainRoles">
                     <Row between="xs">
                         <Col xs={4}>
                             <Row around="xs">
                                 {_.map(MAIN_ROLES, (role, index) =>
-                                    <Filters key={index} isActiveFilter={this.isActiveFilter} onClickFilter={this.onClickFilter} role={role} />
+                                    <Filters key={index} filterClasses={"text filters "} isActiveFilter={this.isActiveFilter} onClickFilter={this.onClickFilter} role={role} />
                                 )}
                             </Row>
                         </Col>
@@ -62,7 +62,7 @@ export default class FiltersContainer extends Component {
                         <Col xs={4}>
                             <Row around="xs">
                                 {_.map(ATK_RANGE, (role, index) =>
-                                    <Filters key={index} isActiveFilter={this.isActiveFilter} onClickFilter={this.onClickFilter} role={role} />
+                                    <Filters key={index} filterClasses={"text filters "} isActiveFilter={this.isActiveFilter} onClickFilter={this.onClickFilter} role={role} />
                                 )}
                             </Row>
                         </Col>

@@ -13,12 +13,12 @@ export default class Filters extends Component {
     }
 
     isActiveFilter() {
-        this.props.isActiveFilter(this.role);
+        return this.props.isActiveFilter(this.role) ? "activeFilter" : "";
     }
 
     render() {
         return (
-            <div onClick={this.onClickFilter} className={"text filters " + this.isActiveFilter()}>
+            <div onClick={this.onClickFilter} className={this.props.filterClasses + this.isActiveFilter()}>
                 {this.props.role}
             </div>
         )
@@ -28,6 +28,7 @@ export default class Filters extends Component {
 Filters.propTypes = {
     isActiveFilter: PropTypes.func.isRequired,
     onClickFilter: PropTypes.func.isRequired,
-    role: PropTypes.string.isRequired
+    role: PropTypes.string.isRequired,
+    filterClasses: PropTypes.string
 };
 

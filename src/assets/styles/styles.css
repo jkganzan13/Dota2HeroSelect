@@ -26,6 +26,8 @@ body {
 .activeFilter {
     text-shadow: #ffffff 0 0 30px;
     filter: glow(color=#eeee00,strength=3);
+    border-bottom: #909090 solid;
+    border-width: 2px;
 }
 
 .app {
@@ -55,6 +57,7 @@ body {
 
 .disableHero {
     filter: grayscale(100%);
+    opacity: 0.5;
 }
 
 .hero {
@@ -66,53 +69,79 @@ body {
     width: 40px;
     height: 90px;
     object-fit: cover;
-  margin-left: 2px;
+    margin-left: 2px;
 }
 
 .heroContainer {
-  width: 90%;
-  float: right;
+    width: 90%;
+    float: right;
 }
 
 .filterContainer {
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex-direction: row; /* works with row or column */
-    flex-direction: row;
-    -webkit-align-items: center;
-    align-items: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    margin-top: 10px;
+    padding: 1% 10%;
+}
+
+.filterRow {
+    margin-bottom: 0.5%;
+    border-bottom: 1px solid rgba(144,144,144,0.2);
+    opacity: 0;
+    -webkit-transition: 2s ease-out;
+    -moz-transition: 2s ease-out;
+    -ms-transition: 2s ease-out;
+    -o-transition: 2s ease-out;
+    transition: 2s ease-out;;
+}
+
+.filterRow:hover {
+    opacity: 1;
+    -webkit-transition: 0s;
+    -moz-transition: 0s;
+    -ms-transition: 0s;
+    -o-transition: 0s;
+    transition: 0s;
 }
 
 .filters {
     margin-left: 10px;
     cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.mainRoles {
+    border-bottom: 1px solid rgba(144,144,144,0.2);
 }
 
 .rotate {
-  position: absolute;
-  -moz-transform: translateX(-50%) translateY(-50%) rotate(-90deg);
-  -webkit-transform: translateX(-50%) translateY(-50%) rotate(-90deg);
-  transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+    position: absolute;
+    -moz-transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+    -webkit-transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+    transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+}
+
+.subRoleTxt {
+    color:  #909090;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-size: small;
+    letter-spacing: 1px;
 }
 
 .verticalLine {
-  width: 150px;
-  position: absolute;
-  transform: translateX(-25%) translateY(-50%);
+    width: 150px;
+    position: absolute;
+    transform: translateX(-25%) translateY(-50%);
 } 
 
 .verticalText {
-  width: 5%;
+  width: 10px;
   white-space: nowrap;
 }
 
 @font-face { font-family: 'Trajan'; src: url('../fonts/Trajan.ttf') format('truetype'); }
 .text {
-    font-family: 'Trajan'
-    , serif;
-  color:  #909090;
+    font-family: 'Trajan', sans-serif;
+    color:  #909090;
 }
 

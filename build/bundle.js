@@ -52445,6 +52445,8 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _index = __webpack_require__(/*! react-flexbox-grid/lib/index */ 212);
+	
 	var _lodash = __webpack_require__(/*! lodash */ 206);
 	
 	var _ = _interopRequireWildcard(_lodash);
@@ -52453,15 +52455,15 @@
 	
 	var _actions = __webpack_require__(/*! ../actions */ 205);
 	
-	var _Logo = __webpack_require__(/*! ../components/Logo */ 212);
+	var _Logo = __webpack_require__(/*! ../components/Logo */ 222);
 	
 	var _Logo2 = _interopRequireDefault(_Logo);
 	
-	var _HeroesContainer = __webpack_require__(/*! ./HeroesContainer */ 213);
+	var _HeroesContainer = __webpack_require__(/*! ./HeroesContainer */ 223);
 	
 	var _HeroesContainer2 = _interopRequireDefault(_HeroesContainer);
 	
-	var _FilterContainer = __webpack_require__(/*! ./FilterContainer */ 216);
+	var _FilterContainer = __webpack_require__(/*! ./FilterContainer */ 226);
 	
 	var _FilterContainer2 = _interopRequireDefault(_FilterContainer);
 	
@@ -52517,8 +52519,8 @@
 	
 	
 	      return _react2.default.createElement(
-	        'div',
-	        { className: 'app' },
+	        _index.Grid,
+	        null,
 	        isLoading && _react2.default.createElement(_Logo2.default, null),
 	        !isLoading && this.renderHeroContainers(),
 	        !isLoading && _react2.default.createElement(_FilterContainer2.default, this.props)
@@ -52547,6 +52549,826 @@
 
 /***/ },
 /* 212 */
+/*!*******************************************!*\
+  !*** ./~/react-flexbox-grid/lib/index.js ***!
+  \*******************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	exports.__esModule = true;
+	exports.Col = exports.Row = exports.Grid = undefined;
+	
+	var _Grid2 = __webpack_require__(/*! ./components/Grid */ 213);
+	
+	var _Grid3 = _interopRequireDefault(_Grid2);
+	
+	var _Row2 = __webpack_require__(/*! ./components/Row */ 220);
+	
+	var _Row3 = _interopRequireDefault(_Row2);
+	
+	var _Col2 = __webpack_require__(/*! ./components/Col */ 221);
+	
+	var _Col3 = _interopRequireDefault(_Col2);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	exports.Grid = _Grid3.default;
+	exports.Row = _Row3.default;
+	exports.Col = _Col3.default;
+
+/***/ },
+/* 213 */
+/*!*****************************************************!*\
+  !*** ./~/react-flexbox-grid/lib/components/Grid.js ***!
+  \*****************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	exports.__esModule = true;
+	exports.default = Grid;
+	
+	var _react = __webpack_require__(/*! react */ 2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _classnames = __webpack_require__(/*! classnames */ 214);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
+	var _createProps = __webpack_require__(/*! ../createProps */ 215);
+	
+	var _createProps2 = _interopRequireDefault(_createProps);
+	
+	var _flexboxgrid = __webpack_require__(/*! flexboxgrid */ 216);
+	
+	var _flexboxgrid2 = _interopRequireDefault(_flexboxgrid);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var propTypes = {
+	  fluid: _react.PropTypes.bool,
+	  className: _react.PropTypes.string,
+	  tagName: _react.PropTypes.string,
+	  children: _react.PropTypes.node
+	};
+	
+	function Grid(props) {
+	  var containerClass = _flexboxgrid2.default[props.fluid ? 'container-fluid' : 'container'];
+	  var className = (0, _classnames2.default)(props.className, containerClass);
+	
+	  return _react2.default.createElement(props.tagName || 'div', (0, _createProps2.default)(propTypes, props, className));
+	}
+	
+	Grid.propTypes = propTypes;
+
+/***/ },
+/* 214 */
+/*!*******************************!*\
+  !*** ./~/classnames/index.js ***!
+  \*******************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+	  Copyright (c) 2016 Jed Watson.
+	  Licensed under the MIT License (MIT), see
+	  http://jedwatson.github.io/classnames
+	*/
+	/* global define */
+	
+	(function () {
+		'use strict';
+	
+		var hasOwn = {}.hasOwnProperty;
+	
+		function classNames () {
+			var classes = [];
+	
+			for (var i = 0; i < arguments.length; i++) {
+				var arg = arguments[i];
+				if (!arg) continue;
+	
+				var argType = typeof arg;
+	
+				if (argType === 'string' || argType === 'number') {
+					classes.push(arg);
+				} else if (Array.isArray(arg)) {
+					classes.push(classNames.apply(null, arg));
+				} else if (argType === 'object') {
+					for (var key in arg) {
+						if (hasOwn.call(arg, key) && arg[key]) {
+							classes.push(key);
+						}
+					}
+				}
+			}
+	
+			return classes.join(' ');
+		}
+	
+		if (typeof module !== 'undefined' && module.exports) {
+			module.exports = classNames;
+		} else if (true) {
+			// register as 'classnames', consistent with npm package name
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
+				return classNames;
+			}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+		} else {
+			window.classNames = classNames;
+		}
+	}());
+
+
+/***/ },
+/* 215 */
+/*!*************************************************!*\
+  !*** ./~/react-flexbox-grid/lib/createProps.js ***!
+  \*************************************************/
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	exports.__esModule = true;
+	exports.default = createProps;
+	function createProps(propTypes, props, className) {
+	  var newProps = {};
+	
+	  Object.keys(props).filter(function (key) {
+	    return key === 'children' || !propTypes[key];
+	  }).forEach(function (key) {
+	    return newProps[key] = props[key];
+	  });
+	
+	  return Object.assign({}, newProps, { className: className });
+	}
+
+/***/ },
+/* 216 */
+/*!********************************************!*\
+  !*** ./~/flexboxgrid/dist/flexboxgrid.css ***!
+  \********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(/*! !./../../css-loader?modules!./flexboxgrid.css */ 217);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(/*! ./../../style-loader/addStyles.js */ 219)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../css-loader/index.js?modules!./flexboxgrid.css", function() {
+				var newContent = require("!!./../../css-loader/index.js?modules!./flexboxgrid.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 217 */
+/*!*******************************************************************!*\
+  !*** ./~/css-loader?modules!./~/flexboxgrid/dist/flexboxgrid.css ***!
+  \*******************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ./../../css-loader/lib/css-base.js */ 218)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, "._2Szxce93HZFIGVdRkOvvA7,\n._1bEE1QHG6JNZp9BCVK76Go {\n  margin-right: auto;\n  margin-left: auto;\n}\n\n._2Szxce93HZFIGVdRkOvvA7 {\n  padding-right: 2rem;\n  padding-left: 2rem;\n}\n\n._3fJPE9j4WA524ocdgQINt {\n  box-sizing: border-box;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-flex: 0;\n  -ms-flex: 0 1 auto;\n  flex: 0 1 auto;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -ms-flex-direction: row;\n  flex-direction: row;\n  -ms-flex-wrap: wrap;\n  flex-wrap: wrap;\n  margin-right: -0.5rem;\n  margin-left: -0.5rem;\n}\n\n._3fJPE9j4WA524ocdgQINt._14nuoO0Vnhqwf7L7LcT_-2 {\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: reverse;\n  -ms-flex-direction: row-reverse;\n  flex-direction: row-reverse;\n}\n\n._2QIh2uae0BmMV38gOtBWDN._14nuoO0Vnhqwf7L7LcT_-2 {\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: reverse;\n  -ms-flex-direction: column-reverse;\n  flex-direction: column-reverse;\n}\n\n._3m9vuoGLZiX_K9RGlOL-mj,\n._3z5sMenwOmFPaoza-ZNp7m,\n._3asQ2dmkfM5FbUCLdzGn0o,\n.X1Sr0VKgTuapNZtvMTT3I,\n._2v_PFXTXP8MjYUapVyhYVH,\n._120mFqa0IqlKkpu6NZAmHV,\n._1u-5j9XZytPJoOh6_DQGJk,\n._2GJ6USPEJ5eSDlqkBJ9kX-,\n._3J8BAvSlLPz9xjgK1_VOn2,\n._3Mg36KI7jcwd5SV8sLGtYh,\n._1mV5cgw6c6yD4kIVTm4Bdc,\n._2iPo3Ormo-Q6cqpM90ol6i,\n._3CEfUHmsA-UeBCs9LUs-qL,\n._3IRbQK2sefXpq9Iw9D2LZI,\n._2MC9fDArq3DkN_AjxkEuO-,\n._1HAMIdTATEihhVJdkhut8j,\n._19KFHZrve_BQuubclAd_qf,\n._1PYNrWdTPID_iV82237_4_,\n._3weSDEIFvfU8ZS9_dYU8-_,\n._1isafgWovLje09RVaP-nvZ,\n.dG1zNhTLnL6win-BFfOoL,\n.fMPU5vE_J9ayMQtjw61dt,\n.xrQP0X5tgEiVWgAciG2ZR,\n._1BoPFE9z41FJt9N1wGfPYw,\n._2GRp6tYOFW2uCAhjsBDrwt,\n._10gpLEH3-VSNkdhNP4vth2 {\n  box-sizing: border-box;\n  -webkit-box-flex: 0;\n  -ms-flex: 0 0 auto;\n  flex: 0 0 auto;\n  padding-right: 0.5rem;\n  padding-left: 0.5rem;\n}\n\n._3m9vuoGLZiX_K9RGlOL-mj {\n  -webkit-box-flex: 1;\n  -ms-flex-positive: 1;\n  flex-grow: 1;\n  -ms-flex-preferred-size: 0;\n  flex-basis: 0;\n  max-width: 100%;\n}\n\n._3z5sMenwOmFPaoza-ZNp7m {\n  -ms-flex-preferred-size: 8.33333333%;\n  flex-basis: 8.33333333%;\n  max-width: 8.33333333%;\n}\n\n._3asQ2dmkfM5FbUCLdzGn0o {\n  -ms-flex-preferred-size: 16.66666667%;\n  flex-basis: 16.66666667%;\n  max-width: 16.66666667%;\n}\n\n.X1Sr0VKgTuapNZtvMTT3I {\n  -ms-flex-preferred-size: 25%;\n  flex-basis: 25%;\n  max-width: 25%;\n}\n\n._2v_PFXTXP8MjYUapVyhYVH {\n  -ms-flex-preferred-size: 33.33333333%;\n  flex-basis: 33.33333333%;\n  max-width: 33.33333333%;\n}\n\n._120mFqa0IqlKkpu6NZAmHV {\n  -ms-flex-preferred-size: 41.66666667%;\n  flex-basis: 41.66666667%;\n  max-width: 41.66666667%;\n}\n\n._1u-5j9XZytPJoOh6_DQGJk {\n  -ms-flex-preferred-size: 50%;\n  flex-basis: 50%;\n  max-width: 50%;\n}\n\n._2GJ6USPEJ5eSDlqkBJ9kX- {\n  -ms-flex-preferred-size: 58.33333333%;\n  flex-basis: 58.33333333%;\n  max-width: 58.33333333%;\n}\n\n._3J8BAvSlLPz9xjgK1_VOn2 {\n  -ms-flex-preferred-size: 66.66666667%;\n  flex-basis: 66.66666667%;\n  max-width: 66.66666667%;\n}\n\n._3Mg36KI7jcwd5SV8sLGtYh {\n  -ms-flex-preferred-size: 75%;\n  flex-basis: 75%;\n  max-width: 75%;\n}\n\n._1mV5cgw6c6yD4kIVTm4Bdc {\n  -ms-flex-preferred-size: 83.33333333%;\n  flex-basis: 83.33333333%;\n  max-width: 83.33333333%;\n}\n\n._2iPo3Ormo-Q6cqpM90ol6i {\n  -ms-flex-preferred-size: 91.66666667%;\n  flex-basis: 91.66666667%;\n  max-width: 91.66666667%;\n}\n\n._3CEfUHmsA-UeBCs9LUs-qL {\n  -ms-flex-preferred-size: 100%;\n  flex-basis: 100%;\n  max-width: 100%;\n}\n\n._3IRbQK2sefXpq9Iw9D2LZI {\n  margin-left: 0;\n}\n\n._2MC9fDArq3DkN_AjxkEuO- {\n  margin-left: 8.33333333%;\n}\n\n._1HAMIdTATEihhVJdkhut8j {\n  margin-left: 16.66666667%;\n}\n\n._19KFHZrve_BQuubclAd_qf {\n  margin-left: 25%;\n}\n\n._1PYNrWdTPID_iV82237_4_ {\n  margin-left: 33.33333333%;\n}\n\n._3weSDEIFvfU8ZS9_dYU8-_ {\n  margin-left: 41.66666667%;\n}\n\n._1isafgWovLje09RVaP-nvZ {\n  margin-left: 50%;\n}\n\n.dG1zNhTLnL6win-BFfOoL {\n  margin-left: 58.33333333%;\n}\n\n.fMPU5vE_J9ayMQtjw61dt {\n  margin-left: 66.66666667%;\n}\n\n.xrQP0X5tgEiVWgAciG2ZR {\n  margin-left: 75%;\n}\n\n._1BoPFE9z41FJt9N1wGfPYw {\n  margin-left: 83.33333333%;\n}\n\n._2GRp6tYOFW2uCAhjsBDrwt {\n  margin-left: 91.66666667%;\n}\n\n._1vpxtOrNbuvdfevvHpE3k9 {\n  -webkit-box-pack: start;\n  -ms-flex-pack: start;\n  justify-content: flex-start;\n  text-align: start;\n}\n\n._2165TfaHL7rWuJ9BOcS407 {\n  -webkit-box-pack: center;\n  -ms-flex-pack: center;\n  justify-content: center;\n  text-align: center;\n}\n\n.b2fRLar2wwkMyoyy_1ULk {\n  -webkit-box-pack: end;\n  -ms-flex-pack: end;\n  justify-content: flex-end;\n  text-align: end;\n}\n\n._3-oOMvR1s3o7A5L6hNAICj {\n  -webkit-box-align: start;\n  -ms-flex-align: start;\n  align-items: flex-start;\n}\n\n._3cbhJzeJkWnUW0qG949_Ot {\n  -webkit-box-align: center;\n  -ms-flex-align: center;\n  align-items: center;\n}\n\n.nYMbi8pcNQt0IjZ4W2JIy {\n  -webkit-box-align: end;\n  -ms-flex-align: end;\n  align-items: flex-end;\n}\n\n._2DZU-tRLuauVmlRC9Q12fU {\n  -ms-flex-pack: distribute;\n  justify-content: space-around;\n}\n\n._1kdcZM_Il_8O13yLRanmV4 {\n  -webkit-box-pack: justify;\n  -ms-flex-pack: justify;\n  justify-content: space-between;\n}\n\n._3HkMPbe7CTMZDaJG-jnOt0 {\n  -webkit-box-ordinal-group: 0;\n  -ms-flex-order: -1;\n  order: -1;\n}\n\n._1vEUCGamZ85lGwbv4-Snjn {\n  -webkit-box-ordinal-group: 2;\n  -ms-flex-order: 1;\n  order: 1;\n}\n\n@media only screen and (min-width: 48em) {\n  ._1bEE1QHG6JNZp9BCVK76Go {\n    width: 49rem;\n  }\n\n  ._22K92Q7lJvtHWDzyVdzmJu,\n  ._3hECmj0k9IQ4TDzY585in,\n  ._1v2El2ECPr4Cq_QKr14B9V,\n  ._1onPnkRJK5q_wCg_7jDvoY,\n  ._2TKy7u-7lyeBnYtuM5xcO-,\n  .i3fuLcDVtBJeVz_3K_Q_R,\n  ._15yo5Le13zteYyNvrR2B0c,\n  ._3Ghr1kCQoEUBelIjE0p0W-,\n  ._1t1Qqoukacj8kC5gG4PviC,\n  ._1BZJFNECOJ-EWuTz5l2NCf,\n  ._1Z5EzsaQkeb-2s2GEPJ9pF,\n  ._26cO1i9GVUdLDb0gmruIrS,\n  ._3cnf8G3o5evgznqnPepvtg,\n  ._2VbWwApqltv5ZvOf00I0SI,\n  ._1vpyafb7pG784eT2jgiEjE,\n  ._3zEe2glGxcZmxxKRr9Rs5n,\n  ._3NvX47J9usocETE04O-NXc,\n  ._2icttSvir4CWDzNhdsdoUl,\n  ._1FVzDQLKd7OxayfIxR2P_W,\n  ._98weCC214SytceWk7zsb4,\n  .zty73l_tAr2Vo7RgSwCwE,\n  ._2_fElVTK9gouKvEMmGPptf,\n  ._3VEPswqWpafBCIvBgqyVSE,\n  ._1q7LGILcsdG_dZsQU-7M8A,\n  ._3fv0SzZXoZhJ07OxA-AJie,\n  ._2WKUODUarcKtBsIgmEI9vA {\n    box-sizing: border-box;\n    -webkit-box-flex: 0;\n    -ms-flex: 0 0 auto;\n    flex: 0 0 auto;\n    padding-right: 0.5rem;\n    padding-left: 0.5rem;\n  }\n\n  ._22K92Q7lJvtHWDzyVdzmJu {\n    -webkit-box-flex: 1;\n    -ms-flex-positive: 1;\n    flex-grow: 1;\n    -ms-flex-preferred-size: 0;\n    flex-basis: 0;\n    max-width: 100%;\n  }\n\n  ._3hECmj0k9IQ4TDzY585in {\n    -ms-flex-preferred-size: 8.33333333%;\n    flex-basis: 8.33333333%;\n    max-width: 8.33333333%;\n  }\n\n  ._1v2El2ECPr4Cq_QKr14B9V {\n    -ms-flex-preferred-size: 16.66666667%;\n    flex-basis: 16.66666667%;\n    max-width: 16.66666667%;\n  }\n\n  ._1onPnkRJK5q_wCg_7jDvoY {\n    -ms-flex-preferred-size: 25%;\n    flex-basis: 25%;\n    max-width: 25%;\n  }\n\n  ._2TKy7u-7lyeBnYtuM5xcO- {\n    -ms-flex-preferred-size: 33.33333333%;\n    flex-basis: 33.33333333%;\n    max-width: 33.33333333%;\n  }\n\n  .i3fuLcDVtBJeVz_3K_Q_R {\n    -ms-flex-preferred-size: 41.66666667%;\n    flex-basis: 41.66666667%;\n    max-width: 41.66666667%;\n  }\n\n  ._15yo5Le13zteYyNvrR2B0c {\n    -ms-flex-preferred-size: 50%;\n    flex-basis: 50%;\n    max-width: 50%;\n  }\n\n  ._3Ghr1kCQoEUBelIjE0p0W- {\n    -ms-flex-preferred-size: 58.33333333%;\n    flex-basis: 58.33333333%;\n    max-width: 58.33333333%;\n  }\n\n  ._1t1Qqoukacj8kC5gG4PviC {\n    -ms-flex-preferred-size: 66.66666667%;\n    flex-basis: 66.66666667%;\n    max-width: 66.66666667%;\n  }\n\n  ._1BZJFNECOJ-EWuTz5l2NCf {\n    -ms-flex-preferred-size: 75%;\n    flex-basis: 75%;\n    max-width: 75%;\n  }\n\n  ._1Z5EzsaQkeb-2s2GEPJ9pF {\n    -ms-flex-preferred-size: 83.33333333%;\n    flex-basis: 83.33333333%;\n    max-width: 83.33333333%;\n  }\n\n  ._26cO1i9GVUdLDb0gmruIrS {\n    -ms-flex-preferred-size: 91.66666667%;\n    flex-basis: 91.66666667%;\n    max-width: 91.66666667%;\n  }\n\n  ._3cnf8G3o5evgznqnPepvtg {\n    -ms-flex-preferred-size: 100%;\n    flex-basis: 100%;\n    max-width: 100%;\n  }\n\n  ._2VbWwApqltv5ZvOf00I0SI {\n    margin-left: 0;\n  }\n\n  ._1vpyafb7pG784eT2jgiEjE {\n    margin-left: 8.33333333%;\n  }\n\n  ._3zEe2glGxcZmxxKRr9Rs5n {\n    margin-left: 16.66666667%;\n  }\n\n  ._3NvX47J9usocETE04O-NXc {\n    margin-left: 25%;\n  }\n\n  ._2icttSvir4CWDzNhdsdoUl {\n    margin-left: 33.33333333%;\n  }\n\n  ._1FVzDQLKd7OxayfIxR2P_W {\n    margin-left: 41.66666667%;\n  }\n\n  ._98weCC214SytceWk7zsb4 {\n    margin-left: 50%;\n  }\n\n  .zty73l_tAr2Vo7RgSwCwE {\n    margin-left: 58.33333333%;\n  }\n\n  ._2_fElVTK9gouKvEMmGPptf {\n    margin-left: 66.66666667%;\n  }\n\n  ._3VEPswqWpafBCIvBgqyVSE {\n    margin-left: 75%;\n  }\n\n  ._1q7LGILcsdG_dZsQU-7M8A {\n    margin-left: 83.33333333%;\n  }\n\n  ._3fv0SzZXoZhJ07OxA-AJie {\n    margin-left: 91.66666667%;\n  }\n\n  ._30BcR-5HG9QXm8LY-25KTy {\n    -webkit-box-pack: start;\n    -ms-flex-pack: start;\n    justify-content: flex-start;\n    text-align: start;\n  }\n\n  ._15lkVrLIDxWFW15uFNZfgS {\n    -webkit-box-pack: center;\n    -ms-flex-pack: center;\n    justify-content: center;\n    text-align: center;\n  }\n\n  ._3TS7bnbOEuKyOkbNnsAE3v {\n    -webkit-box-pack: end;\n    -ms-flex-pack: end;\n    justify-content: flex-end;\n    text-align: end;\n  }\n\n  ._1ceq7V-Gh0tt-KLbJG3meI {\n    -webkit-box-align: start;\n    -ms-flex-align: start;\n    align-items: flex-start;\n  }\n\n  ._23dvH14Y6VGVxGQy78CD9c {\n    -webkit-box-align: center;\n    -ms-flex-align: center;\n    align-items: center;\n  }\n\n  ._1urF2Tvi_byDZ51ACpQKz9 {\n    -webkit-box-align: end;\n    -ms-flex-align: end;\n    align-items: flex-end;\n  }\n\n  .cWmvcjApQNAvg4yNQCbuE {\n    -ms-flex-pack: distribute;\n    justify-content: space-around;\n  }\n\n  ._2RrZvsOJzOm7bWRLP0YQ1E {\n    -webkit-box-pack: justify;\n    -ms-flex-pack: justify;\n    justify-content: space-between;\n  }\n\n  ._3y84sY4xPKr7F6JNBpjBqO {\n    -webkit-box-ordinal-group: 0;\n    -ms-flex-order: -1;\n    order: -1;\n  }\n\n  ._292jA27HJz2l2SSSTMjmPc {\n    -webkit-box-ordinal-group: 2;\n    -ms-flex-order: 1;\n    order: 1;\n  }\n}\n\n@media only screen and (min-width: 64em) {\n  ._1bEE1QHG6JNZp9BCVK76Go {\n    width: 65rem;\n  }\n\n  ._3Oq7e06e9rCK_vvuht0QPo,\n  ._1yiEPOJ1ykNd2fzeM10nql,\n  .GisHURdmkVG1iyibk4Hqh,\n  .xuZjA-zCLneNtkgA_99kp,\n  ._2sNddkR-d1lReH--XkPWPI,\n  ._3ZiBGmwX25t-rr90VBcK-8,\n  ._1zA9RiLCr9gCDVk8ZP5qFm,\n  ._3WUrNXoOUXTExnfYrKU2f-,\n  ._3m7T-iUr2klRzfNkYWML4O,\n  ._3VMMG3XsxwROPidFOyMMS9,\n  ._2C8LUY-8RwsoSQHoQuJqa0,\n  .i_RZbsu8SBFSNlzqf00XP,\n  ._3jfSC_FNyF7WTBY6Nf-Nz-,\n  ._1M6Z5rB_vOJsuWsGTfi-zi,\n  ._3my-o1rOTUR1TwHSCadmVO,\n  ._2atMN3BgejuhV6GvHBQTtO,\n  ._2TfaN2m-ie2plp49gSeE_3,\n  ._1QBxUMU6qapnfvV7OmHEgD,\n  .ojEKhqMDix2A6Ftvd6Nfn,\n  ._1L6tIM45To1TQcCyTCkJpr,\n  ._2fYPTE_2Scc7trS1rXBs3,\n  ._1n2vS64CFSB2E_KU79-dpF,\n  ._2uvtcehIWCYIsV09jSeIox,\n  ._2WQ9Lpd0_Dvlr41Y93jF8T,\n  ._1xay7En2MZpmcvRZijTR4,\n  ._2ob-EmLHkcvJxoG1R0yEtR {\n    box-sizing: border-box;\n    -webkit-box-flex: 0;\n    -ms-flex: 0 0 auto;\n    flex: 0 0 auto;\n    padding-right: 0.5rem;\n    padding-left: 0.5rem;\n  }\n\n  ._3Oq7e06e9rCK_vvuht0QPo {\n    -webkit-box-flex: 1;\n    -ms-flex-positive: 1;\n    flex-grow: 1;\n    -ms-flex-preferred-size: 0;\n    flex-basis: 0;\n    max-width: 100%;\n  }\n\n  ._1yiEPOJ1ykNd2fzeM10nql {\n    -ms-flex-preferred-size: 8.33333333%;\n    flex-basis: 8.33333333%;\n    max-width: 8.33333333%;\n  }\n\n  .GisHURdmkVG1iyibk4Hqh {\n    -ms-flex-preferred-size: 16.66666667%;\n    flex-basis: 16.66666667%;\n    max-width: 16.66666667%;\n  }\n\n  .xuZjA-zCLneNtkgA_99kp {\n    -ms-flex-preferred-size: 25%;\n    flex-basis: 25%;\n    max-width: 25%;\n  }\n\n  ._2sNddkR-d1lReH--XkPWPI {\n    -ms-flex-preferred-size: 33.33333333%;\n    flex-basis: 33.33333333%;\n    max-width: 33.33333333%;\n  }\n\n  ._3ZiBGmwX25t-rr90VBcK-8 {\n    -ms-flex-preferred-size: 41.66666667%;\n    flex-basis: 41.66666667%;\n    max-width: 41.66666667%;\n  }\n\n  ._1zA9RiLCr9gCDVk8ZP5qFm {\n    -ms-flex-preferred-size: 50%;\n    flex-basis: 50%;\n    max-width: 50%;\n  }\n\n  ._3WUrNXoOUXTExnfYrKU2f- {\n    -ms-flex-preferred-size: 58.33333333%;\n    flex-basis: 58.33333333%;\n    max-width: 58.33333333%;\n  }\n\n  ._3m7T-iUr2klRzfNkYWML4O {\n    -ms-flex-preferred-size: 66.66666667%;\n    flex-basis: 66.66666667%;\n    max-width: 66.66666667%;\n  }\n\n  ._3VMMG3XsxwROPidFOyMMS9 {\n    -ms-flex-preferred-size: 75%;\n    flex-basis: 75%;\n    max-width: 75%;\n  }\n\n  ._2C8LUY-8RwsoSQHoQuJqa0 {\n    -ms-flex-preferred-size: 83.33333333%;\n    flex-basis: 83.33333333%;\n    max-width: 83.33333333%;\n  }\n\n  .i_RZbsu8SBFSNlzqf00XP {\n    -ms-flex-preferred-size: 91.66666667%;\n    flex-basis: 91.66666667%;\n    max-width: 91.66666667%;\n  }\n\n  ._3jfSC_FNyF7WTBY6Nf-Nz- {\n    -ms-flex-preferred-size: 100%;\n    flex-basis: 100%;\n    max-width: 100%;\n  }\n\n  ._1M6Z5rB_vOJsuWsGTfi-zi {\n    margin-left: 0;\n  }\n\n  ._3my-o1rOTUR1TwHSCadmVO {\n    margin-left: 8.33333333%;\n  }\n\n  ._2atMN3BgejuhV6GvHBQTtO {\n    margin-left: 16.66666667%;\n  }\n\n  ._2TfaN2m-ie2plp49gSeE_3 {\n    margin-left: 25%;\n  }\n\n  ._1QBxUMU6qapnfvV7OmHEgD {\n    margin-left: 33.33333333%;\n  }\n\n  .ojEKhqMDix2A6Ftvd6Nfn {\n    margin-left: 41.66666667%;\n  }\n\n  ._1L6tIM45To1TQcCyTCkJpr {\n    margin-left: 50%;\n  }\n\n  ._2fYPTE_2Scc7trS1rXBs3 {\n    margin-left: 58.33333333%;\n  }\n\n  ._1n2vS64CFSB2E_KU79-dpF {\n    margin-left: 66.66666667%;\n  }\n\n  ._2uvtcehIWCYIsV09jSeIox {\n    margin-left: 75%;\n  }\n\n  ._2WQ9Lpd0_Dvlr41Y93jF8T {\n    margin-left: 83.33333333%;\n  }\n\n  ._1xay7En2MZpmcvRZijTR4 {\n    margin-left: 91.66666667%;\n  }\n\n  ._3etSjGkm0bRVOMo4P-GstM {\n    -webkit-box-pack: start;\n    -ms-flex-pack: start;\n    justify-content: flex-start;\n    text-align: start;\n  }\n\n  ._10EtosOIA8NRf6lEana1YX {\n    -webkit-box-pack: center;\n    -ms-flex-pack: center;\n    justify-content: center;\n    text-align: center;\n  }\n\n  ._26OyYYFUp0ODcs5u2YNYWj {\n    -webkit-box-pack: end;\n    -ms-flex-pack: end;\n    justify-content: flex-end;\n    text-align: end;\n  }\n\n  .aSs4VNz5tq9GPv6dmwJIa {\n    -webkit-box-align: start;\n    -ms-flex-align: start;\n    align-items: flex-start;\n  }\n\n  ._362oppIpqB9Q8F9hg64hYD {\n    -webkit-box-align: center;\n    -ms-flex-align: center;\n    align-items: center;\n  }\n\n  ._2fHjGTDk4jyDvyva_T2yzg {\n    -webkit-box-align: end;\n    -ms-flex-align: end;\n    align-items: flex-end;\n  }\n\n  .-qNdR4VW8M0CepE53b2Id {\n    -ms-flex-pack: distribute;\n    justify-content: space-around;\n  }\n\n  ._38FWejMvGz-2fgB6dqShtt {\n    -webkit-box-pack: justify;\n    -ms-flex-pack: justify;\n    justify-content: space-between;\n  }\n\n  ._21Dn5G23HT_rTZ5BXs5ZWx {\n    -webkit-box-ordinal-group: 0;\n    -ms-flex-order: -1;\n    order: -1;\n  }\n\n  .CnWCVGh9DV5YHDTDBLPMD {\n    -webkit-box-ordinal-group: 2;\n    -ms-flex-order: 1;\n    order: 1;\n  }\n}\n\n@media only screen and (min-width: 75em) {\n  ._1bEE1QHG6JNZp9BCVK76Go {\n    width: 76rem;\n  }\n\n  ._20kHQ_kngVsC1Re8AhpSyv,\n  ._3CIHmYSNF4AcbPwCmXCxcf,\n  .tL56kajoH6IXJDAtbLeg9,\n  .z2H4572hLgtVe2QVqx0E7,\n  ._2mv5mztmNOUngKydHDusCF,\n  ._2TODPJbNkUIFloRIP4gPPx,\n  ._3b9McDotfoHudc7xiWTgY-,\n  .yBirGEWyv-MMoW41_WRhP,\n  ._1AaApoDpiXDoGAsZHtrvaU,\n  .yiEbCiLXho2mGU_YtKt3F,\n  ._3jot4eckFTiE0OqJygqQzE,\n  ._1zP97mUBCGIiOGGm-ZbD_W,\n  ._2GS2P2ATc_OJKiMHMMBP5K,\n  .ZXVsaGgv0CxFCvPkPPTZa,\n  ._24TKC6i8jtTRVde9fviETA,\n  ._2XCCgAoW06AzhgT4c_WN7q,\n  ._2tyJi8BdsiKSJ8ghItc3b3,\n  ._1Q72_mJzx-ewiYGVMmZgER,\n  ._15ubu1SMNO-6A3Tci_FTd-,\n  ._1JD2ds3yyfJjUr5R365yzx,\n  ._3gFF9NT0FEL-ZB6p-tVX1c,\n  ._3I1kIXmWSl5MbdSiLfcORT,\n  ._2e3Cf9duEpwyFGg7pBdq-P,\n  ._1xTWC0n57qCgUL49ia-KMS,\n  ._2oDRMaPZmCh9RK17jyUkAV,\n  ._2OWxiUc94gSeK78JqvKzjx {\n    box-sizing: border-box;\n    -webkit-box-flex: 0;\n    -ms-flex: 0 0 auto;\n    flex: 0 0 auto;\n    padding-right: 0.5rem;\n    padding-left: 0.5rem;\n  }\n\n  ._20kHQ_kngVsC1Re8AhpSyv {\n    -webkit-box-flex: 1;\n    -ms-flex-positive: 1;\n    flex-grow: 1;\n    -ms-flex-preferred-size: 0;\n    flex-basis: 0;\n    max-width: 100%;\n  }\n\n  ._3CIHmYSNF4AcbPwCmXCxcf {\n    -ms-flex-preferred-size: 8.33333333%;\n    flex-basis: 8.33333333%;\n    max-width: 8.33333333%;\n  }\n\n  .tL56kajoH6IXJDAtbLeg9 {\n    -ms-flex-preferred-size: 16.66666667%;\n    flex-basis: 16.66666667%;\n    max-width: 16.66666667%;\n  }\n\n  .z2H4572hLgtVe2QVqx0E7 {\n    -ms-flex-preferred-size: 25%;\n    flex-basis: 25%;\n    max-width: 25%;\n  }\n\n  ._2mv5mztmNOUngKydHDusCF {\n    -ms-flex-preferred-size: 33.33333333%;\n    flex-basis: 33.33333333%;\n    max-width: 33.33333333%;\n  }\n\n  ._2TODPJbNkUIFloRIP4gPPx {\n    -ms-flex-preferred-size: 41.66666667%;\n    flex-basis: 41.66666667%;\n    max-width: 41.66666667%;\n  }\n\n  ._3b9McDotfoHudc7xiWTgY- {\n    -ms-flex-preferred-size: 50%;\n    flex-basis: 50%;\n    max-width: 50%;\n  }\n\n  .yBirGEWyv-MMoW41_WRhP {\n    -ms-flex-preferred-size: 58.33333333%;\n    flex-basis: 58.33333333%;\n    max-width: 58.33333333%;\n  }\n\n  ._1AaApoDpiXDoGAsZHtrvaU {\n    -ms-flex-preferred-size: 66.66666667%;\n    flex-basis: 66.66666667%;\n    max-width: 66.66666667%;\n  }\n\n  .yiEbCiLXho2mGU_YtKt3F {\n    -ms-flex-preferred-size: 75%;\n    flex-basis: 75%;\n    max-width: 75%;\n  }\n\n  ._3jot4eckFTiE0OqJygqQzE {\n    -ms-flex-preferred-size: 83.33333333%;\n    flex-basis: 83.33333333%;\n    max-width: 83.33333333%;\n  }\n\n  ._1zP97mUBCGIiOGGm-ZbD_W {\n    -ms-flex-preferred-size: 91.66666667%;\n    flex-basis: 91.66666667%;\n    max-width: 91.66666667%;\n  }\n\n  ._2GS2P2ATc_OJKiMHMMBP5K {\n    -ms-flex-preferred-size: 100%;\n    flex-basis: 100%;\n    max-width: 100%;\n  }\n\n  .ZXVsaGgv0CxFCvPkPPTZa {\n    margin-left: 0;\n  }\n\n  ._24TKC6i8jtTRVde9fviETA {\n    margin-left: 8.33333333%;\n  }\n\n  ._2XCCgAoW06AzhgT4c_WN7q {\n    margin-left: 16.66666667%;\n  }\n\n  ._2tyJi8BdsiKSJ8ghItc3b3 {\n    margin-left: 25%;\n  }\n\n  ._1Q72_mJzx-ewiYGVMmZgER {\n    margin-left: 33.33333333%;\n  }\n\n  ._15ubu1SMNO-6A3Tci_FTd- {\n    margin-left: 41.66666667%;\n  }\n\n  ._1JD2ds3yyfJjUr5R365yzx {\n    margin-left: 50%;\n  }\n\n  ._3gFF9NT0FEL-ZB6p-tVX1c {\n    margin-left: 58.33333333%;\n  }\n\n  ._3I1kIXmWSl5MbdSiLfcORT {\n    margin-left: 66.66666667%;\n  }\n\n  ._2e3Cf9duEpwyFGg7pBdq-P {\n    margin-left: 75%;\n  }\n\n  ._1xTWC0n57qCgUL49ia-KMS {\n    margin-left: 83.33333333%;\n  }\n\n  ._2oDRMaPZmCh9RK17jyUkAV {\n    margin-left: 91.66666667%;\n  }\n\n  ._1jJxJ_PWpyR9Lk6F2y-NH3 {\n    -webkit-box-pack: start;\n    -ms-flex-pack: start;\n    justify-content: flex-start;\n    text-align: start;\n  }\n\n  .jwAMwaCRsh1qIMUCNI40d {\n    -webkit-box-pack: center;\n    -ms-flex-pack: center;\n    justify-content: center;\n    text-align: center;\n  }\n\n  ._37h31ImEZZuRI-QKEPtM62 {\n    -webkit-box-pack: end;\n    -ms-flex-pack: end;\n    justify-content: flex-end;\n    text-align: end;\n  }\n\n  ._1qvUgaJZTbA1PHOhcGFlcm {\n    -webkit-box-align: start;\n    -ms-flex-align: start;\n    align-items: flex-start;\n  }\n\n  ._9NPytSdic8Z_w2s16YlsH {\n    -webkit-box-align: center;\n    -ms-flex-align: center;\n    align-items: center;\n  }\n\n  .-Z0n5NKdUt5j4mIVSdHAI {\n    -webkit-box-align: end;\n    -ms-flex-align: end;\n    align-items: flex-end;\n  }\n\n  ._1qpwNcjJV1QIAanGs0BWr4 {\n    -ms-flex-pack: distribute;\n    justify-content: space-around;\n  }\n\n  ._2Yfsgpux90mK3G6K2QWczS {\n    -webkit-box-pack: justify;\n    -ms-flex-pack: justify;\n    justify-content: space-between;\n  }\n\n  ._4yb0LceBMqjmsAOipGaWm {\n    -webkit-box-ordinal-group: 0;\n    -ms-flex-order: -1;\n    order: -1;\n  }\n\n  .d8lh_aGILVh3zuuwP605Z {\n    -webkit-box-ordinal-group: 2;\n    -ms-flex-order: 1;\n    order: 1;\n  }\n}", ""]);
+	
+	// exports
+	exports.locals = {
+		"container-fluid": "_2Szxce93HZFIGVdRkOvvA7",
+		"container": "_1bEE1QHG6JNZp9BCVK76Go",
+		"row": "_3fJPE9j4WA524ocdgQINt",
+		"reverse": "_14nuoO0Vnhqwf7L7LcT_-2",
+		"col": "_2QIh2uae0BmMV38gOtBWDN",
+		"col-xs": "_3m9vuoGLZiX_K9RGlOL-mj",
+		"col-xs-1": "_3z5sMenwOmFPaoza-ZNp7m",
+		"col-xs-2": "_3asQ2dmkfM5FbUCLdzGn0o",
+		"col-xs-3": "X1Sr0VKgTuapNZtvMTT3I",
+		"col-xs-4": "_2v_PFXTXP8MjYUapVyhYVH",
+		"col-xs-5": "_120mFqa0IqlKkpu6NZAmHV",
+		"col-xs-6": "_1u-5j9XZytPJoOh6_DQGJk",
+		"col-xs-7": "_2GJ6USPEJ5eSDlqkBJ9kX-",
+		"col-xs-8": "_3J8BAvSlLPz9xjgK1_VOn2",
+		"col-xs-9": "_3Mg36KI7jcwd5SV8sLGtYh",
+		"col-xs-10": "_1mV5cgw6c6yD4kIVTm4Bdc",
+		"col-xs-11": "_2iPo3Ormo-Q6cqpM90ol6i",
+		"col-xs-12": "_3CEfUHmsA-UeBCs9LUs-qL",
+		"col-xs-offset-0": "_3IRbQK2sefXpq9Iw9D2LZI",
+		"col-xs-offset-1": "_2MC9fDArq3DkN_AjxkEuO-",
+		"col-xs-offset-2": "_1HAMIdTATEihhVJdkhut8j",
+		"col-xs-offset-3": "_19KFHZrve_BQuubclAd_qf",
+		"col-xs-offset-4": "_1PYNrWdTPID_iV82237_4_",
+		"col-xs-offset-5": "_3weSDEIFvfU8ZS9_dYU8-_",
+		"col-xs-offset-6": "_1isafgWovLje09RVaP-nvZ",
+		"col-xs-offset-7": "dG1zNhTLnL6win-BFfOoL",
+		"col-xs-offset-8": "fMPU5vE_J9ayMQtjw61dt",
+		"col-xs-offset-9": "xrQP0X5tgEiVWgAciG2ZR",
+		"col-xs-offset-10": "_1BoPFE9z41FJt9N1wGfPYw",
+		"col-xs-offset-11": "_2GRp6tYOFW2uCAhjsBDrwt",
+		"col-xs-offset-12": "_10gpLEH3-VSNkdhNP4vth2",
+		"start-xs": "_1vpxtOrNbuvdfevvHpE3k9",
+		"center-xs": "_2165TfaHL7rWuJ9BOcS407",
+		"end-xs": "b2fRLar2wwkMyoyy_1ULk",
+		"top-xs": "_3-oOMvR1s3o7A5L6hNAICj",
+		"middle-xs": "_3cbhJzeJkWnUW0qG949_Ot",
+		"bottom-xs": "nYMbi8pcNQt0IjZ4W2JIy",
+		"around-xs": "_2DZU-tRLuauVmlRC9Q12fU",
+		"between-xs": "_1kdcZM_Il_8O13yLRanmV4",
+		"first-xs": "_3HkMPbe7CTMZDaJG-jnOt0",
+		"last-xs": "_1vEUCGamZ85lGwbv4-Snjn",
+		"col-sm": "_22K92Q7lJvtHWDzyVdzmJu",
+		"col-sm-1": "_3hECmj0k9IQ4TDzY585in",
+		"col-sm-2": "_1v2El2ECPr4Cq_QKr14B9V",
+		"col-sm-3": "_1onPnkRJK5q_wCg_7jDvoY",
+		"col-sm-4": "_2TKy7u-7lyeBnYtuM5xcO-",
+		"col-sm-5": "i3fuLcDVtBJeVz_3K_Q_R",
+		"col-sm-6": "_15yo5Le13zteYyNvrR2B0c",
+		"col-sm-7": "_3Ghr1kCQoEUBelIjE0p0W-",
+		"col-sm-8": "_1t1Qqoukacj8kC5gG4PviC",
+		"col-sm-9": "_1BZJFNECOJ-EWuTz5l2NCf",
+		"col-sm-10": "_1Z5EzsaQkeb-2s2GEPJ9pF",
+		"col-sm-11": "_26cO1i9GVUdLDb0gmruIrS",
+		"col-sm-12": "_3cnf8G3o5evgznqnPepvtg",
+		"col-sm-offset-0": "_2VbWwApqltv5ZvOf00I0SI",
+		"col-sm-offset-1": "_1vpyafb7pG784eT2jgiEjE",
+		"col-sm-offset-2": "_3zEe2glGxcZmxxKRr9Rs5n",
+		"col-sm-offset-3": "_3NvX47J9usocETE04O-NXc",
+		"col-sm-offset-4": "_2icttSvir4CWDzNhdsdoUl",
+		"col-sm-offset-5": "_1FVzDQLKd7OxayfIxR2P_W",
+		"col-sm-offset-6": "_98weCC214SytceWk7zsb4",
+		"col-sm-offset-7": "zty73l_tAr2Vo7RgSwCwE",
+		"col-sm-offset-8": "_2_fElVTK9gouKvEMmGPptf",
+		"col-sm-offset-9": "_3VEPswqWpafBCIvBgqyVSE",
+		"col-sm-offset-10": "_1q7LGILcsdG_dZsQU-7M8A",
+		"col-sm-offset-11": "_3fv0SzZXoZhJ07OxA-AJie",
+		"col-sm-offset-12": "_2WKUODUarcKtBsIgmEI9vA",
+		"start-sm": "_30BcR-5HG9QXm8LY-25KTy",
+		"center-sm": "_15lkVrLIDxWFW15uFNZfgS",
+		"end-sm": "_3TS7bnbOEuKyOkbNnsAE3v",
+		"top-sm": "_1ceq7V-Gh0tt-KLbJG3meI",
+		"middle-sm": "_23dvH14Y6VGVxGQy78CD9c",
+		"bottom-sm": "_1urF2Tvi_byDZ51ACpQKz9",
+		"around-sm": "cWmvcjApQNAvg4yNQCbuE",
+		"between-sm": "_2RrZvsOJzOm7bWRLP0YQ1E",
+		"first-sm": "_3y84sY4xPKr7F6JNBpjBqO",
+		"last-sm": "_292jA27HJz2l2SSSTMjmPc",
+		"col-md": "_3Oq7e06e9rCK_vvuht0QPo",
+		"col-md-1": "_1yiEPOJ1ykNd2fzeM10nql",
+		"col-md-2": "GisHURdmkVG1iyibk4Hqh",
+		"col-md-3": "xuZjA-zCLneNtkgA_99kp",
+		"col-md-4": "_2sNddkR-d1lReH--XkPWPI",
+		"col-md-5": "_3ZiBGmwX25t-rr90VBcK-8",
+		"col-md-6": "_1zA9RiLCr9gCDVk8ZP5qFm",
+		"col-md-7": "_3WUrNXoOUXTExnfYrKU2f-",
+		"col-md-8": "_3m7T-iUr2klRzfNkYWML4O",
+		"col-md-9": "_3VMMG3XsxwROPidFOyMMS9",
+		"col-md-10": "_2C8LUY-8RwsoSQHoQuJqa0",
+		"col-md-11": "i_RZbsu8SBFSNlzqf00XP",
+		"col-md-12": "_3jfSC_FNyF7WTBY6Nf-Nz-",
+		"col-md-offset-0": "_1M6Z5rB_vOJsuWsGTfi-zi",
+		"col-md-offset-1": "_3my-o1rOTUR1TwHSCadmVO",
+		"col-md-offset-2": "_2atMN3BgejuhV6GvHBQTtO",
+		"col-md-offset-3": "_2TfaN2m-ie2plp49gSeE_3",
+		"col-md-offset-4": "_1QBxUMU6qapnfvV7OmHEgD",
+		"col-md-offset-5": "ojEKhqMDix2A6Ftvd6Nfn",
+		"col-md-offset-6": "_1L6tIM45To1TQcCyTCkJpr",
+		"col-md-offset-7": "_2fYPTE_2Scc7trS1rXBs3",
+		"col-md-offset-8": "_1n2vS64CFSB2E_KU79-dpF",
+		"col-md-offset-9": "_2uvtcehIWCYIsV09jSeIox",
+		"col-md-offset-10": "_2WQ9Lpd0_Dvlr41Y93jF8T",
+		"col-md-offset-11": "_1xay7En2MZpmcvRZijTR4",
+		"col-md-offset-12": "_2ob-EmLHkcvJxoG1R0yEtR",
+		"start-md": "_3etSjGkm0bRVOMo4P-GstM",
+		"center-md": "_10EtosOIA8NRf6lEana1YX",
+		"end-md": "_26OyYYFUp0ODcs5u2YNYWj",
+		"top-md": "aSs4VNz5tq9GPv6dmwJIa",
+		"middle-md": "_362oppIpqB9Q8F9hg64hYD",
+		"bottom-md": "_2fHjGTDk4jyDvyva_T2yzg",
+		"around-md": "-qNdR4VW8M0CepE53b2Id",
+		"between-md": "_38FWejMvGz-2fgB6dqShtt",
+		"first-md": "_21Dn5G23HT_rTZ5BXs5ZWx",
+		"last-md": "CnWCVGh9DV5YHDTDBLPMD",
+		"col-lg": "_20kHQ_kngVsC1Re8AhpSyv",
+		"col-lg-1": "_3CIHmYSNF4AcbPwCmXCxcf",
+		"col-lg-2": "tL56kajoH6IXJDAtbLeg9",
+		"col-lg-3": "z2H4572hLgtVe2QVqx0E7",
+		"col-lg-4": "_2mv5mztmNOUngKydHDusCF",
+		"col-lg-5": "_2TODPJbNkUIFloRIP4gPPx",
+		"col-lg-6": "_3b9McDotfoHudc7xiWTgY-",
+		"col-lg-7": "yBirGEWyv-MMoW41_WRhP",
+		"col-lg-8": "_1AaApoDpiXDoGAsZHtrvaU",
+		"col-lg-9": "yiEbCiLXho2mGU_YtKt3F",
+		"col-lg-10": "_3jot4eckFTiE0OqJygqQzE",
+		"col-lg-11": "_1zP97mUBCGIiOGGm-ZbD_W",
+		"col-lg-12": "_2GS2P2ATc_OJKiMHMMBP5K",
+		"col-lg-offset-0": "ZXVsaGgv0CxFCvPkPPTZa",
+		"col-lg-offset-1": "_24TKC6i8jtTRVde9fviETA",
+		"col-lg-offset-2": "_2XCCgAoW06AzhgT4c_WN7q",
+		"col-lg-offset-3": "_2tyJi8BdsiKSJ8ghItc3b3",
+		"col-lg-offset-4": "_1Q72_mJzx-ewiYGVMmZgER",
+		"col-lg-offset-5": "_15ubu1SMNO-6A3Tci_FTd-",
+		"col-lg-offset-6": "_1JD2ds3yyfJjUr5R365yzx",
+		"col-lg-offset-7": "_3gFF9NT0FEL-ZB6p-tVX1c",
+		"col-lg-offset-8": "_3I1kIXmWSl5MbdSiLfcORT",
+		"col-lg-offset-9": "_2e3Cf9duEpwyFGg7pBdq-P",
+		"col-lg-offset-10": "_1xTWC0n57qCgUL49ia-KMS",
+		"col-lg-offset-11": "_2oDRMaPZmCh9RK17jyUkAV",
+		"col-lg-offset-12": "_2OWxiUc94gSeK78JqvKzjx",
+		"start-lg": "_1jJxJ_PWpyR9Lk6F2y-NH3",
+		"center-lg": "jwAMwaCRsh1qIMUCNI40d",
+		"end-lg": "_37h31ImEZZuRI-QKEPtM62",
+		"top-lg": "_1qvUgaJZTbA1PHOhcGFlcm",
+		"middle-lg": "_9NPytSdic8Z_w2s16YlsH",
+		"bottom-lg": "-Z0n5NKdUt5j4mIVSdHAI",
+		"around-lg": "_1qpwNcjJV1QIAanGs0BWr4",
+		"between-lg": "_2Yfsgpux90mK3G6K2QWczS",
+		"first-lg": "_4yb0LceBMqjmsAOipGaWm",
+		"last-lg": "d8lh_aGILVh3zuuwP605Z"
+	};
+
+/***/ },
+/* 218 */
+/*!**************************************!*\
+  !*** ./~/css-loader/lib/css-base.js ***!
+  \**************************************/
+/***/ function(module, exports) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	// css base code, injected by the css-loader
+	module.exports = function() {
+		var list = [];
+	
+		// return the list of modules as css string
+		list.toString = function toString() {
+			var result = [];
+			for(var i = 0; i < this.length; i++) {
+				var item = this[i];
+				if(item[2]) {
+					result.push("@media " + item[2] + "{" + item[1] + "}");
+				} else {
+					result.push(item[1]);
+				}
+			}
+			return result.join("");
+		};
+	
+		// import a list of modules into the list
+		list.i = function(modules, mediaQuery) {
+			if(typeof modules === "string")
+				modules = [[null, modules, ""]];
+			var alreadyImportedModules = {};
+			for(var i = 0; i < this.length; i++) {
+				var id = this[i][0];
+				if(typeof id === "number")
+					alreadyImportedModules[id] = true;
+			}
+			for(i = 0; i < modules.length; i++) {
+				var item = modules[i];
+				// skip already imported module
+				// this implementation is not 100% perfect for weird media query combinations
+				//  when a module is imported multiple times with different media queries.
+				//  I hope this will never occur (Hey this way we have smaller bundles)
+				if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+					if(mediaQuery && !item[2]) {
+						item[2] = mediaQuery;
+					} else if(mediaQuery) {
+						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+					}
+					list.push(item);
+				}
+			}
+		};
+		return list;
+	};
+
+
+/***/ },
+/* 219 */
+/*!*************************************!*\
+  !*** ./~/style-loader/addStyles.js ***!
+  \*************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	var stylesInDom = {},
+		memoize = function(fn) {
+			var memo;
+			return function () {
+				if (typeof memo === "undefined") memo = fn.apply(this, arguments);
+				return memo;
+			};
+		},
+		isOldIE = memoize(function() {
+			return /msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase());
+		}),
+		getHeadElement = memoize(function () {
+			return document.head || document.getElementsByTagName("head")[0];
+		}),
+		singletonElement = null,
+		singletonCounter = 0,
+		styleElementsInsertedAtTop = [];
+	
+	module.exports = function(list, options) {
+		if(true) {
+			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+		}
+	
+		options = options || {};
+		// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+		// tags it will allow on a page
+		if (typeof options.singleton === "undefined") options.singleton = isOldIE();
+	
+		// By default, add <style> tags to the bottom of <head>.
+		if (typeof options.insertAt === "undefined") options.insertAt = "bottom";
+	
+		var styles = listToStyles(list);
+		addStylesToDom(styles, options);
+	
+		return function update(newList) {
+			var mayRemove = [];
+			for(var i = 0; i < styles.length; i++) {
+				var item = styles[i];
+				var domStyle = stylesInDom[item.id];
+				domStyle.refs--;
+				mayRemove.push(domStyle);
+			}
+			if(newList) {
+				var newStyles = listToStyles(newList);
+				addStylesToDom(newStyles, options);
+			}
+			for(var i = 0; i < mayRemove.length; i++) {
+				var domStyle = mayRemove[i];
+				if(domStyle.refs === 0) {
+					for(var j = 0; j < domStyle.parts.length; j++)
+						domStyle.parts[j]();
+					delete stylesInDom[domStyle.id];
+				}
+			}
+		};
+	}
+	
+	function addStylesToDom(styles, options) {
+		for(var i = 0; i < styles.length; i++) {
+			var item = styles[i];
+			var domStyle = stylesInDom[item.id];
+			if(domStyle) {
+				domStyle.refs++;
+				for(var j = 0; j < domStyle.parts.length; j++) {
+					domStyle.parts[j](item.parts[j]);
+				}
+				for(; j < item.parts.length; j++) {
+					domStyle.parts.push(addStyle(item.parts[j], options));
+				}
+			} else {
+				var parts = [];
+				for(var j = 0; j < item.parts.length; j++) {
+					parts.push(addStyle(item.parts[j], options));
+				}
+				stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
+			}
+		}
+	}
+	
+	function listToStyles(list) {
+		var styles = [];
+		var newStyles = {};
+		for(var i = 0; i < list.length; i++) {
+			var item = list[i];
+			var id = item[0];
+			var css = item[1];
+			var media = item[2];
+			var sourceMap = item[3];
+			var part = {css: css, media: media, sourceMap: sourceMap};
+			if(!newStyles[id])
+				styles.push(newStyles[id] = {id: id, parts: [part]});
+			else
+				newStyles[id].parts.push(part);
+		}
+		return styles;
+	}
+	
+	function insertStyleElement(options, styleElement) {
+		var head = getHeadElement();
+		var lastStyleElementInsertedAtTop = styleElementsInsertedAtTop[styleElementsInsertedAtTop.length - 1];
+		if (options.insertAt === "top") {
+			if(!lastStyleElementInsertedAtTop) {
+				head.insertBefore(styleElement, head.firstChild);
+			} else if(lastStyleElementInsertedAtTop.nextSibling) {
+				head.insertBefore(styleElement, lastStyleElementInsertedAtTop.nextSibling);
+			} else {
+				head.appendChild(styleElement);
+			}
+			styleElementsInsertedAtTop.push(styleElement);
+		} else if (options.insertAt === "bottom") {
+			head.appendChild(styleElement);
+		} else {
+			throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
+		}
+	}
+	
+	function removeStyleElement(styleElement) {
+		styleElement.parentNode.removeChild(styleElement);
+		var idx = styleElementsInsertedAtTop.indexOf(styleElement);
+		if(idx >= 0) {
+			styleElementsInsertedAtTop.splice(idx, 1);
+		}
+	}
+	
+	function createStyleElement(options) {
+		var styleElement = document.createElement("style");
+		styleElement.type = "text/css";
+		insertStyleElement(options, styleElement);
+		return styleElement;
+	}
+	
+	function createLinkElement(options) {
+		var linkElement = document.createElement("link");
+		linkElement.rel = "stylesheet";
+		insertStyleElement(options, linkElement);
+		return linkElement;
+	}
+	
+	function addStyle(obj, options) {
+		var styleElement, update, remove;
+	
+		if (options.singleton) {
+			var styleIndex = singletonCounter++;
+			styleElement = singletonElement || (singletonElement = createStyleElement(options));
+			update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
+			remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
+		} else if(obj.sourceMap &&
+			typeof URL === "function" &&
+			typeof URL.createObjectURL === "function" &&
+			typeof URL.revokeObjectURL === "function" &&
+			typeof Blob === "function" &&
+			typeof btoa === "function") {
+			styleElement = createLinkElement(options);
+			update = updateLink.bind(null, styleElement);
+			remove = function() {
+				removeStyleElement(styleElement);
+				if(styleElement.href)
+					URL.revokeObjectURL(styleElement.href);
+			};
+		} else {
+			styleElement = createStyleElement(options);
+			update = applyToTag.bind(null, styleElement);
+			remove = function() {
+				removeStyleElement(styleElement);
+			};
+		}
+	
+		update(obj);
+	
+		return function updateStyle(newObj) {
+			if(newObj) {
+				if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
+					return;
+				update(obj = newObj);
+			} else {
+				remove();
+			}
+		};
+	}
+	
+	var replaceText = (function () {
+		var textStore = [];
+	
+		return function (index, replacement) {
+			textStore[index] = replacement;
+			return textStore.filter(Boolean).join('\n');
+		};
+	})();
+	
+	function applyToSingletonTag(styleElement, index, remove, obj) {
+		var css = remove ? "" : obj.css;
+	
+		if (styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = replaceText(index, css);
+		} else {
+			var cssNode = document.createTextNode(css);
+			var childNodes = styleElement.childNodes;
+			if (childNodes[index]) styleElement.removeChild(childNodes[index]);
+			if (childNodes.length) {
+				styleElement.insertBefore(cssNode, childNodes[index]);
+			} else {
+				styleElement.appendChild(cssNode);
+			}
+		}
+	}
+	
+	function applyToTag(styleElement, obj) {
+		var css = obj.css;
+		var media = obj.media;
+	
+		if(media) {
+			styleElement.setAttribute("media", media)
+		}
+	
+		if(styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = css;
+		} else {
+			while(styleElement.firstChild) {
+				styleElement.removeChild(styleElement.firstChild);
+			}
+			styleElement.appendChild(document.createTextNode(css));
+		}
+	}
+	
+	function updateLink(linkElement, obj) {
+		var css = obj.css;
+		var sourceMap = obj.sourceMap;
+	
+		if(sourceMap) {
+			// http://stackoverflow.com/a/26603875
+			css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
+		}
+	
+		var blob = new Blob([css], { type: "text/css" });
+	
+		var oldSrc = linkElement.href;
+	
+		linkElement.href = URL.createObjectURL(blob);
+	
+		if(oldSrc)
+			URL.revokeObjectURL(oldSrc);
+	}
+
+
+/***/ },
+/* 220 */
+/*!****************************************************!*\
+  !*** ./~/react-flexbox-grid/lib/components/Row.js ***!
+  \****************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	exports.__esModule = true;
+	exports.default = Row;
+	
+	var _react = __webpack_require__(/*! react */ 2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _classnames = __webpack_require__(/*! classnames */ 214);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
+	var _createProps = __webpack_require__(/*! ../createProps */ 215);
+	
+	var _createProps2 = _interopRequireDefault(_createProps);
+	
+	var _flexboxgrid = __webpack_require__(/*! flexboxgrid */ 216);
+	
+	var _flexboxgrid2 = _interopRequireDefault(_flexboxgrid);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var ModificatorType = _react.PropTypes.oneOf(['xs', 'sm', 'md', 'lg']);
+	var modificatorKeys = ['start', 'center', 'end', 'top', 'middle', 'bottom', 'around', 'between', 'first', 'last'];
+	
+	var propTypes = {
+	  reverse: _react.PropTypes.bool,
+	  start: ModificatorType,
+	  center: ModificatorType,
+	  end: ModificatorType,
+	  top: ModificatorType,
+	  middle: ModificatorType,
+	  bottom: ModificatorType,
+	  around: ModificatorType,
+	  between: ModificatorType,
+	  first: ModificatorType,
+	  last: ModificatorType,
+	  className: _react.PropTypes.string,
+	  tagName: _react.PropTypes.string,
+	  children: _react.PropTypes.node
+	};
+	
+	function getClassNames(props) {
+	  var modificators = [_flexboxgrid2.default.row];
+	
+	  for (var i = 0; i < modificatorKeys.length; ++i) {
+	    var key = modificatorKeys[i];
+	    var value = props[key];
+	    if (value) {
+	      modificators.push(_flexboxgrid2.default[key + '-' + value]);
+	    }
+	  }
+	
+	  if (props.reverse) {
+	    modificators.push(_flexboxgrid2.default.reverse);
+	  }
+	
+	  return (0, _classnames2.default)(props.className, modificators);
+	}
+	
+	function Row(props) {
+	  return _react2.default.createElement(props.tagName || 'div', (0, _createProps2.default)(propTypes, props, getClassNames(props)));
+	}
+	
+	Row.propTypes = propTypes;
+
+/***/ },
+/* 221 */
+/*!****************************************************!*\
+  !*** ./~/react-flexbox-grid/lib/components/Col.js ***!
+  \****************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	exports.__esModule = true;
+	exports.default = Col;
+	
+	var _react = __webpack_require__(/*! react */ 2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _createProps = __webpack_require__(/*! ../createProps */ 215);
+	
+	var _createProps2 = _interopRequireDefault(_createProps);
+	
+	var _flexboxgrid = __webpack_require__(/*! flexboxgrid */ 216);
+	
+	var _flexboxgrid2 = _interopRequireDefault(_flexboxgrid);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var ModificatorType = _react.PropTypes.oneOfType([_react.PropTypes.number, _react.PropTypes.bool]);
+	
+	var propTypes = {
+	  xs: ModificatorType,
+	  sm: ModificatorType,
+	  md: ModificatorType,
+	  lg: ModificatorType,
+	  xsOffset: _react.PropTypes.number,
+	  smOffset: _react.PropTypes.number,
+	  mdOffset: _react.PropTypes.number,
+	  lgOffset: _react.PropTypes.number,
+	  reverse: _react.PropTypes.bool,
+	  className: _react.PropTypes.string,
+	  tagName: _react.PropTypes.string,
+	  children: _react.PropTypes.node
+	};
+	
+	var classMap = {
+	  xs: 'col-xs',
+	  sm: 'col-sm',
+	  md: 'col-md',
+	  lg: 'col-lg',
+	  xsOffset: 'col-xs-offset',
+	  smOffset: 'col-sm-offset',
+	  mdOffset: 'col-md-offset',
+	  lgOffset: 'col-lg-offset'
+	};
+	
+	function getClassNames(props) {
+	  var extraClasses = [];
+	
+	  if (props.className) {
+	    extraClasses.push(props.className);
+	  }
+	
+	  if (props.reverse) {
+	    extraClasses.push(_flexboxgrid2.default.reverse);
+	  }
+	
+	  return Object.keys(props).filter(function (key) {
+	    return classMap[key];
+	  }).map(function (key) {
+	    return _flexboxgrid2.default[Number.isInteger(props[key]) ? classMap[key] + '-' + props[key] : classMap[key]];
+	  }).concat(extraClasses).join(' ');
+	}
+	
+	function Col(props) {
+	  var className = getClassNames(props);
+	
+	  return _react2.default.createElement(props.tagName || 'div', (0, _createProps2.default)(propTypes, props, className));
+	}
+	
+	Col.propTypes = propTypes;
+
+/***/ },
+/* 222 */
 /*!********************************!*\
   !*** ./src/components/Logo.js ***!
   \********************************/
@@ -52571,7 +53393,7 @@
 	exports.default = Logo;
 
 /***/ },
-/* 213 */
+/* 223 */
 /*!*******************************************!*\
   !*** ./src/containers/HeroesContainer.js ***!
   \*******************************************/
@@ -52593,11 +53415,13 @@
 	
 	var _ = _interopRequireWildcard(_lodash);
 	
-	var _Hero = __webpack_require__(/*! ../components/Hero */ 214);
+	var _reactFlexboxGrid = __webpack_require__(/*! react-flexbox-grid */ 212);
+	
+	var _Hero = __webpack_require__(/*! ../components/Hero */ 224);
 	
 	var _Hero2 = _interopRequireDefault(_Hero);
 	
-	var _VerticalText = __webpack_require__(/*! ../components/VerticalText */ 215);
+	var _VerticalText = __webpack_require__(/*! ../components/VerticalText */ 225);
 	
 	var _VerticalText2 = _interopRequireDefault(_VerticalText);
 	
@@ -52630,15 +53454,31 @@
 	
 	
 				return _react2.default.createElement(
-					'div',
+					_reactFlexboxGrid.Row,
 					{ className: 'attributeContainer' },
-					_react2.default.createElement(_VerticalText2.default, { attribute: attr }),
 					_react2.default.createElement(
-						'div',
-						{ className: 'heroContainer' },
-						_.map(heroesByAttributes, function (hero, index) {
-							return _react2.default.createElement(_Hero2.default, { key: index, hero: hero, isFilterActive: isFilterActive });
-						})
+						_reactFlexboxGrid.Col,
+						{ xs: 1 },
+						_react2.default.createElement(
+							_reactFlexboxGrid.Col,
+							{ xsOffset: 8, xs: 4 },
+							_react2.default.createElement(_VerticalText2.default, { attribute: attr })
+						)
+					),
+					_react2.default.createElement(
+						_reactFlexboxGrid.Col,
+						{ xs: 11 },
+						_react2.default.createElement(
+							_reactFlexboxGrid.Row,
+							{ start: 'xs' },
+							_react2.default.createElement(
+								_reactFlexboxGrid.Col,
+								{ xs: 12 },
+								_.map(heroesByAttributes, function (hero, index) {
+									return _react2.default.createElement(_Hero2.default, { key: index, hero: hero, isFilterActive: isFilterActive });
+								})
+							)
+						)
 					)
 				);
 			}
@@ -52656,7 +53496,7 @@
 	};
 
 /***/ },
-/* 214 */
+/* 224 */
 /*!********************************!*\
   !*** ./src/components/Hero.js ***!
   \********************************/
@@ -52699,7 +53539,7 @@
 	exports.default = Hero;
 
 /***/ },
-/* 215 */
+/* 225 */
 /*!****************************************!*\
   !*** ./src/components/VerticalText.js ***!
   \****************************************/
@@ -52732,8 +53572,7 @@
 					" ",
 					attribute,
 					" "
-				),
-				_react2.default.createElement("hr", { className: "verticalLine" })
+				)
 			)
 		);
 	};
@@ -52745,7 +53584,7 @@
 	exports.default = VerticalText;
 
 /***/ },
-/* 216 */
+/* 226 */
 /*!*******************************************!*\
   !*** ./src/containers/FilterContainer.js ***!
   \*******************************************/
@@ -52763,53 +53602,21 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _lodash = __webpack_require__(/*! lodash */ 206);
+	
+	var _ = _interopRequireWildcard(_lodash);
+	
 	var _ramda = __webpack_require__(/*! ramda */ 204);
 	
 	var R = _interopRequireWildcard(_ramda);
 	
-	var _Carry = __webpack_require__(/*! ../components/filters/Carry */ 217);
+	var _reactFlexboxGrid = __webpack_require__(/*! react-flexbox-grid */ 212);
 	
-	var _Carry2 = _interopRequireDefault(_Carry);
+	var _Filters = __webpack_require__(/*! ../constants/Filters */ 234);
 	
-	var _Support = __webpack_require__(/*! ../components/filters/Support */ 218);
+	var _Filters2 = __webpack_require__(/*! ../components/filters/Filters */ 235);
 	
-	var _Support2 = _interopRequireDefault(_Support);
-	
-	var _Melee = __webpack_require__(/*! ../components/filters/Melee */ 219);
-	
-	var _Melee2 = _interopRequireDefault(_Melee);
-	
-	var _Ranged = __webpack_require__(/*! ../components/filters/Ranged */ 220);
-	
-	var _Ranged2 = _interopRequireDefault(_Ranged);
-	
-	var _Nuker = __webpack_require__(/*! ../components/filters/Nuker */ 221);
-	
-	var _Nuker2 = _interopRequireDefault(_Nuker);
-	
-	var _Disabler = __webpack_require__(/*! ../components/filters/Disabler */ 222);
-	
-	var _Disabler2 = _interopRequireDefault(_Disabler);
-	
-	var _Jungler = __webpack_require__(/*! ../components/filters/Jungler */ 223);
-	
-	var _Jungler2 = _interopRequireDefault(_Jungler);
-	
-	var _Durable = __webpack_require__(/*! ../components/filters/Durable */ 224);
-	
-	var _Durable2 = _interopRequireDefault(_Durable);
-	
-	var _Escape = __webpack_require__(/*! ../components/filters/Escape */ 225);
-	
-	var _Escape2 = _interopRequireDefault(_Escape);
-	
-	var _Pusher = __webpack_require__(/*! ../components/filters/Pusher */ 226);
-	
-	var _Pusher2 = _interopRequireDefault(_Pusher);
-	
-	var _Initiator = __webpack_require__(/*! ../components/filters/Initiator */ 227);
-	
-	var _Initiator2 = _interopRequireDefault(_Initiator);
+	var _Filters3 = _interopRequireDefault(_Filters2);
 	
 	var _filters = __webpack_require__(/*! ../actions/filters */ 210);
 	
@@ -52867,20 +53674,53 @@
 	    }, {
 	        key: 'render',
 	        value: function render() {
+	            var _this2 = this;
+	
 	            return _react2.default.createElement(
-	                'div',
+	                _reactFlexboxGrid.Row,
 	                { className: 'filterContainer' },
-	                _react2.default.createElement(_Nuker2.default, { onClickFilter: this.onClickFilter, isActiveFilter: this.isActiveFilter }),
-	                _react2.default.createElement(_Disabler2.default, { onClickFilter: this.onClickFilter, isActiveFilter: this.isActiveFilter }),
-	                _react2.default.createElement(_Jungler2.default, { onClickFilter: this.onClickFilter, isActiveFilter: this.isActiveFilter }),
-	                _react2.default.createElement(_Durable2.default, { onClickFilter: this.onClickFilter, isActiveFilter: this.isActiveFilter }),
-	                _react2.default.createElement(_Escape2.default, { onClickFilter: this.onClickFilter, isActiveFilter: this.isActiveFilter }),
-	                _react2.default.createElement(_Pusher2.default, { onClickFilter: this.onClickFilter, isActiveFilter: this.isActiveFilter }),
-	                _react2.default.createElement(_Initiator2.default, { onClickFilter: this.onClickFilter, isActiveFilter: this.isActiveFilter }),
-	                _react2.default.createElement(_Carry2.default, { onClickFilter: this.onClickFilter, isActiveFilter: this.isActiveFilter }),
-	                _react2.default.createElement(_Support2.default, { onClickFilter: this.onClickFilter, isActiveFilter: this.isActiveFilter }),
-	                _react2.default.createElement(_Melee2.default, { onClickFilter: this.onClickFilter, isActiveFilter: this.isActiveFilter }),
-	                _react2.default.createElement(_Ranged2.default, { onClickFilter: this.onClickFilter, isActiveFilter: this.isActiveFilter })
+	                _react2.default.createElement(
+	                    _reactFlexboxGrid.Col,
+	                    { xs: 12, className: 'filterRow' },
+	                    _react2.default.createElement(
+	                        _reactFlexboxGrid.Row,
+	                        { between: 'xs' },
+	                        _.map(_Filters.SUB_ROLES, function (role, index) {
+	                            return _react2.default.createElement(_Filters3.default, { key: index, filterClasses: "subRoleTxt filters ", isActiveFilter: _this2.isActiveFilter, onClickFilter: _this2.onClickFilter, role: role });
+	                        })
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    _reactFlexboxGrid.Col,
+	                    { xs: 12, className: 'mainRoles' },
+	                    _react2.default.createElement(
+	                        _reactFlexboxGrid.Row,
+	                        { between: 'xs' },
+	                        _react2.default.createElement(
+	                            _reactFlexboxGrid.Col,
+	                            { xs: 4 },
+	                            _react2.default.createElement(
+	                                _reactFlexboxGrid.Row,
+	                                { around: 'xs' },
+	                                _.map(_Filters.MAIN_ROLES, function (role, index) {
+	                                    return _react2.default.createElement(_Filters3.default, { key: index, filterClasses: "text filters ", isActiveFilter: _this2.isActiveFilter, onClickFilter: _this2.onClickFilter, role: role });
+	                                })
+	                            )
+	                        ),
+	                        _react2.default.createElement(_reactFlexboxGrid.Col, { xs: 4 }),
+	                        _react2.default.createElement(
+	                            _reactFlexboxGrid.Col,
+	                            { xs: 4 },
+	                            _react2.default.createElement(
+	                                _reactFlexboxGrid.Row,
+	                                { around: 'xs' },
+	                                _.map(_Filters.ATK_RANGE, function (role, index) {
+	                                    return _react2.default.createElement(_Filters3.default, { key: index, filterClasses: "text filters ", isActiveFilter: _this2.isActiveFilter, onClickFilter: _this2.onClickFilter, role: role });
+	                                })
+	                            )
+	                        )
+	                    )
+	                )
 	            );
 	        }
 	    }]);
@@ -52897,55 +53737,44 @@
 	};
 
 /***/ },
-/* 217 */
-/*!*****************************************!*\
-  !*** ./src/components/filters/Carry.js ***!
-  \*****************************************/
-/***/ function(module, exports, __webpack_require__) {
+/* 227 */,
+/* 228 */,
+/* 229 */,
+/* 230 */,
+/* 231 */,
+/* 232 */,
+/* 233 */,
+/* 234 */
+/*!**********************************!*\
+  !*** ./src/constants/Filters.js ***!
+  \**********************************/
+/***/ function(module, exports) {
 
-	'use strict';
+	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
+	var ATK_RANGE = exports.ATK_RANGE = ["MELEE", "RANGED"];
 	
-	var _react = __webpack_require__(/*! react */ 2);
+	var MAIN_ROLES = exports.MAIN_ROLES = ["CARRY", "SUPPORT"];
 	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var ROLE = 'carry';
-	
-	var Carry = function Carry(props) {
-	    var onClickFilter = function onClickFilter() {
-	
-	        return props.onClickFilter(ROLE);
-	    };
-	    var isActiveFilter = function isActiveFilter() {
-	        return props.isActiveFilter(ROLE) ? 'activeFilter' : '';
-	    };
-	
-	    return _react2.default.createElement(
-	        'div',
-	        { onClick: onClickFilter, className: "text filters " + isActiveFilter() },
-	        'CARRY'
-	    );
-	};
-	exports.default = Carry;
+	var SUB_ROLES = exports.SUB_ROLES = ["Disabler", "Durable", "Escape", "Initiator", "Jungler", "Nuker", "Pusher"];
 
 /***/ },
-/* 218 */
+/* 235 */
 /*!*******************************************!*\
-  !*** ./src/components/filters/Support.js ***!
+  !*** ./src/components/filters/Filters.js ***!
   \*******************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
 	var _react = __webpack_require__(/*! react */ 2);
 	
@@ -52953,366 +53782,59 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var ROLE = 'support';
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
-	var Support = function Support(props) {
-	    var onClickFilter = function onClickFilter() {
-	        return props.onClickFilter(ROLE);
-	    };
-	    var isActiveFilter = function isActiveFilter() {
-	        return props.isActiveFilter(ROLE) ? 'activeFilter' : '';
-	    };
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
-	    return _react2.default.createElement(
-	        'div',
-	        { onClick: onClickFilter, className: "text filters " + isActiveFilter() },
-	        'SUPPORT'
-	    );
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Filters = function (_Component) {
+	    _inherits(Filters, _Component);
+	
+	    function Filters(props) {
+	        _classCallCheck(this, Filters);
+	
+	        var _this = _possibleConstructorReturn(this, (Filters.__proto__ || Object.getPrototypeOf(Filters)).call(this, props));
+	
+	        _this.role = _this.props.role.toLowerCase();
+	        _this.onClickFilter = _this.onClickFilter.bind(_this);
+	        _this.isActiveFilter = _this.isActiveFilter.bind(_this);
+	        return _this;
+	    }
+	
+	    _createClass(Filters, [{
+	        key: "onClickFilter",
+	        value: function onClickFilter() {
+	            this.props.onClickFilter(this.role);
+	        }
+	    }, {
+	        key: "isActiveFilter",
+	        value: function isActiveFilter() {
+	            return this.props.isActiveFilter(this.role) ? "activeFilter" : "";
+	        }
+	    }, {
+	        key: "render",
+	        value: function render() {
+	            return _react2.default.createElement(
+	                "div",
+	                { onClick: this.onClickFilter, className: this.props.filterClasses + this.isActiveFilter() },
+	                this.props.role
+	            );
+	        }
+	    }]);
+	
+	    return Filters;
+	}(_react.Component);
+	
+	exports.default = Filters;
+	
+	
+	Filters.propTypes = {
+	    isActiveFilter: _react.PropTypes.func.isRequired,
+	    onClickFilter: _react.PropTypes.func.isRequired,
+	    role: _react.PropTypes.string.isRequired,
+	    filterClasses: _react.PropTypes.string
 	};
-	
-	exports.default = Support;
-
-/***/ },
-/* 219 */
-/*!*****************************************!*\
-  !*** ./src/components/filters/Melee.js ***!
-  \*****************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _react = __webpack_require__(/*! react */ 2);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var ATK_RANGE = 'melee';
-	
-	var Melee = function Melee(props) {
-	    var onClickFilter = function onClickFilter() {
-	        return props.onClickFilter(ATK_RANGE);
-	    };
-	    var isActiveFilter = function isActiveFilter() {
-	        return props.isActiveFilter(ATK_RANGE) ? 'activeFilter' : '';
-	    };
-	
-	    return _react2.default.createElement(
-	        'div',
-	        { onClick: onClickFilter, className: "text filters " + isActiveFilter() },
-	        'MELEE'
-	    );
-	};
-	
-	exports.default = Melee;
-
-/***/ },
-/* 220 */
-/*!******************************************!*\
-  !*** ./src/components/filters/Ranged.js ***!
-  \******************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _react = __webpack_require__(/*! react */ 2);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var ATK_RANGE = 'ranged';
-	
-	var Ranged = function Ranged(props) {
-	    var onClickFilter = function onClickFilter() {
-	        return props.onClickFilter(ATK_RANGE);
-	    };
-	    var isActiveFilter = function isActiveFilter() {
-	        return props.isActiveFilter(ATK_RANGE) ? 'activeFilter' : '';
-	    };
-	
-	    return _react2.default.createElement(
-	        'div',
-	        { onClick: onClickFilter, className: "text filters " + isActiveFilter() },
-	        'RANGED'
-	    );
-	};
-	
-	exports.default = Ranged;
-
-/***/ },
-/* 221 */
-/*!*****************************************!*\
-  !*** ./src/components/filters/Nuker.js ***!
-  \*****************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _react = __webpack_require__(/*! react */ 2);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var ROLE = 'nuker';
-	
-	var Nuker = function Nuker(props) {
-	    var onClickFilter = function onClickFilter() {
-	
-	        return props.onClickFilter(ROLE);
-	    };
-	    var isActiveFilter = function isActiveFilter() {
-	        return props.isActiveFilter(ROLE) ? 'activeFilter' : '';
-	    };
-	
-	    return _react2.default.createElement(
-	        'div',
-	        { onClick: onClickFilter, className: "text filters " + isActiveFilter() },
-	        'Nuker'
-	    );
-	};
-	exports.default = Nuker;
-
-/***/ },
-/* 222 */
-/*!********************************************!*\
-  !*** ./src/components/filters/Disabler.js ***!
-  \********************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _react = __webpack_require__(/*! react */ 2);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var ROLE = 'disabler';
-	
-	var Disabler = function Disabler(props) {
-	    var onClickFilter = function onClickFilter() {
-	
-	        return props.onClickFilter(ROLE);
-	    };
-	    var isActiveFilter = function isActiveFilter() {
-	        return props.isActiveFilter(ROLE) ? 'activeFilter' : '';
-	    };
-	
-	    return _react2.default.createElement(
-	        'div',
-	        { onClick: onClickFilter, className: "text filters " + isActiveFilter() },
-	        'Disabler'
-	    );
-	};
-	exports.default = Disabler;
-
-/***/ },
-/* 223 */
-/*!*******************************************!*\
-  !*** ./src/components/filters/Jungler.js ***!
-  \*******************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _react = __webpack_require__(/*! react */ 2);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var ROLE = 'jungler';
-	
-	var Jungler = function Jungler(props) {
-	    var onClickFilter = function onClickFilter() {
-	
-	        return props.onClickFilter(ROLE);
-	    };
-	    var isActiveFilter = function isActiveFilter() {
-	        return props.isActiveFilter(ROLE) ? 'activeFilter' : '';
-	    };
-	
-	    return _react2.default.createElement(
-	        'div',
-	        { onClick: onClickFilter, className: "text filters " + isActiveFilter() },
-	        'Jungler'
-	    );
-	};
-	exports.default = Jungler;
-
-/***/ },
-/* 224 */
-/*!*******************************************!*\
-  !*** ./src/components/filters/Durable.js ***!
-  \*******************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _react = __webpack_require__(/*! react */ 2);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var ROLE = 'durable';
-	
-	var Durable = function Durable(props) {
-	    var onClickFilter = function onClickFilter() {
-	
-	        return props.onClickFilter(ROLE);
-	    };
-	    var isActiveFilter = function isActiveFilter() {
-	        return props.isActiveFilter(ROLE) ? 'activeFilter' : '';
-	    };
-	
-	    return _react2.default.createElement(
-	        'div',
-	        { onClick: onClickFilter, className: "text filters " + isActiveFilter() },
-	        'Durable'
-	    );
-	};
-	exports.default = Durable;
-
-/***/ },
-/* 225 */
-/*!******************************************!*\
-  !*** ./src/components/filters/Escape.js ***!
-  \******************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _react = __webpack_require__(/*! react */ 2);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var ROLE = 'escape';
-	
-	var Escape = function Escape(props) {
-	    var onClickFilter = function onClickFilter() {
-	
-	        return props.onClickFilter(ROLE);
-	    };
-	    var isActiveFilter = function isActiveFilter() {
-	        return props.isActiveFilter(ROLE) ? 'activeFilter' : '';
-	    };
-	
-	    return _react2.default.createElement(
-	        'div',
-	        { onClick: onClickFilter, className: "text filters " + isActiveFilter() },
-	        'Escape'
-	    );
-	};
-	exports.default = Escape;
-
-/***/ },
-/* 226 */
-/*!******************************************!*\
-  !*** ./src/components/filters/Pusher.js ***!
-  \******************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _react = __webpack_require__(/*! react */ 2);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var ROLE = 'pusher';
-	
-	var Pusher = function Pusher(props) {
-	    var onClickFilter = function onClickFilter() {
-	
-	        return props.onClickFilter(ROLE);
-	    };
-	    var isActiveFilter = function isActiveFilter() {
-	        return props.isActiveFilter(ROLE) ? 'activeFilter' : '';
-	    };
-	
-	    return _react2.default.createElement(
-	        'div',
-	        { onClick: onClickFilter, className: "text filters " + isActiveFilter() },
-	        'Pusher'
-	    );
-	};
-	exports.default = Pusher;
-
-/***/ },
-/* 227 */
-/*!*********************************************!*\
-  !*** ./src/components/filters/Initiator.js ***!
-  \*********************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _react = __webpack_require__(/*! react */ 2);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var ROLE = 'initiator';
-	
-	var Initiator = function Initiator(props) {
-	    var onClickFilter = function onClickFilter() {
-	
-	        return props.onClickFilter(ROLE);
-	    };
-	    var isActiveFilter = function isActiveFilter() {
-	        return props.isActiveFilter(ROLE) ? 'activeFilter' : '';
-	    };
-	
-	    return _react2.default.createElement(
-	        'div',
-	        { onClick: onClickFilter, className: "text filters " + isActiveFilter() },
-	        'Initiator'
-	    );
-	};
-	exports.default = Initiator;
 
 /***/ }
 /******/ ]);
