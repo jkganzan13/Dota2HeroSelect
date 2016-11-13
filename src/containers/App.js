@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+import { Grid } from 'react-flexbox-grid/lib/index'
 import * as _ from 'lodash'
 import { connect } from 'react-redux'
 import { fetchHeroes } from '../actions'
@@ -35,11 +36,11 @@ class App extends Component {
     const { isLoading } = this.props;
   	
     return (
-      <div className="app">
+      <Grid>
       	{isLoading && <Logo />}
         {!isLoading && this.renderHeroContainers()}
         {!isLoading && <FilterContainer {...this.props} />}
-      </div>
+      </Grid>
     );	
   }
 }

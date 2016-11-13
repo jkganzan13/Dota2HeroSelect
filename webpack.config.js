@@ -22,7 +22,12 @@ var config = {
       },
       { test: /\.json$/, loader : 'json' },
       { test: /\.(png|jpg)$/, loader: 'url?limit=10000000000' },
-      { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url?limit=10000000000" }
+      { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url?limit=10000000000" },
+      {
+        test: /\.css$/,
+        loader: 'style!css?modules',
+        include: /flexboxgrid/,
+      }
   	]
   }
 };
