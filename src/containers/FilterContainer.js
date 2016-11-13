@@ -39,10 +39,12 @@ export default class FiltersContainer extends Component {
         }
     }
 
+    toggleSubRoleRowStyle = () => R.isEmpty(_.intersection(this.props.activeFilters, R.map(R.toLower, SUB_ROLES))) ? { opacity: 0 } : { opacity: 1 };
+
 	render() {
 		return (
-			<Row className="filterContainer">
-                <Col xs={12} className="filterRow">
+			<div className="filterContainer">
+                <Col xs={12} className="subRoles" style={this.toggleSubRoleRowStyle()}>
                     <Row between="xs">
                         {_.map(SUB_ROLES, (role, index) =>
                             <Filters key={index} filterClasses={"subRoleTxt filters "} isActiveFilter={this.isActiveFilter} onClickFilter={this.onClickFilter} role={role} />
@@ -68,7 +70,7 @@ export default class FiltersContainer extends Component {
                         </Col>
                     </Row>
                 </Col>
-			</Row>
+			</div>
 		);
 	}
 }
