@@ -4,16 +4,17 @@ import * as R from 'ramda';
 import { Col, Row } from 'react-flexbox-grid';
 
 import { ATK_RANGE, MAIN_ROLES, SUB_ROLES } from '../constants/Filters';
-
+import ClearFilter from '../components/filters/ClearFilter';
 import Filters from '../components/filters/Filters';
 
-import { removeFilter, updateFilter } from '../actions/filters'
+import { clearFilters, removeFilter, updateFilter } from '../actions/filters'
 
 export default class FiltersContainer extends Component {
     constructor(props) {
         super(props);
         this.isActiveFilter = this.isActiveFilter.bind(this);
         this.onClickFilter = this.onClickFilter.bind(this);
+        this.onClickClear = this.onClickClear.bind(this);
     }
 
     isActiveFilter(filterType) {
@@ -28,6 +29,10 @@ export default class FiltersContainer extends Component {
         }
         this.toggleAtkRangeFilter(dispatch, filterType);
         return dispatch(updateFilter(filterType, heroes));
+    }
+
+    onClickClear() {
+        this.props.dispatch(clearFilters());
     }
 
     toggleAtkRangeFilter (dispatch, filterType) {
@@ -70,6 +75,7 @@ export default class FiltersContainer extends Component {
                         </Col>
                     </Row>
                 </Col>
+                {!R.isEmpty(this.props.activeFilters) && <ClearFilter onClickClear={this.onClickClear} />}
 			</div>
 		);
 	}

@@ -54,6 +54,20 @@ body {
   transform: translate(-50%, -50%);
 }
 
+.clearFilter,
+.clearFilter > span {
+    color: #fff;
+}
+
+.clearFilter {
+    text-align: center;
+    position: absolute;
+    right: 13%;
+    top: 35%;
+    opacity: 0.5;
+    cursor: pointer;
+}
+
 .disableHero {
     filter: grayscale(100%);
     opacity: 0.3;
@@ -80,6 +94,7 @@ body {
     padding: 1%;
     margin-left: -10%;
     margin-right: -10%;
+    position: relative;
 }
 
 .filters {
@@ -147,7 +162,7 @@ body {
 }
 
 .subRoleTxt {
-    color:  #909090;
+    color: #909090;
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
     font-size: small;
     letter-spacing: 1px;

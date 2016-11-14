@@ -7,7 +7,7 @@ import { fetchHeroes } from '../actions'
 import Logo from '../components/Logo'
 import HeroesContainer from './HeroesContainer'
 import FilterContainer from './FilterContainer'
-
+import ClearFilter from '../components/filters/ClearFilter';
 
 class App extends Component {
   constructor(props){

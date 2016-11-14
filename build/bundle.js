@@ -24577,6 +24577,10 @@
 				return Object.assign({}, state, {
 					isLoading: true
 				});
+			case _filters.CLEAR_FILTERS:
+				return Object.assign({}, state, {
+					activeFilters: []
+				});
 			case _filters.FILTER_HEROES:
 				return Object.assign({}, state, {
 					heroes: action.heroes
@@ -52345,6 +52349,7 @@
 	exports.UPDATE_FILTERS = exports.REMOVE_FILTERS = exports.FILTER_HEROES = exports.CLEAR_FILTERS = undefined;
 	exports.removeFilter = removeFilter;
 	exports.updateFilter = updateFilter;
+	exports.clearFilters = clearFilters;
 	
 	var _lodash = __webpack_require__(/*! lodash */ 206);
 	
@@ -52360,6 +52365,13 @@
 	var FILTER_HEROES = exports.FILTER_HEROES = 'FILTER_HEROES';
 	var REMOVE_FILTERS = exports.REMOVE_FILTERS = 'REMOVE_FILTERS';
 	var UPDATE_FILTERS = exports.UPDATE_FILTERS = 'UPDATE_FILTERS';
+	
+	function _clearFilters() {
+	    return {
+	        type: CLEAR_FILTERS,
+	        activeFilters: []
+	    };
+	}
 	
 	function filterHeroes(state) {
 	    var _state$dota = state.dota2;
@@ -52425,6 +52437,12 @@
 	        dispatch(filterHeroes(getState()));
 	    };
 	}
+	
+	function clearFilters() {
+	    return function (dispatch) {
+	        return dispatch(_clearFilters());
+	    };
+	}
 
 /***/ },
 /* 211 */
@@ -52466,6 +52484,10 @@
 	var _FilterContainer = __webpack_require__(/*! ./FilterContainer */ 226);
 	
 	var _FilterContainer2 = _interopRequireDefault(_FilterContainer);
+	
+	var _ClearFilter = __webpack_require__(/*! ../components/filters/ClearFilter */ 228);
+	
+	var _ClearFilter2 = _interopRequireDefault(_ClearFilter);
 	
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
@@ -53614,7 +53636,11 @@
 	
 	var _Filters = __webpack_require__(/*! ../constants/Filters */ 227);
 	
-	var _Filters2 = __webpack_require__(/*! ../components/filters/Filters */ 228);
+	var _ClearFilter = __webpack_require__(/*! ../components/filters/ClearFilter */ 228);
+	
+	var _ClearFilter2 = _interopRequireDefault(_ClearFilter);
+	
+	var _Filters2 = __webpack_require__(/*! ../components/filters/Filters */ 229);
 	
 	var _Filters3 = _interopRequireDefault(_Filters2);
 	
@@ -53644,6 +53670,7 @@
 	
 	        _this.isActiveFilter = _this.isActiveFilter.bind(_this);
 	        _this.onClickFilter = _this.onClickFilter.bind(_this);
+	        _this.onClickClear = _this.onClickClear.bind(_this);
 	        return _this;
 	    }
 	
@@ -53664,6 +53691,11 @@
 	            }
 	            this.toggleAtkRangeFilter(dispatch, filterType);
 	            return dispatch((0, _filters.updateFilter)(filterType, heroes));
+	        }
+	    }, {
+	        key: 'onClickClear',
+	        value: function onClickClear() {
+	            this.props.dispatch((0, _filters.clearFilters)());
 	        }
 	    }, {
 	        key: 'toggleAtkRangeFilter',
@@ -53724,7 +53756,8 @@
 	                            )
 	                        )
 	                    )
-	                )
+	                ),
+	                !R.isEmpty(this.props.activeFilters) && _react2.default.createElement(_ClearFilter2.default, { onClickClear: this.onClickClear })
 	            );
 	        }
 	    }]);
@@ -53760,6 +53793,45 @@
 
 /***/ },
 /* 228 */
+/*!***********************************************!*\
+  !*** ./src/components/filters/ClearFilter.js ***!
+  \***********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _react = __webpack_require__(/*! react */ 2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactFlexboxGrid = __webpack_require__(/*! react-flexbox-grid */ 212);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var ClearFilter = function ClearFilter(_ref) {
+	    var onClickClear = _ref.onClickClear;
+	
+	    return _react2.default.createElement(
+	        'div',
+	        { className: 'clearFilter', onClick: onClickClear },
+	        _react2.default.createElement('i', { className: 'fa fa-times-circle-o fa-lg', 'aria-hidden': 'true' }),
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement(
+	            'span',
+	            { className: 'subRoleTxt activeText' },
+	            'CLEAR'
+	        )
+	    );
+	};
+	
+	exports.default = ClearFilter;
+
+/***/ },
+/* 229 */
 /*!*******************************************!*\
   !*** ./src/components/filters/Filters.js ***!
   \*******************************************/
