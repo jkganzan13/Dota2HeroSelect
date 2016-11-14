@@ -6,6 +6,13 @@ export const FILTER_HEROES = 'FILTER_HEROES';
 export const REMOVE_FILTERS = 'REMOVE_FILTERS';
 export const UPDATE_FILTERS = 'UPDATE_FILTERS';
 
+function _clearFilters() {
+    return {
+        type: CLEAR_FILTERS,
+        activeFilters: []
+    }
+}
+
 function filterHeroes(state) {
     let { activeFilters, heroes } = state.dota2;
 
@@ -61,4 +68,8 @@ export function updateFilter(filterType) {
         dispatch(updateFilters(filterType));
         dispatch(filterHeroes(getState()));
     }
+}
+
+export function clearFilters() {
+    return dispatch => dispatch(_clearFilters());
 }

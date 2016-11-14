@@ -12,10 +12,9 @@ export default class HeroesContainer extends Component {
 		return (
 			<Row className="attributeContainer">
 				<Col xs={1}>
-						<Col xsOffset={8} xs={4}>
-							<VerticalText attribute={attr} />
-						</Col>
-
+					<Col xsOffset={9} xs={3}>
+						<VerticalText attribute={attr} />
+					</Col>
 				</Col>
 				<Col xs={11}>
 					<Row start="xs">

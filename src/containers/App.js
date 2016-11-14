@@ -1,13 +1,13 @@
 import React, { Component, PropTypes } from 'react'
-  import { Grid } from 'react-flexbox-grid/lib/index'
-  import * as _ from 'lodash'
+import { Grid } from 'react-flexbox-grid/lib/index'
+import * as _ from 'lodash'
 import { connect } from 'react-redux'
 import { fetchHeroes } from '../actions'
 
 import Logo from '../components/Logo'
 import HeroesContainer from './HeroesContainer'
 import FilterContainer from './FilterContainer'
-
+import ClearFilter from '../components/filters/ClearFilter';
 
 class App extends Component {
   constructor(props){
