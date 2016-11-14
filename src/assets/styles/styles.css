@@ -6,6 +6,8 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /*IDs*/
@@ -15,6 +17,21 @@ body {
     width: 100px; 
     height: 100px;    
     -webkit-animation: spin 4s infinite linear;
+}
+
+#agility {
+    padding-right: 31%;
+    padding-left: 30%;
+}
+
+#strength {
+    padding-left: 22%;
+    padding-right: 22%;
+}
+
+#intelligence {
+    padding-right: 12%;
+    padding-left: 12%;
 }
 
 /*Classes*/
@@ -47,6 +64,11 @@ body {
   padding-bottom: 2%;
 }
 
+.attributeName {
+    border-bottom: 1px solid rgba(144,144,144,1);
+    padding-bottom: 7px;
+}
+
 .centered {
   position: absolute;
   top: 40%;
@@ -66,6 +88,10 @@ body {
     top: 35%;
     opacity: 0.5;
     cursor: pointer;
+}
+
+.clearFilter:hover {
+    opacity: 1;
 }
 
 .disableHero {
@@ -91,7 +117,7 @@ body {
 }
 
 .filterContainer {
-    padding: 1%;
+    padding: 3%;
     margin-left: -10%;
     margin-right: -10%;
     position: relative;
@@ -134,7 +160,7 @@ body {
 }
 
 .subRoles {
-    margin-bottom: 0.5%;
+    margin-bottom: 1%;
     -webkit-transition: 2s ease-out;
     -moz-transition: 2s ease-out;
     -o-transition: 2s ease-out;
@@ -167,12 +193,6 @@ body {
     font-size: small;
     letter-spacing: 1px;
 }
-
-.verticalLine {
-    width: 150px;
-    position: absolute;
-    transform: translateX(-25%) translateY(-50%);
-} 
 
 .verticalText {
   width: 10px;
