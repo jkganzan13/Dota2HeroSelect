@@ -19,21 +19,6 @@ body {
     -webkit-animation: spin 4s infinite linear;
 }
 
-#agility {
-    padding-right: 31%;
-    padding-left: 30%;
-}
-
-#strength {
-    padding-left: 22%;
-    padding-right: 22%;
-}
-
-#intelligence {
-    padding-right: 12%;
-    padding-left: 12%;
-}
-
 /*Classes*/
 @-webkit-keyframes spin {
   0%  {-webkit-transform: rotate(0deg);}
@@ -58,15 +43,6 @@ body {
   justify-content: center;
   width: 100%;
   position: relative;
-}
-
-.attributeContainer:last-child {
-  padding-bottom: 2%;
-}
-
-.attributeName {
-    border-bottom: 1px solid rgba(144,144,144,1);
-    padding-bottom: 7px;
 }
 
 .centered {
@@ -116,8 +92,22 @@ body {
     float: right;
 }
 
+.heroes {
+    position: relative;
+    padding-left: 7px;
+}
+
+.borderLeft {
+    position: absolute;
+    border-left: 1px solid rgba(144,144,144,1);
+    top: 5px;
+    bottom: 7px;
+    left: 0;
+    margin-left: 5px;
+}
+
 .filterContainer {
-    padding: 3%;
+    padding: 2%;
     margin-left: -10%;
     margin-right: -10%;
     position: relative;

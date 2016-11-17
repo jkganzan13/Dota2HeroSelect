@@ -4,7 +4,7 @@ const VerticalText = ({ attribute }) => {
 	return (
 		<div className="verticalText">
 			<div className="rotate">
-				<span className="text attributeName" id={ attribute.toLowerCase()} > {attribute} </span>
+				<span className="text" > {attribute} </span>
 			</div>
 		</div>
 	)
