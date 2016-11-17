@@ -7,7 +7,6 @@ import { fetchHeroes } from '../actions'
 import Logo from '../components/Logo'
 import HeroesContainer from './HeroesContainer'
 import FilterContainer from './FilterContainer'
-import ClearFilter from '../components/filters/ClearFilter';
 
 class App extends Component {
   constructor(props){
@@ -23,23 +22,18 @@ class App extends Component {
     return this.props.activeFilters.length > 0;
   }
 
-  renderHeroContainers() {
-    const { heroes } = this.props;
-    let heroesContainer = [];
-    _.forOwn(heroes, (heroesByAttributes, attr) => 
-      heroesContainer.push(<HeroesContainer key={attr} attr={attr} heroesByAttributes={heroesByAttributes} isFilterActive={this.isFilterActive} />)
-    );
-    return heroesContainer;
-  }
-
   render() {
-    const { isLoading } = this.props;
+    const { heroes, isLoading } = this.props;
   	
     return (
       <Grid>
       	{isLoading && <Logo />}
-        {!isLoading && this.renderHeroContainers()}
-        {!isLoading && <FilterContainer {...this.props} />}
+        <div style={{ display: (isLoading) ? 'none' : ''}}>
+          <HeroesContainer attr={'STRENGTH'} heroesByAttributes={heroes['STRENGTH']} isFilterActive={this.isFilterActive} />
+          <HeroesContainer attr={'AGILITY'} heroesByAttributes={heroes['AGILITY']} isFilterActive={this.isFilterActive} />
+          <HeroesContainer attr={'INTELLIGENCE'} heroesByAttributes={heroes['INTELLIGENCE']} isFilterActive={this.isFilterActive} />
+          <FilterContainer {...this.props} />
+        </div>
       </Grid>
     );	
   }
