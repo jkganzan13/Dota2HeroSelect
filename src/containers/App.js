@@ -1,13 +1,12 @@
 import React, { Component, PropTypes } from 'react'
 import { Grid } from 'react-flexbox-grid/lib/index'
-import * as _ from 'lodash'
+import R from 'ramda'
 import { connect } from 'react-redux'
 import { fetchHeroes } from '../actions'
 
 import Logo from '../components/Logo'
 import HeroesContainer from './HeroesContainer'
 import FilterContainer from './FilterContainer'
-
 
 class App extends Component {
   constructor(props){
@@ -23,23 +22,19 @@ class App extends Component {
     return this.props.activeFilters.length > 0;
   }
 
-  renderHeroContainers() {
-    const { heroes } = this.props;
-    let heroesContainer = [];
-    _.forOwn(heroes, (heroesByAttributes, attr) => 
-      heroesContainer.push(<HeroesContainer key={attr} attr={attr} heroesByAttributes={heroesByAttributes} isFilterActive={this.isFilterActive} />)
-    );
-    return heroesContainer;
-  }
-
   render() {
-    const { isLoading } = this.props;
-  	
+    const { heroes, isLoading } = this.props;
+    const isAttribute = attribute => obj => obj.attribute === attribute;
+
     return (
       <Grid>
       	{isLoading && <Logo />}
-        {!isLoading && this.renderHeroContainers()}
-        {!isLoading && <FilterContainer {...this.props} />}
+        <div style={{ display: (isLoading) ? 'none' : ''}}>
+          <HeroesContainer attr={'STRENGTH'} heroesByAttributes={R.filter(isAttribute('STRENGTH'), heroes)} isFilterActive={this.isFilterActive} />
+          <HeroesContainer attr={'AGILITY'} heroesByAttributes={R.filter(isAttribute('AGILITY'), heroes)} isFilterActive={this.isFilterActive} />
+          <HeroesContainer attr={'INTELLIGENCE'} heroesByAttributes={R.filter(isAttribute('INTELLIGENCE'), heroes)} isFilterActive={this.isFilterActive} />
+          <FilterContainer {...this.props} />
+        </div>
       </Grid>
     );	
   }
@@ -47,7 +42,7 @@ class App extends Component {
 
 App.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  heroes: PropTypes.object.isRequired,
+  heroes: PropTypes.array.isRequired,
   isLoading: PropTypes.bool.isRequired
 };
 

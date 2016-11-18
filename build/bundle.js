@@ -24558,24 +24558,28 @@
 	
 	var _ramda = __webpack_require__(/*! ramda */ 204);
 	
-	var R = _interopRequireWildcard(_ramda);
+	var _ramda2 = _interopRequireDefault(_ramda);
 	
 	var _actions = __webpack_require__(/*! ../actions */ 205);
 	
 	var _filters = __webpack_require__(/*! ../actions/filters */ 210);
 	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 	
 	function dota2() {
-		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { heroes: {}, isLoading: false, activeFilters: [] };
+		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { heroes: [], isLoading: false, activeFilters: [] };
 		var action = arguments[1];
 	
 		switch (action.type) {
 			case _actions.REQUEST_DATA:
 				return Object.assign({}, state, {
 					isLoading: true
+				});
+			case _filters.CLEAR_FILTERS:
+				return Object.assign({}, state, {
+					activeFilters: []
 				});
 			case _filters.FILTER_HEROES:
 				return Object.assign({}, state, {
@@ -24605,12 +24609,12 @@
 	
 		switch (action.type) {
 			case _filters.UPDATE_FILTERS:
-				if (R.contains(action.filterType, state)) {
+				if (_ramda2.default.contains(action.filterType, state)) {
 					return state;
 				}
 				return [].concat(_toConsumableArray(state), [action.filterType]);
 			case _filters.REMOVE_FILTERS:
-				return R.without([action.filterType], state);
+				return _ramda2.default.without([action.filterType], state);
 		}
 	}
 	
@@ -33498,10 +33502,10 @@
 	var GET_HEROES = exports.GET_HEROES = 'GET_HEROES';
 	var REQUEST_DATA = exports.REQUEST_DATA = 'REQUEST_DATA';
 	
-	function getHeroes(sortedHeroes) {
+	function getHeroes(heroes) {
 		return {
 			type: GET_HEROES,
-			heroes: sortedHeroes
+			heroes: heroes
 		};
 	}
 	
@@ -33511,25 +33515,10 @@
 		};
 	}
 	
-	function sortHeroes(heroes) {
-		var sortedHeroes = {};
-		sortedHeroes.STRENGTH = [];
-		sortedHeroes.AGILITY = [];
-		sortedHeroes.INTELLIGENCE = [];
-	
-		_.forEach(heroes, function (hero) {
-			hero.isActive = false;
-			sortedHeroes[hero.attribute].push(hero);
-		});
-		return sortedHeroes;
-	}
-	
 	function fetchHeroes() {
 		return function (dispatch) {
 			dispatch(requestData());
-			setTimeout(function () {
-				return dispatch(getHeroes(sortHeroes(_heroes2.default)));
-			}, 3000);
+			dispatch(getHeroes(_heroes2.default));
 		};
 	}
 
@@ -50999,7 +50988,8 @@
 				"carry",
 				"escape",
 				"nuker"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "STRENGTH",
@@ -51011,7 +51001,8 @@
 				"disabler",
 				"initiator",
 				"jungler"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "INTELLIGENCE",
@@ -51023,7 +51014,8 @@
 				"durable",
 				"nuker",
 				"support"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "AGILITY",
@@ -51036,7 +51028,8 @@
 				"initiator",
 				"jungler",
 				"nuker"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "INTELLIGENCE",
@@ -51048,7 +51041,8 @@
 				"jungler",
 				"nuker",
 				"support"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "AGILITY",
@@ -51059,7 +51053,8 @@
 				"carry",
 				"disabler",
 				"pusher"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "STRENGTH",
@@ -51071,7 +51066,8 @@
 				"initiator",
 				"nuker",
 				"support"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "AGILITY",
@@ -51082,7 +51078,8 @@
 				"carry",
 				"escape",
 				"pusher"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "AGILITY",
@@ -51095,7 +51092,8 @@
 				"escape",
 				"nuker",
 				"support"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "AGILITY",
@@ -51105,7 +51103,8 @@
 			"roles": [
 				"carry",
 				"nuker"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "AGILITY",
@@ -51118,7 +51117,8 @@
 				"durable",
 				"escape",
 				"nuker"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "AGILITY",
@@ -51130,7 +51130,8 @@
 				"escape",
 				"nuker",
 				"pusher"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "INTELLIGENCE",
@@ -51142,7 +51143,8 @@
 				"nuker",
 				"initiator",
 				"nuker"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "STRENGTH",
@@ -51154,7 +51156,8 @@
 				"durable",
 				"initiator",
 				"nuker"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "AGILITY",
@@ -51166,7 +51169,8 @@
 				"durable",
 				"nuker",
 				"pusher"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "STRENGTH",
@@ -51179,7 +51183,8 @@
 				"initiator",
 				"jungler",
 				"nuker"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "INTELLIGENCE",
@@ -51192,7 +51197,8 @@
 				"escape",
 				"initiator",
 				"disabler"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "STRENGTH",
@@ -51205,7 +51211,8 @@
 				"durable",
 				"initiator",
 				"nuker"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "STRENGTH",
@@ -51219,7 +51226,8 @@
 				"initiator",
 				"nuker",
 				"pusher"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "AGILITY",
@@ -51232,7 +51240,8 @@
 				"initiator",
 				"nuker",
 				"support"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "INTELLIGENCE",
@@ -51245,7 +51254,8 @@
 				"escape",
 				"nuker",
 				"support"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "INTELLIGENCE",
@@ -51254,7 +51264,8 @@
 			"atkRange": "ranged",
 			"roles": [
 				"nuker"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "STRENGTH",
@@ -51267,7 +51278,8 @@
 				"durable",
 				"initiator",
 				"nuker"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "INTELLIGENCE",
@@ -51279,7 +51291,8 @@
 				"disabler",
 				"nuker",
 				"support"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "INTELLIGENCE",
@@ -51289,7 +51302,8 @@
 			"roles": [
 				"nuker",
 				"support"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "INTELLIGENCE",
@@ -51301,7 +51315,8 @@
 				"initiator",
 				"nuker",
 				"support"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "INTELLIGENCE",
@@ -51314,7 +51329,8 @@
 				"nuker",
 				"pusher",
 				"support"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "STRENGTH",
@@ -51327,7 +51343,8 @@
 				"durable",
 				"escape",
 				"initiator"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "STRENGTH",
@@ -51339,7 +51356,8 @@
 				"durable",
 				"initiator",
 				"nuker"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "INTELLIGENCE",
@@ -51350,7 +51368,8 @@
 				"disabler",
 				"nuker",
 				"support"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "AGILITY",
@@ -51361,7 +51380,8 @@
 				"carry",
 				"disabler",
 				"escape"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "INTELLIGENCE",
@@ -51373,7 +51393,8 @@
 				"initiator",
 				"jungler",
 				"pusher"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "INTELLIGENCE",
@@ -51384,7 +51405,8 @@
 				"carry",
 				"nuker",
 				"pusher"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "AGILITY",
@@ -51394,7 +51416,8 @@
 			"roles": [
 				"carry",
 				"nuker"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "INTELLIGENCE",
@@ -51406,7 +51429,8 @@
 				"disabler",
 				"disabler",
 				"nuker"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "INTELLIGENCE",
@@ -51417,7 +51441,8 @@
 				"disabler",
 				"initiator",
 				"support"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "STRENGTH",
@@ -51429,7 +51454,8 @@
 				"durable",
 				"initiator",
 				"nuker"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "INTELLIGENCE",
@@ -51440,7 +51466,8 @@
 				"carry",
 				"escape",
 				"nuker"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "AGILITY",
@@ -51453,7 +51480,8 @@
 				"nuker",
 				"pusher",
 				"support"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "AGILITY",
@@ -51466,7 +51494,8 @@
 				"durable",
 				"escape",
 				"initiator"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "STRENGTH",
@@ -51479,7 +51508,8 @@
 				"durable",
 				"initiator",
 				"support"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "INTELLIGENCE",
@@ -51491,7 +51521,8 @@
 				"disabler",
 				"nuker",
 				"pusher"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "AGILITY",
@@ -51501,7 +51532,8 @@
 			"roles": [
 				"carry",
 				"escape"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "INTELLIGENCE",
@@ -51511,7 +51543,8 @@
 			"roles": [
 				"nuker",
 				"pusher"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "AGILITY",
@@ -51521,7 +51554,8 @@
 			"roles": [
 				"carry",
 				"escape"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "AGILITY",
@@ -51533,7 +51567,8 @@
 				"disabler",
 				"durable",
 				"initiator"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "AGILITY",
@@ -51544,7 +51579,8 @@
 				"carry",
 				"nuker",
 				"pusher"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "STRENGTH",
@@ -51558,7 +51594,8 @@
 				"initiator",
 				"nuker",
 				"pusher"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "INTELLIGENCE",
@@ -51569,7 +51606,8 @@
 				"disabler",
 				"nuker",
 				"support"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "STRENGTH",
@@ -51581,7 +51619,8 @@
 				"durable",
 				"initiator",
 				"nuker"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "INTELLIGENCE",
@@ -51594,7 +51633,8 @@
 				"nuker",
 				"pusher",
 				"support"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "INTELLIGENCE",
@@ -51607,7 +51647,8 @@
 				"jungler",
 				"nuker",
 				"pusher"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "STRENGTH",
@@ -51620,7 +51661,8 @@
 				"durable",
 				"escape",
 				"jungler"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "INTELLIGENCE",
@@ -51632,7 +51674,8 @@
 				"escape",
 				"initiator",
 				"jungler"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "AGILITY",
@@ -51643,7 +51686,8 @@
 				"carry",
 				"escape",
 				"pusher"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "STRENGTH",
@@ -51654,7 +51698,8 @@
 				"durable",
 				"nuker",
 				"support"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "INTELLIGENCE",
@@ -51667,7 +51712,8 @@
 				"jungler",
 				"pusher",
 				"support"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "STRENGTH",
@@ -51678,7 +51724,8 @@
 				"carry",
 				"disabler",
 				"initiator"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "STRENGTH",
@@ -51691,7 +51738,8 @@
 				"durable",
 				"initiator",
 				"nuker"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "AGILITY",
@@ -51703,7 +51751,8 @@
 				"escape",
 				"nuker",
 				"pusher"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "AGILITY",
@@ -51713,7 +51762,8 @@
 			"roles": [
 				"escape",
 				"nuker"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "AGILITY",
@@ -51723,7 +51773,8 @@
 			"roles": [
 				"carry",
 				"escape"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "INTELLIGENCE",
@@ -51735,7 +51786,8 @@
 				"nuker",
 				"pusher",
 				"support"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "INTELLIGENCE",
@@ -51747,7 +51799,8 @@
 				"escape",
 				"initiator",
 				"jungler"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "INTELLIGENCE",
@@ -51758,7 +51811,8 @@
 				"jungler",
 				"pusher",
 				"support"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "AGILITY",
@@ -51769,7 +51823,8 @@
 				"carry",
 				"durable",
 				"escape"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "STRENGTH",
@@ -51782,7 +51837,8 @@
 				"durable",
 				"initiator",
 				"nuker"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "INTELLIGENCE",
@@ -51793,7 +51849,8 @@
 				"disabler",
 				"nuker",
 				"support"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "AGILITY",
@@ -51805,7 +51862,8 @@
 				"disabler",
 				"durable",
 				"jungler"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "STRENGTH",
@@ -51818,7 +51876,8 @@
 				"durable",
 				"escape",
 				"initiator"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "AGILITY",
@@ -51829,7 +51888,8 @@
 				"carry",
 				"disabler",
 				"nuker"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "STRENGTH",
@@ -51843,7 +51903,8 @@
 				"initiator",
 				"nuker",
 				"support"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "INTELLIGENCE",
@@ -51856,7 +51917,8 @@
 				"escape",
 				"nuker",
 				"pusher"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "INTELLIGENCE",
@@ -51869,7 +51931,8 @@
 				"initiator",
 				"nuker",
 				"support"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "INTELLIGENCE",
@@ -51880,7 +51943,8 @@
 				"carry",
 				"disabler",
 				"nuker"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "STRENGTH",
@@ -51893,7 +51957,8 @@
 				"escape",
 				"jungler",
 				"pusher"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "STRENGTH",
@@ -51904,7 +51969,8 @@
 				"disabler",
 				"initiator",
 				"nuker"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "INTELLIGENCE",
@@ -51916,7 +51982,8 @@
 				"initiator",
 				"nuker",
 				"support"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "AGILITY",
@@ -51928,7 +51995,8 @@
 				"durable",
 				"jungler",
 				"pusher"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "STRENGTH",
@@ -51941,7 +52009,8 @@
 				"durable",
 				"initiator",
 				"pusher"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "AGILITY",
@@ -51955,7 +52024,8 @@
 				"initiator",
 				"nuker",
 				"pusher"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "STRENGTH",
@@ -51968,7 +52038,8 @@
 				"escape",
 				"initiator",
 				"support"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "INTELLIGENCE",
@@ -51981,7 +52052,8 @@
 				"initiator",
 				"nuker",
 				"support"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "STRENGTH",
@@ -51993,7 +52065,8 @@
 				"durable",
 				"nuker",
 				"support"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "INTELLIGENCE",
@@ -52004,7 +52077,8 @@
 				"disabler",
 				"nuker",
 				"support"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "INTELLIGENCE",
@@ -52016,7 +52090,8 @@
 				"initiator",
 				"nuker",
 				"support"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "AGILITY",
@@ -52028,7 +52103,8 @@
 				"escape",
 				"initiator",
 				"nuker"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "AGILITY",
@@ -52042,7 +52118,8 @@
 				"initiator",
 				"pusher",
 				"support"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "INTELLIGENCE",
@@ -52054,7 +52131,8 @@
 				"jungler",
 				"nuker",
 				"support"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "STRENGTH",
@@ -52065,7 +52143,8 @@
 				"escape",
 				"nuker",
 				"support"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "INTELLIGENCE",
@@ -52078,7 +52157,8 @@
 				"nuker",
 				"pusher",
 				"support"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "AGILITY",
@@ -52090,7 +52170,8 @@
 				"disabler",
 				"escape",
 				"nuker"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "AGILITY",
@@ -52101,7 +52182,8 @@
 				"carry",
 				"disabler",
 				"durable"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "AGILITY",
@@ -52113,7 +52195,8 @@
 				"disabler",
 				"durable",
 				"pusher"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "STRENGTH",
@@ -52126,7 +52209,8 @@
 				"escape",
 				"initiator",
 				"nuker"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "STRENGTH",
@@ -52138,7 +52222,8 @@
 				"escape",
 				"initiator",
 				"nuker"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "STRENGTH",
@@ -52149,7 +52234,8 @@
 				"durable",
 				"escape",
 				"nuker"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "STRENGTH",
@@ -52161,7 +52247,8 @@
 				"durable",
 				"initiator",
 				"nuker"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "STRENGTH",
@@ -52172,7 +52259,8 @@
 				"disabler",
 				"initiator",
 				"nuker"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "INTELLIGENCE",
@@ -52183,7 +52271,8 @@
 				"disabler",
 				"nuker",
 				"support"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "STRENGTH",
@@ -52194,7 +52283,8 @@
 				"carry",
 				"durable",
 				"support"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "STRENGTH",
@@ -52206,7 +52296,8 @@
 				"durable",
 				"initiator",
 				"nuker"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "STRENGTH",
@@ -52219,7 +52310,8 @@
 				"durable",
 				"initiator",
 				"nuker"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "AGILITY",
@@ -52232,7 +52324,8 @@
 				"escape",
 				"initiator",
 				"nuker"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "STRENGTH",
@@ -52245,7 +52338,8 @@
 				"escape",
 				"initiator",
 				"nuker"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "AGILITY",
@@ -52256,7 +52350,8 @@
 				"carry",
 				"nuker",
 				"pusher"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "STRENGTH",
@@ -52269,7 +52364,8 @@
 				"initiator",
 				"nuker",
 				"support"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "INTELLIGENCE",
@@ -52281,7 +52377,8 @@
 				"escape",
 				"nuker",
 				"support"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "INTELLIGENCE",
@@ -52291,7 +52388,8 @@
 			"roles": [
 				"disabler",
 				"nuker"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "INTELLIGENCE",
@@ -52302,7 +52400,8 @@
 				"disabler",
 				"nuker",
 				"support"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "AGILITY",
@@ -52313,7 +52412,8 @@
 				"carry",
 				"escape",
 				"nuker"
-			]
+			],
+			"isActive": false
 		},
 		{
 			"attribute": "STRENGTH",
@@ -52326,7 +52426,8 @@
 				"escape",
 				"nuker",
 				"support"
-			]
+			],
+			"isActive": false
 		}
 	];
 
@@ -52345,21 +52446,25 @@
 	exports.UPDATE_FILTERS = exports.REMOVE_FILTERS = exports.FILTER_HEROES = exports.CLEAR_FILTERS = undefined;
 	exports.removeFilter = removeFilter;
 	exports.updateFilter = updateFilter;
-	
-	var _lodash = __webpack_require__(/*! lodash */ 206);
-	
-	var _ = _interopRequireWildcard(_lodash);
+	exports.clearFilters = clearFilters;
 	
 	var _ramda = __webpack_require__(/*! ramda */ 204);
 	
-	var R = _interopRequireWildcard(_ramda);
+	var _ramda2 = _interopRequireDefault(_ramda);
 	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var CLEAR_FILTERS = exports.CLEAR_FILTERS = 'CLEAR_FILTERS';
 	var FILTER_HEROES = exports.FILTER_HEROES = 'FILTER_HEROES';
 	var REMOVE_FILTERS = exports.REMOVE_FILTERS = 'REMOVE_FILTERS';
 	var UPDATE_FILTERS = exports.UPDATE_FILTERS = 'UPDATE_FILTERS';
+	
+	function _clearFilters() {
+	    return {
+	        type: CLEAR_FILTERS,
+	        activeFilters: []
+	    };
+	}
 	
 	function filterHeroes(state) {
 	    var _state$dota = state.dota2;
@@ -52368,33 +52473,19 @@
 	
 	
 	    var filterAll = function filterAll(hero) {
-	        var filtersInRoles = function filtersInRoles() {
-	            return _.intersection(hero.roles, activeFilters);
+	        var isFilterNotInRoles = function isFilterNotInRoles(filterable) {
+	            return !_ramda2.default.contains(filterable, hero.roles);
 	        };
-	        var hasFilters = function hasFilters() {
-	            return _.difference(activeFilters, filtersInRoles());
-	        };
+	        var filtersNotInRoles = _ramda2.default.filter(isFilterNotInRoles, activeFilters);
 	
-	        if (R.isEmpty(activeFilters)) {
-	            hero.isActive = false;
-	        } else {
-	            if (R.isEmpty(hasFilters())) hero.isActive = true;else if (hasFilters().length == 1) {
-	                hero.isActive = R.contains(hero.atkRange, hasFilters());
-	            } else {
-	                hero.isActive = false;
-	            }
-	        }
+	        hero.isActive = !_ramda2.default.isEmpty(activeFilters) && (_ramda2.default.isEmpty(filtersNotInRoles) || filtersNotInRoles.length == 1 && _ramda2.default.contains(hero.atkRange, filtersNotInRoles));
 	
 	        return hero;
 	    };
 	
-	    var filterHeroesByAttr = function filterHeroesByAttr(heroesByAttr) {
-	        return R.map(filterAll, heroesByAttr);
-	    };
-	
 	    return {
 	        type: FILTER_HEROES,
-	        heroes: R.map(filterHeroesByAttr, heroes)
+	        heroes: _ramda2.default.map(filterAll, heroes)
 	    };
 	}
 	
@@ -52425,6 +52516,12 @@
 	        dispatch(filterHeroes(getState()));
 	    };
 	}
+	
+	function clearFilters() {
+	    return function (dispatch) {
+	        return dispatch(_clearFilters());
+	    };
+	}
 
 /***/ },
 /* 211 */
@@ -52447,9 +52544,9 @@
 	
 	var _index = __webpack_require__(/*! react-flexbox-grid/lib/index */ 212);
 	
-	var _lodash = __webpack_require__(/*! lodash */ 206);
+	var _ramda = __webpack_require__(/*! ramda */ 204);
 	
-	var _ = _interopRequireWildcard(_lodash);
+	var _ramda2 = _interopRequireDefault(_ramda);
 	
 	var _reactRedux = __webpack_require__(/*! react-redux */ 187);
 	
@@ -52463,11 +52560,9 @@
 	
 	var _HeroesContainer2 = _interopRequireDefault(_HeroesContainer);
 	
-	var _FilterContainer = __webpack_require__(/*! ./FilterContainer */ 226);
+	var _FilterContainer = __webpack_require__(/*! ./FilterContainer */ 227);
 	
 	var _FilterContainer2 = _interopRequireDefault(_FilterContainer);
-	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -52500,30 +52595,30 @@
 	      return this.props.activeFilters.length > 0;
 	    }
 	  }, {
-	    key: 'renderHeroContainers',
-	    value: function renderHeroContainers() {
-	      var _this2 = this;
-	
-	      var heroes = this.props.heroes;
-	
-	      var heroesContainer = [];
-	      _.forOwn(heroes, function (heroesByAttributes, attr) {
-	        return heroesContainer.push(_react2.default.createElement(_HeroesContainer2.default, { key: attr, attr: attr, heroesByAttributes: heroesByAttributes, isFilterActive: _this2.isFilterActive }));
-	      });
-	      return heroesContainer;
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var isLoading = this.props.isLoading;
+	      var _props = this.props;
+	      var heroes = _props.heroes;
+	      var isLoading = _props.isLoading;
 	
+	      var isAttribute = function isAttribute(attribute) {
+	        return function (obj) {
+	          return obj.attribute === attribute;
+	        };
+	      };
 	
 	      return _react2.default.createElement(
 	        _index.Grid,
 	        null,
 	        isLoading && _react2.default.createElement(_Logo2.default, null),
-	        !isLoading && this.renderHeroContainers(),
-	        !isLoading && _react2.default.createElement(_FilterContainer2.default, this.props)
+	        _react2.default.createElement(
+	          'div',
+	          { style: { display: isLoading ? 'none' : '' } },
+	          _react2.default.createElement(_HeroesContainer2.default, { attr: 'STRENGTH', heroesByAttributes: _ramda2.default.filter(isAttribute('STRENGTH'), heroes), isFilterActive: this.isFilterActive }),
+	          _react2.default.createElement(_HeroesContainer2.default, { attr: 'AGILITY', heroesByAttributes: _ramda2.default.filter(isAttribute('AGILITY'), heroes), isFilterActive: this.isFilterActive }),
+	          _react2.default.createElement(_HeroesContainer2.default, { attr: 'INTELLIGENCE', heroesByAttributes: _ramda2.default.filter(isAttribute('INTELLIGENCE'), heroes), isFilterActive: this.isFilterActive }),
+	          _react2.default.createElement(_FilterContainer2.default, this.props)
+	        )
 	      );
 	    }
 	  }]);
@@ -52533,7 +52628,7 @@
 	
 	App.propTypes = {
 	  dispatch: _react.PropTypes.func.isRequired,
-	  heroes: _react.PropTypes.object.isRequired,
+	  heroes: _react.PropTypes.array.isRequired,
 	  isLoading: _react.PropTypes.bool.isRequired
 	};
 	
@@ -53377,7 +53472,7 @@
 	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
-		value: true
+	  value: true
 	});
 	
 	var _react = __webpack_require__(/*! react */ 2);
@@ -53387,7 +53482,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var Logo = function Logo() {
-		return _react2.default.createElement("img", { className: "centered", id: "logo", alt: "logo" });
+	  return _react2.default.createElement("img", { className: "centered", id: "logo", alt: "logo" });
 	};
 	
 	exports.default = Logo;
@@ -53417,11 +53512,15 @@
 	
 	var _reactFlexboxGrid = __webpack_require__(/*! react-flexbox-grid */ 212);
 	
-	var _Hero = __webpack_require__(/*! ../components/Hero */ 224);
+	var _BorderLeft = __webpack_require__(/*! ../components/BorderLeft */ 224);
+	
+	var _BorderLeft2 = _interopRequireDefault(_BorderLeft);
+	
+	var _Hero = __webpack_require__(/*! ../components/Hero */ 225);
 	
 	var _Hero2 = _interopRequireDefault(_Hero);
 	
-	var _VerticalText = __webpack_require__(/*! ../components/VerticalText */ 225);
+	var _VerticalText = __webpack_require__(/*! ../components/VerticalText */ 226);
 	
 	var _VerticalText2 = _interopRequireDefault(_VerticalText);
 	
@@ -53456,12 +53555,13 @@
 				return _react2.default.createElement(
 					_reactFlexboxGrid.Row,
 					{ className: 'attributeContainer' },
+					_react2.default.createElement('div', { id: 'borderLeft' }),
 					_react2.default.createElement(
 						_reactFlexboxGrid.Col,
 						{ xs: 1 },
 						_react2.default.createElement(
 							_reactFlexboxGrid.Col,
-							{ xsOffset: 8, xs: 4 },
+							{ xsOffset: 10, xs: 2 },
 							_react2.default.createElement(_VerticalText2.default, { attribute: attr })
 						)
 					),
@@ -53473,7 +53573,8 @@
 							{ start: 'xs' },
 							_react2.default.createElement(
 								_reactFlexboxGrid.Col,
-								{ xs: 12 },
+								{ xs: 12, className: 'heroes' },
+								_react2.default.createElement(_BorderLeft2.default, null),
 								_.map(heroesByAttributes, function (hero, index) {
 									return _react2.default.createElement(_Hero2.default, { key: index, hero: hero, isFilterActive: isFilterActive });
 								})
@@ -53491,12 +53592,37 @@
 	
 	
 	HeroesContainer.propTypes = {
-		heroesByAttributes: _react.PropTypes.array.isRequired,
+		heroesByAttributes: _react.PropTypes.array,
 		attr: _react.PropTypes.string.isRequired
 	};
 
 /***/ },
 /* 224 */
+/*!**************************************!*\
+  !*** ./src/components/BorderLeft.js ***!
+  \**************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(/*! react */ 2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var BorderLeft = function BorderLeft() {
+	  return _react2.default.createElement("div", { className: "borderLeft" });
+	};
+	
+	exports.default = BorderLeft;
+
+/***/ },
+/* 225 */
 /*!********************************!*\
   !*** ./src/components/Hero.js ***!
   \********************************/
@@ -53539,7 +53665,7 @@
 	exports.default = Hero;
 
 /***/ },
-/* 225 */
+/* 226 */
 /*!****************************************!*\
   !*** ./src/components/VerticalText.js ***!
   \****************************************/
@@ -53584,7 +53710,7 @@
 	exports.default = VerticalText;
 
 /***/ },
-/* 226 */
+/* 227 */
 /*!*******************************************!*\
   !*** ./src/containers/FilterContainer.js ***!
   \*******************************************/
@@ -53608,13 +53734,17 @@
 	
 	var _ramda = __webpack_require__(/*! ramda */ 204);
 	
-	var R = _interopRequireWildcard(_ramda);
+	var _ramda2 = _interopRequireDefault(_ramda);
 	
 	var _reactFlexboxGrid = __webpack_require__(/*! react-flexbox-grid */ 212);
 	
-	var _Filters = __webpack_require__(/*! ../constants/Filters */ 227);
+	var _Filters = __webpack_require__(/*! ../constants/Filters */ 228);
 	
-	var _Filters2 = __webpack_require__(/*! ../components/filters/Filters */ 228);
+	var _ClearFilter = __webpack_require__(/*! ../components/filters/ClearFilter */ 229);
+	
+	var _ClearFilter2 = _interopRequireDefault(_ClearFilter);
+	
+	var _Filters2 = __webpack_require__(/*! ../components/filters/Filters */ 230);
 	
 	var _Filters3 = _interopRequireDefault(_Filters2);
 	
@@ -53638,19 +53768,16 @@
 	
 	        var _this = _possibleConstructorReturn(this, (FiltersContainer.__proto__ || Object.getPrototypeOf(FiltersContainer)).call(this, props));
 	
-	        _this.toggleSubRoleRowStyle = function () {
-	            return R.isEmpty(_.intersection(_this.props.activeFilters, R.map(R.toLower, _Filters.SUB_ROLES))) ? { opacity: 0 } : { opacity: 1 };
-	        };
-	
 	        _this.isActiveFilter = _this.isActiveFilter.bind(_this);
 	        _this.onClickFilter = _this.onClickFilter.bind(_this);
+	        _this.onClickClear = _this.onClickClear.bind(_this);
 	        return _this;
 	    }
 	
 	    _createClass(FiltersContainer, [{
 	        key: 'isActiveFilter',
 	        value: function isActiveFilter(filterType) {
-	            return R.contains(filterType, this.props.activeFilters);
+	            return _ramda2.default.contains(filterType, this.props.activeFilters);
 	        }
 	    }, {
 	        key: 'onClickFilter',
@@ -53664,6 +53791,11 @@
 	            }
 	            this.toggleAtkRangeFilter(dispatch, filterType);
 	            return dispatch((0, _filters.updateFilter)(filterType, heroes));
+	        }
+	    }, {
+	        key: 'onClickClear',
+	        value: function onClickClear() {
+	            this.props.dispatch((0, _filters.clearFilters)());
 	        }
 	    }, {
 	        key: 'toggleAtkRangeFilter',
@@ -53680,12 +53812,21 @@
 	        value: function render() {
 	            var _this2 = this;
 	
+	            var subRolesToLower = _ramda2.default.map(_ramda2.default.toLower, _Filters.SUB_ROLES);
+	            var isSubRoleinActiveFilters = function isSubRoleinActiveFilters(subRole) {
+	                return _ramda2.default.contains(subRole, _this2.props.activeFilters);
+	            };
+	            var subRolesInActiveFilters = _ramda2.default.filter(isSubRoleinActiveFilters, subRolesToLower);
+	            var toggleSubRoleRowOpacity = function toggleSubRoleRowOpacity() {
+	                return _ramda2.default.isEmpty(subRolesInActiveFilters) ? { opacity: 0 } : { opacity: 1 };
+	            };
+	
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'filterContainer' },
 	                _react2.default.createElement(
 	                    _reactFlexboxGrid.Col,
-	                    { xs: 12, className: 'subRoles', style: this.toggleSubRoleRowStyle() },
+	                    { xs: 12, className: 'subRoles', style: toggleSubRoleRowOpacity() },
 	                    _react2.default.createElement(
 	                        _reactFlexboxGrid.Row,
 	                        { between: 'xs' },
@@ -53724,7 +53865,8 @@
 	                            )
 	                        )
 	                    )
-	                )
+	                ),
+	                !_ramda2.default.isEmpty(this.props.activeFilters) && _react2.default.createElement(_ClearFilter2.default, { onClickClear: this.onClickClear })
 	            );
 	        }
 	    }]);
@@ -53741,7 +53883,7 @@
 	};
 
 /***/ },
-/* 227 */
+/* 228 */
 /*!**********************************!*\
   !*** ./src/constants/Filters.js ***!
   \**********************************/
@@ -53759,7 +53901,44 @@
 	var SUB_ROLES = exports.SUB_ROLES = ["Disabler", "Durable", "Escape", "Initiator", "Jungler", "Nuker", "Pusher"];
 
 /***/ },
-/* 228 */
+/* 229 */
+/*!***********************************************!*\
+  !*** ./src/components/filters/ClearFilter.js ***!
+  \***********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _react = __webpack_require__(/*! react */ 2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var ClearFilter = function ClearFilter(_ref) {
+	    var onClickClear = _ref.onClickClear;
+	
+	    return _react2.default.createElement(
+	        "div",
+	        { className: "clearFilter", onClick: onClickClear },
+	        _react2.default.createElement("i", { className: "fa fa-times-circle-o fa-lg", "aria-hidden": "true" }),
+	        _react2.default.createElement("br", null),
+	        _react2.default.createElement(
+	            "span",
+	            { className: "subRoleTxt activeText" },
+	            "CLEAR"
+	        )
+	    );
+	};
+	
+	exports.default = ClearFilter;
+
+/***/ },
+/* 230 */
 /*!*******************************************!*\
   !*** ./src/components/filters/Filters.js ***!
   \*******************************************/
