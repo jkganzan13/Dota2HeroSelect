@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { Grid } from 'react-flexbox-grid/lib/index'
-import * as _ from 'lodash'
+import R from 'ramda'
 import { connect } from 'react-redux'
 import { fetchHeroes } from '../actions'
 
@@ -24,14 +24,15 @@ class App extends Component {
 
   render() {
     const { heroes, isLoading } = this.props;
-  	
+    const isAttribute = attribute => obj => obj.attribute === attribute;
+
     return (
       <Grid>
       	{isLoading && <Logo />}
         <div style={{ display: (isLoading) ? 'none' : ''}}>
-          <HeroesContainer attr={'STRENGTH'} heroesByAttributes={heroes['STRENGTH']} isFilterActive={this.isFilterActive} />
-          <HeroesContainer attr={'AGILITY'} heroesByAttributes={heroes['AGILITY']} isFilterActive={this.isFilterActive} />
-          <HeroesContainer attr={'INTELLIGENCE'} heroesByAttributes={heroes['INTELLIGENCE']} isFilterActive={this.isFilterActive} />
+          <HeroesContainer attr={'STRENGTH'} heroesByAttributes={R.filter(isAttribute('STRENGTH'), heroes)} isFilterActive={this.isFilterActive} />
+          <HeroesContainer attr={'AGILITY'} heroesByAttributes={R.filter(isAttribute('AGILITY'), heroes)} isFilterActive={this.isFilterActive} />
+          <HeroesContainer attr={'INTELLIGENCE'} heroesByAttributes={R.filter(isAttribute('INTELLIGENCE'), heroes)} isFilterActive={this.isFilterActive} />
           <FilterContainer {...this.props} />
         </div>
       </Grid>
@@ -41,7 +42,7 @@ class App extends Component {
 
 App.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  heroes: PropTypes.object.isRequired,
+  heroes: PropTypes.array.isRequired,
   isLoading: PropTypes.bool.isRequired
 };
 

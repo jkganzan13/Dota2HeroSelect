@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import * as _ from 'lodash';
-import * as R from 'ramda';
+import R from 'ramda';
 import { Col, Row } from 'react-flexbox-grid';
 
 import { ATK_RANGE, MAIN_ROLES, SUB_ROLES } from '../constants/Filters';
@@ -44,12 +44,15 @@ export default class FiltersContainer extends Component {
         }
     }
 
-    toggleSubRoleRowStyle = () => R.isEmpty(_.intersection(this.props.activeFilters, R.map(R.toLower, SUB_ROLES))) ? { opacity: 0 } : { opacity: 1 };
-
 	render() {
+        const subRolesToLower = R.map(R.toLower, SUB_ROLES);
+	    const isSubRoleinActiveFilters = subRole => R.contains(subRole, this.props.activeFilters);
+	    const subRolesInActiveFilters = R.filter(isSubRoleinActiveFilters, subRolesToLower);
+	    const toggleSubRoleRowOpacity = () => R.isEmpty(subRolesInActiveFilters) ? { opacity: 0 } : { opacity: 1 };
+
 		return (
 			<div className="filterContainer">
-                <Col xs={12} className="subRoles" style={this.toggleSubRoleRowStyle()}>
+                <Col xs={12} className="subRoles" style={toggleSubRoleRowOpacity()}>
                     <Row between="xs">
                         {_.map(SUB_ROLES, (role, index) =>
                             <Filters key={index} filterClasses={"subRoleTxt filters "} isActiveFilter={this.isActiveFilter} onClickFilter={this.onClickFilter} role={role} />

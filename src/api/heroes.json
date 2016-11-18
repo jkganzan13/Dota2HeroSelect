@@ -3,671 +3,783 @@
     "id" : 1,
     "name" : "antimage",
     "atkRange" : "melee",
-    "roles" : ["carry", "escape", "nuker"]
+    "roles" : ["carry", "escape", "nuker"],
+    "isActive" : false
   }, {
     "attribute" : "STRENGTH",
     "id" : 2,
     "name" : "axe",
     "atkRange" : "melee",
-    "roles" : ["durable", "disabler", "initiator", "jungler"]
+    "roles" : ["durable", "disabler", "initiator", "jungler"],
+    "isActive" : false
   }, {
     "attribute" : "INTELLIGENCE",
     "id" : 3,
     "name" : "bane",
     "atkRange" : "ranged",
-    "roles" : ["disabler", "durable", "nuker", "support"]
+    "roles" : ["disabler", "durable", "nuker", "support"],
+    "isActive" : false
   }, {
     "attribute" : "AGILITY",
     "id" : 4,
     "name" : "bloodseeker",
     "atkRange" : "melee",
-    "roles" : ["carry", "disabler", "initiator", "jungler", "nuker"]
+    "roles" : ["carry", "disabler", "initiator", "jungler", "nuker"],
+    "isActive" : false
   }, {
     "attribute" : "INTELLIGENCE",
     "id" : 5,
     "name" : "crystal_maiden",
     "atkRange" : "ranged",
-    "roles" : ["disabler", "jungler", "nuker", "support"]
+    "roles" : ["disabler", "jungler", "nuker", "support"],
+    "isActive" : false
   }, {
     "attribute" : "AGILITY",
     "id" : 6,
     "name" : "drow_ranger",
     "atkRange" : "ranged",
-    "roles" : ["carry", "disabler", "pusher"]
+    "roles" : ["carry", "disabler", "pusher"],
+    "isActive" : false
   }, {
     "attribute" : "STRENGTH",
     "id" : 7,
     "name" : "earthshaker",
     "atkRange" : "melee",
-    "roles" : ["disabler", "initiator", "nuker", "support"]
+    "roles" : ["disabler", "initiator", "nuker", "support"],
+    "isActive" : false
   }, {
     "attribute" : "AGILITY",
     "id" : 8,
     "name" : "juggernaut",
     "atkRange" : "melee",
-    "roles" : ["carry", "escape", "pusher"]
+    "roles" : ["carry", "escape", "pusher"],
+    "isActive" : false
   }, {
     "attribute" : "AGILITY",
     "id" : 9,
     "name" : "mirana",
     "atkRange" : "ranged",
-    "roles" : ["carry", "disabler", "escape", "nuker", "support"]
+    "roles" : ["carry", "disabler", "escape", "nuker", "support"],
+    "isActive" : false
   }, {
     "attribute" : "AGILITY",
     "id" : 11,
     "name" : "nevermore",
     "atkRange" : "ranged",
-    "roles" : ["carry", "nuker"]
+    "roles" : ["carry", "nuker"],
+    "isActive" : false
   }, {
     "attribute" : "AGILITY",
     "id" : 10,
     "name" : "morphling",
     "atkRange" : "ranged",
-    "roles" : ["carry", "disabler", "durable", "escape", "nuker"]
+    "roles" : ["carry", "disabler", "durable", "escape", "nuker"],
+    "isActive" : false
   }, {
     "attribute" : "AGILITY",
     "id" : 12,
     "name" : "phantom_lancer",
     "atkRange" : "melee",
-    "roles" : ["carry" ,"escape", "nuker", "pusher"]
+    "roles" : ["carry" ,"escape", "nuker", "pusher"],
+    "isActive" : false
   }, {
     "attribute" : "INTELLIGENCE",
     "id" : 13,
     "name" : "puck",
     "atkRange" : "ranged",
-    "roles" : ["disabler", "nuker", "initiator", "nuker"]
+    "roles" : ["disabler", "nuker", "initiator", "nuker"],
+    "isActive" : false
   }, {
     "attribute" : "STRENGTH",
     "id" : 14,
     "name" : "pudge",
     "atkRange" : "melee",
-    "roles" : ["disabler", "durable", "initiator", "nuker"]
+    "roles" : ["disabler", "durable", "initiator", "nuker"],
+    "isActive" : false
   }, {
     "attribute" : "AGILITY",
     "id" : 15,
     "name" : "razor",
     "atkRange" : "ranged",
-    "roles" : ["carry", "durable", "nuker", "pusher"]
+    "roles" : ["carry", "durable", "nuker", "pusher"],
+    "isActive" : false
   }, {
     "attribute" : "STRENGTH",
     "id" : 16,
     "name" : "sand_king",
     "atkRange" : "melee",
-    "roles" : ["disabler", "escape", "initiator", "jungler", "nuker"]
+    "roles" : ["disabler", "escape", "initiator", "jungler", "nuker"],
+    "isActive" : false
   }, {
     "attribute" : "INTELLIGENCE",
     "id" : 17,
     "name" : "storm_spirit",
     "atkRange" : "ranged",
-    "roles" : ["carry" , "disabler", "escape", "initiator", "disabler"]
+    "roles" : ["carry" , "disabler", "escape", "initiator", "disabler"],
+    "isActive" : false
   }, {
     "attribute" : "STRENGTH",
     "id" : 18,
     "name" : "sven",
     "atkRange" : "melee",
-    "roles" : ["carry", "disabler", "durable", "initiator", "nuker"]
+    "roles" : ["carry", "disabler", "durable", "initiator", "nuker"],
+    "isActive" : false
   }, {
     "attribute" : "STRENGTH",
     "id" : 19,
     "name" : "tiny",
     "atkRange" : "melee",
-    "roles" : ["carry", "disabler", "durable", "initiator", "nuker", "pusher"]
+    "roles" : ["carry", "disabler", "durable", "initiator", "nuker", "pusher"],
+    "isActive" : false
   }, {
     "attribute" : "AGILITY",
     "id" : 20,
     "name" : "vengefulspirit",
     "atkRange" : "ranged",
-    "roles" : ["disabler", "escape", "initiator", "nuker", "support"]
+    "roles" : ["disabler", "escape", "initiator", "nuker", "support"],
+    "isActive" : false
   }, {
     "attribute" : "INTELLIGENCE",
     "id" : 21,
     "name" : "windrunner",
     "atkRange" : "ranged",
-    "roles" : ["carry", "disabler", "escape", "nuker", "support"]
+    "roles" : ["carry", "disabler", "escape", "nuker", "support"],
+    "isActive" : false
   }, {
     "attribute" : "INTELLIGENCE",
     "id" : 22,
     "name" : "zuus",
     "atkRange" : "ranged",
-    "roles" : ["nuker"]
+    "roles" : ["nuker"],
+    "isActive" : false
   }, {
     "attribute" : "STRENGTH",
     "id" : 23,
     "name" : "kunkka",
     "atkRange" : "melee",
-    "roles" : ["carry", "disabler", "durable", "initiator", "nuker"]
+    "roles" : ["carry", "disabler", "durable", "initiator", "nuker"],
+    "isActive" : false
   }, {
     "attribute" : "INTELLIGENCE",
     "id" : 25,
     "name" : "lina",
     "atkRange" : "ranged",
-    "roles" : ["carry", "disabler", "nuker", "support"]
+    "roles" : ["carry", "disabler", "nuker", "support"],
+    "isActive" : false
   }, {
     "attribute" : "INTELLIGENCE",
     "id" : 31,
     "name" : "lich",
     "atkRange" : "ranged",
-    "roles" : ["nuker", "support"]
+    "roles" : ["nuker", "support"],
+    "isActive" : false
   }, {
     "attribute" : "INTELLIGENCE",
     "id" : 26,
     "name" : "lion",
     "atkRange" : "ranged",
-    "roles" : ["disabler", "initiator", "nuker", "support"]
+    "roles" : ["disabler", "initiator", "nuker", "support"],
+    "isActive" : false
   }, {
     "attribute" : "INTELLIGENCE",
     "id" : 27,
     "name" : "shadow_shaman",
     "atkRange" : "ranged",
-    "roles" : ["disabler", "initiator", "nuker", "pusher", "support"]
+    "roles" : ["disabler", "initiator", "nuker", "pusher", "support"],
+    "isActive" : false
   }, {
     "attribute" : "STRENGTH",
     "id" : 28,
     "name" : "slardar",
     "atkRange" : "melee",
-    "roles" : ["carry", "disabler", "durable", "escape", "initiator"]
+    "roles" : ["carry", "disabler", "durable", "escape", "initiator"],
+    "isActive" : false
   }, {
     "attribute" : "STRENGTH",
     "id" : 29,
     "name" : "tidehunter",
     "atkRange" : "melee",
-    "roles" : ["disabler", "durable", "initiator", "nuker"]
+    "roles" : ["disabler", "durable", "initiator", "nuker"],
+    "isActive" : false
   }, {
     "attribute" : "INTELLIGENCE",
     "id" : 30,
     "name" : "witch_doctor",
     "atkRange" : "ranged",
-    "roles" : ["disabler", "nuker", "support"]
+    "roles" : ["disabler", "nuker", "support"],
+    "isActive" : false
   }, {
     "attribute" : "AGILITY",
     "id" : 32,
     "name" : "riki",
     "atkRange" : "melee",
-    "roles" : ["carry", "disabler", "escape"]
+    "roles" : ["carry", "disabler", "escape"],
+    "isActive" : false
   }, {
     "attribute" : "INTELLIGENCE",
     "id" : 33,
     "name" : "enigma",
     "atkRange" : "ranged",
-    "roles" : ["disabler", "initiator", "jungler", "pusher"]
+    "roles" : ["disabler", "initiator", "jungler", "pusher"],
+    "isActive" : false
   }, {
     "attribute" : "INTELLIGENCE",
     "id" : 34,
     "name" : "tinker",
     "atkRange" : "ranged",
-    "roles" : ["carry", "nuker", "pusher"]
+    "roles" : ["carry", "nuker", "pusher"],
+    "isActive" : false
   }, {
     "attribute" : "AGILITY",
     "id" : 35,
     "name" : "sniper",
     "atkRange" : "ranged",
-    "roles" : ["carry", "nuker"]
+    "roles" : ["carry", "nuker"],
+    "isActive" : false
   }, {
     "attribute" : "INTELLIGENCE",
     "id" : 36,
     "name" : "necrolyte",
     "atkRange" : "ranged",
-    "roles" : ["carry", "disabler", "disabler", "nuker"]
+    "roles" : ["carry", "disabler", "disabler", "nuker"],
+    "isActive" : false
   }, {
     "attribute" : "INTELLIGENCE",
     "id" : 37,
     "name" : "warlock",
     "atkRange" : "ranged",
-    "roles" : ["disabler", "initiator", "support"]
+    "roles" : ["disabler", "initiator", "support"],
+    "isActive" : false
   }, {
     "attribute" : "STRENGTH",
     "id" : 38,
     "name" : "beastmaster",
     "atkRange" : "melee",
-    "roles" : ["disabler", "durable", "initiator", "nuker"]
+    "roles" : ["disabler", "durable", "initiator", "nuker"],
+    "isActive" : false
   }, {
     "attribute" : "INTELLIGENCE",
     "id" : 39,
     "name" : "queenofpain",
     "atkRange" : "ranged",
-    "roles" : ["carry", "escape", "nuker"]
+    "roles" : ["carry", "escape", "nuker"],
+    "isActive" : false
   }, {
     "attribute" : "AGILITY",
     "id" : 40,
     "name" : "venomancer",
     "atkRange" : "ranged",
-    "roles" : ["disabler", "initiator", "nuker", "pusher", "support"]
+    "roles" : ["disabler", "initiator", "nuker", "pusher", "support"],
+    "isActive" : false
   }, {
     "attribute" : "AGILITY",
     "id" : 41,
     "name" : "faceless_void",
     "atkRange" : "melee",
-    "roles" : ["carry", "disabler", "durable", "escape", "initiator"]
+    "roles" : ["carry", "disabler", "durable", "escape", "initiator"],
+    "isActive" : false
   }, {
     "attribute" : "STRENGTH",
     "id" : 42,
     "name" : "skeleton_king",
     "atkRange" : "melee",
-    "roles" : ["carry", "disabler", "durable", "initiator", "support"]
+    "roles" : ["carry", "disabler", "durable", "initiator", "support"],
+    "isActive" : false
   }, {
     "attribute" : "INTELLIGENCE",
     "id" : 43,
     "name" : "death_prophet",
     "atkRange" : "ranged",
-    "roles" : ["carry", "disabler", "nuker", "pusher"]
+    "roles" : ["carry", "disabler", "nuker", "pusher"],
+    "isActive" : false
   }, {
     "attribute" : "AGILITY",
     "id" : 44,
     "name" : "phantom_assassin",
     "atkRange" : "melee",
-    "roles" : ["carry", "escape"]
+    "roles" : ["carry", "escape"],
+    "isActive" : false
   }, {
     "attribute" : "INTELLIGENCE",
     "id" : 45,
     "name" : "pugna",
     "atkRange" : "ranged",
-    "roles" : ["nuker", "pusher"]
+    "roles" : ["nuker", "pusher"],
+    "isActive" : false
   }, {
     "attribute" : "AGILITY",
     "id" : 46,
     "name" : "templar_assassin",
     "atkRange" : "ranged",
-    "roles" : ["carry", "escape"]
+    "roles" : ["carry", "escape"],
+    "isActive" : false
   }, {
     "attribute" : "AGILITY",
     "id" : 47,
     "name" : "viper",
     "atkRange" : "ranged",
-    "roles" : ["carry", "disabler", "durable", "initiator"]
+    "roles" : ["carry", "disabler", "durable", "initiator"],
+    "isActive" : false
   }, {
     "attribute" : "AGILITY",
     "id" : 48,
     "name" : "luna",
     "atkRange" : "ranged",
-    "roles" : ["carry", "nuker", "pusher"]
+    "roles" : ["carry", "nuker", "pusher"],
+    "isActive" : false
   }, {
     "attribute" : "STRENGTH",
     "id" : 49,
     "name" : "dragon_knight",
     "atkRange" : "melee",
-    "roles" : ["carry", "disabler", "durable", "initiator", "nuker", "pusher"]
+    "roles" : ["carry", "disabler", "durable", "initiator", "nuker", "pusher"],
+    "isActive" : false
   }, {
     "attribute" : "INTELLIGENCE",
     "id" : 50,
     "name" : "dazzle",
     "atkRange" : "ranged",
-    "roles" : ["disabler", "nuker", "support"]
+    "roles" : ["disabler", "nuker", "support"],
+    "isActive" : false
   }, {
     "attribute" : "STRENGTH",
     "id" : 51,
     "name" : "rattletrap",
     "atkRange" : "melee",
-    "roles" : ["disabler", "durable", "initiator", "nuker"]
+    "roles" : ["disabler", "durable", "initiator", "nuker"],
+    "isActive" : false
   }, {
     "attribute" : "INTELLIGENCE",
     "id" : 52,
     "name" : "leshrac",
     "atkRange" : "ranged",
-    "roles" : ["carry", "disabler", "nuker", "pusher", "support"]
+    "roles" : ["carry", "disabler", "nuker", "pusher", "support"],
+    "isActive" : false
   }, {
     "attribute" : "INTELLIGENCE",
     "id" : 53,
     "name" : "furion",
     "atkRange" : "ranged",
-    "roles" : ["carry", "escape", "jungler", "nuker", "pusher"]
+    "roles" : ["carry", "escape", "jungler", "nuker", "pusher"],
+    "isActive" : false
   }, {
     "attribute" : "STRENGTH",
     "id" : 54,
     "name" : "life_stealer",
     "atkRange" : "melee",
-    "roles" : ["carry", "disabler", "durable", "escape", "jungler"]
+    "roles" : ["carry", "disabler", "durable", "escape", "jungler"],
+    "isActive" : false
   }, {
     "attribute" : "INTELLIGENCE",
     "id" : 55,
     "name" : "dark_seer",
     "atkRange" : "melee",
-    "roles" : ["disabler", "escape", "initiator", "jungler"]
+    "roles" : ["disabler", "escape", "initiator", "jungler"],
+    "isActive" : false
   }, {
     "attribute" : "AGILITY",
     "id" : 56,
     "name" : "clinkz",
     "atkRange" : "ranged",
-    "roles" : ["carry", "escape", "pusher"]
+    "roles" : ["carry", "escape", "pusher"],
+    "isActive" : false
   }, {
     "attribute" : "STRENGTH",
     "id" : 57,
     "name" : "omniknight",
     "atkRange" : "melee",
-    "roles" : ["durable", "nuker", "support"]
+    "roles" : ["durable", "nuker", "support"],
+    "isActive" : false
   }, {
     "attribute" : "INTELLIGENCE",
     "id" : 58,
     "name" : "enchantress",
     "atkRange" : "ranged",
-    "roles" : ["disabler", "durable", "jungler", "pusher", "support"]
+    "roles" : ["disabler", "durable", "jungler", "pusher", "support"],
+    "isActive" : false
   }, {
     "attribute" : "STRENGTH",
     "id" : 59,
     "name" : "huskar",
     "atkRange" : "ranged",
-    "roles" : ["carry", "disabler", "initiator"]
+    "roles" : ["carry", "disabler", "initiator"],
+    "isActive" : false
   }, {
     "attribute" : "STRENGTH",
     "id" : 60,
     "name" : "night_stalker",
     "atkRange" : "melee",
-    "roles" : ["carry", "disabler", "durable", "initiator", "nuker"]
+    "roles" : ["carry", "disabler", "durable", "initiator", "nuker"],
+    "isActive" : false
   }, {
     "attribute" : "AGILITY",
     "id" : 61,
     "name" : "broodmother",
     "atkRange" : "melee",
-    "roles" : ["carry", "escape", "nuker", "pusher"]
+    "roles" : ["carry", "escape", "nuker", "pusher"],
+    "isActive" : false
   }, {
     "attribute" : "AGILITY",
     "id" : 62,
     "name" : "bounty_hunter",
     "atkRange" : "melee",
-    "roles" : ["escape", "nuker"]
+    "roles" : ["escape", "nuker"],
+    "isActive" : false
   }, {
     "attribute" : "AGILITY",
     "id" : 63,
     "name" : "weaver",
     "atkRange" : "ranged",
-    "roles" : ["carry", "escape"]
+    "roles" : ["carry", "escape"],
+    "isActive" : false
   }, {
     "attribute" : "INTELLIGENCE",
     "id" : 64,
     "name" : "jakiro",
     "atkRange" : "ranged",
-    "roles" : ["disabler", "nuker", "pusher", "support"]
+    "roles" : ["disabler", "nuker", "pusher", "support"],
+    "isActive" : false
   }, {
     "attribute" : "INTELLIGENCE",
     "id" : 65,
     "name" : "batrider",
     "atkRange" : "ranged",
-    "roles" : ["disabler", "escape", "initiator", "jungler"]
+    "roles" : ["disabler", "escape", "initiator", "jungler"],
+    "isActive" : false
   }, {
     "attribute" : "INTELLIGENCE",
     "id" : 66,
     "name" : "chen",
     "atkRange" : "ranged",
-    "roles" : ["jungler", "pusher", "support"]
+    "roles" : ["jungler", "pusher", "support"],
+    "isActive" : false
   }, {
     "attribute" : "AGILITY",
     "id" : 67,
     "name" : "spectre",
     "atkRange" : "melee",
-    "roles" : ["carry", "durable", "escape"]
+    "roles" : ["carry", "durable", "escape"],
+    "isActive" : false
   }, {
     "attribute" : "STRENGTH",
     "id" : 69,
     "name" : "doom_bringer",
     "atkRange" : "melee",
-    "roles" : ["carry", "disabler", "durable", "initiator", "nuker"]
+    "roles" : ["carry", "disabler", "durable", "initiator", "nuker"],
+    "isActive" : false
   }, {
     "attribute" : "INTELLIGENCE",
     "id" : 68,
     "name" : "ancient_apparition",
     "atkRange" : "ranged",
-    "roles" : ["disabler", "nuker", "support"]
+    "roles" : ["disabler", "nuker", "support"],
+    "isActive" : false
   }, {
     "attribute" : "AGILITY",
     "id" : 70,
     "name" : "ursa",
     "atkRange" : "melee",
-    "roles" : ["carry", "disabler", "durable", "jungler"]
+    "roles" : ["carry", "disabler", "durable", "jungler"],
+    "isActive" : false
   }, {
     "attribute" : "STRENGTH",
     "id" : 71,
     "name" : "spirit_breaker",
     "atkRange" : "melee",
-    "roles" : ["carry", "disabler", "durable", "escape", "initiator"]
+    "roles" : ["carry", "disabler", "durable", "escape", "initiator"],
+    "isActive" : false
   }, {
     "attribute" : "AGILITY",
     "id" : 72,
     "name" : "gyrocopter",
     "atkRange" : "ranged",
-    "roles" : ["carry", "disabler", "nuker"]
+    "roles" : ["carry", "disabler", "nuker"],
+    "isActive" : false
   }, {
     "attribute" : "STRENGTH",
     "id" : 73,
     "name" : "alchemist",
     "atkRange" : "melee",
-    "roles" : ["carry", "disabler", "durable", "initiator", "nuker", "support"]
+    "roles" : ["carry", "disabler", "durable", "initiator", "nuker", "support"],
+    "isActive" : false
   }, {
     "attribute" : "INTELLIGENCE",
     "id" : 74,
     "name" : "invoker",
     "atkRange" : "ranged",
-    "roles" : ["carry", "disabler", "escape", "nuker", "pusher"]
+    "roles" : ["carry", "disabler", "escape", "nuker", "pusher"],
+    "isActive" : false
   }, {
     "attribute" : "INTELLIGENCE",
     "id" : 75,
     "name" : "silencer",
     "atkRange" : "ranged",
-    "roles" : ["carry", "disabler", "initiator", "nuker", "support"]
+    "roles" : ["carry", "disabler", "initiator", "nuker", "support"],
+    "isActive" : false
   }, {
     "attribute" : "INTELLIGENCE",
     "id" : 76,
     "name" : "obsidian_destroyer",
     "atkRange" : "ranged",
-    "roles" : ["carry", "disabler", "nuker"]
+    "roles" : ["carry", "disabler", "nuker"],
+    "isActive" : false
   }, {
     "attribute" : "STRENGTH",
     "id" : 77,
     "name" : "lycan",
     "atkRange" : "melee",
-    "roles" : ["carry", "durable", "escape", "jungler", "pusher"]
+    "roles" : ["carry", "durable", "escape", "jungler", "pusher"],
+    "isActive" : false
   }, {
     "attribute" : "STRENGTH",
     "id" : 78,
     "name" : "brewmaster",
     "atkRange" : "melee",
-    "roles" : ["disabler", "initiator", "nuker"]
+    "roles" : ["disabler", "initiator", "nuker"],
+    "isActive" : false
   }, {
     "attribute" : "INTELLIGENCE",
     "id" : 79,
     "name" : "shadow_demon",
     "atkRange" : "ranged",
-    "roles" : ["disabler", "initiator", "nuker", "support"]
+    "roles" : ["disabler", "initiator", "nuker", "support"],
+    "isActive" : false
   }, {
     "attribute" : "AGILITY",
     "id" : 80,
     "name" : "lone_druid",
     "atkRange" : "ranged",
-    "roles" : ["carry", "durable", "jungler", "pusher"]
+    "roles" : ["carry", "durable", "jungler", "pusher"],
+    "isActive" : false
   }, {
     "attribute" : "STRENGTH",
     "id" : 81,
     "name" : "chaos_knight",
     "atkRange" : "melee",
-    "roles" : ["carry", "disabler", "durable", "initiator", "pusher"]
+    "roles" : ["carry", "disabler", "durable", "initiator", "pusher"],
+    "isActive" : false
   }, {
     "attribute" : "AGILITY",
     "id" : 82,
     "name" : "meepo",
     "atkRange" : "melee",
-    "roles" : ["carry", "disabler", "escape", "initiator", "nuker", "pusher"]
+    "roles" : ["carry", "disabler", "escape", "initiator", "nuker", "pusher"],
+    "isActive" : false
   }, {
     "attribute" : "STRENGTH",
     "id" : 83,
     "name" : "treant",
     "atkRange" : "melee",
-    "roles" : ["disabler", "durable", "escape", "initiator", "support"]
+    "roles" : ["disabler", "durable", "escape", "initiator", "support"],
+    "isActive" : false
   }, {
     "attribute" : "INTELLIGENCE",
     "id" : 84,
     "name" : "ogre_magi",
     "atkRange" : "melee",
-    "roles" : ["disabler", "durable", "initiator", "nuker", "support"]
+    "roles" : ["disabler", "durable", "initiator", "nuker", "support"],
+    "isActive" : false
   }, {
     "attribute" : "STRENGTH",
     "id" : 85,
     "name" : "undying",
     "atkRange" : "melee",
-    "roles" : ["disabler", "durable", "nuker", "support"]
+    "roles" : ["disabler", "durable", "nuker", "support"],
+    "isActive" : false
   }, {
     "attribute" : "INTELLIGENCE",
     "id" : 86,
     "name" : "rubick",
     "atkRange" : "ranged",
-    "roles" : ["disabler", "nuker", "support"]
+    "roles" : ["disabler", "nuker", "support"],
+    "isActive" : false
   }, {
     "attribute" : "INTELLIGENCE",
     "id" : 87,
     "name" : "disruptor",
     "atkRange" : "ranged",
-    "roles" : ["disabler", "initiator", "nuker", "support"]
+    "roles" : ["disabler", "initiator", "nuker", "support"],
+    "isActive" : false
   }, {
     "attribute" : "AGILITY",
     "id" : 88,
     "name" : "nyx_assassin",
     "atkRange" : "melee",
-    "roles" : ["disabler", "escape", "initiator", "nuker"]
+    "roles" : ["disabler", "escape", "initiator", "nuker"],
+    "isActive" : false
   }, {
     "attribute" : "AGILITY",
     "id" : 89,
     "name" : "naga_siren",
     "atkRange" : "melee",
-    "roles" : ["carry", "disabler", "escape", "initiator", "pusher", "support"]
+    "roles" : ["carry", "disabler", "escape", "initiator", "pusher", "support"],
+    "isActive" : false
   }, {
     "attribute" : "INTELLIGENCE",
     "id" : 90,
     "name" : "keeper_of_the_light",
     "atkRange" : "ranged",
-    "roles" : ["disabler", "jungler", "nuker", "support"]
+    "roles" : ["disabler", "jungler", "nuker", "support"],
+    "isActive" : false
   }, {
     "attribute" : "STRENGTH",
     "id" : 91,
     "name" : "wisp",
     "atkRange" : "ranged",
-    "roles" : ["escape", "nuker", "support"]
+    "roles" : ["escape", "nuker", "support"],
+    "isActive" : false
   }, {
     "attribute" : "INTELLIGENCE",
     "id" : 92,
     "name" : "visage",
     "atkRange" : "ranged",
-    "roles" : ["disabler", "durable", "nuker", "pusher", "support"]
+    "roles" : ["disabler", "durable", "nuker", "pusher", "support"],
+    "isActive" : false
   }, {
     "attribute" : "AGILITY",
     "id" : 93,
     "name" : "slark",
     "atkRange" : "melee",
-    "roles" : ["carry", "disabler", "escape", "nuker"]
+    "roles" : ["carry", "disabler", "escape", "nuker"],
+    "isActive" : false
   }, {
     "attribute" : "AGILITY",
     "id" : 94,
     "name" : "medusa",
     "atkRange" : "ranged",
-    "roles" : ["carry", "disabler", "durable"]
+    "roles" : ["carry", "disabler", "durable"],
+    "isActive" : false
   }, {
     "attribute" : "AGILITY",
     "id" : 95,
     "name" : "troll_warlord",
     "atkRange" : "ranged",
-    "roles" : ["carry", "disabler", "durable", "pusher"]
+    "roles" : ["carry", "disabler", "durable", "pusher"],
+    "isActive" : false
   }, {
     "attribute" : "STRENGTH",
     "id" : 96,
     "name" : "centaur",
     "atkRange" : "melee",
-    "roles" : ["disabler", "durable", "escape", "initiator", "nuker"]
+    "roles" : ["disabler", "durable", "escape", "initiator", "nuker"],
+    "isActive" : false
   }, {
     "attribute" : "STRENGTH",
     "id" : 97,
     "name" : "magnataur",
     "atkRange" : "melee",
-    "roles" : ["disabler", "escape", "initiator", "nuker"]
+    "roles" : ["disabler", "escape", "initiator", "nuker"],
+    "isActive" : false
   }, {
     "attribute" : "STRENGTH",
     "id" : 98,
     "name" : "shredder",
     "atkRange" : "melee",
-    "roles" : ["durable", "escape", "nuker"]
+    "roles" : ["durable", "escape", "nuker"],
+    "isActive" : false
   }, {
     "attribute" : "STRENGTH",
     "id" : 99,
     "name" : "bristleback",
     "atkRange" : "melee",
-    "roles" : ["carry", "durable", "initiator", "nuker"]
+    "roles" : ["carry", "durable", "initiator", "nuker"],
+    "isActive" : false
   }, {
     "attribute" : "STRENGTH",
     "id" : 100,
     "name" : "tusk",
     "atkRange" : "melee",
-    "roles" : ["disabler", "initiator", "nuker"]
+    "roles" : ["disabler", "initiator", "nuker"],
+    "isActive" : false
   }, {
     "attribute" : "INTELLIGENCE",
     "id" : 101,
     "name" : "skywrath_mage",
     "atkRange" : "ranged",
-    "roles" : ["disabler", "nuker", "support"]
+    "roles" : ["disabler", "nuker", "support"],
+    "isActive" : false
   }, {
     "attribute" : "STRENGTH",
     "id" : 102,
     "name" : "abaddon",
     "atkRange" : "melee",
-    "roles" : ["carry", "durable", "support"]
+    "roles" : ["carry", "durable", "support"],
+    "isActive" : false
   }, {
     "attribute" : "STRENGTH",
     "id" : 103,
     "name" : "elder_titan",
     "atkRange" : "melee",
-    "roles" : ["disabler", "durable", "initiator", "nuker"]
+    "roles" : ["disabler", "durable", "initiator", "nuker"],
+    "isActive" : false
   }, {
     "attribute" : "STRENGTH",
     "id" : 104,
     "name" : "legion_commander",
     "atkRange" : "melee",
-    "roles" : ["carry", "disabler", "durable", "initiator", "nuker"]
+    "roles" : ["carry", "disabler", "durable", "initiator", "nuker"],
+    "isActive" : false
   }, {
     "attribute" : "AGILITY",
     "id" : 106,
     "name" : "ember_spirit",
     "atkRange" : "melee",
-    "roles" : ["carry", "disabler", "escape", "initiator", "nuker"]
+    "roles" : ["carry", "disabler", "escape", "initiator", "nuker"],
+    "isActive" : false
   }, {
     "attribute" : "STRENGTH",
     "id" : 107,
     "name" : "earth_spirit",
     "atkRange" : "melee",
-    "roles" : ["disabler", "durable", "escape", "initiator", "nuker"]
+    "roles" : ["disabler", "durable", "escape", "initiator", "nuker"],
+    "isActive" : false
   }, {
     "attribute" : "AGILITY",
     "id" : 109,
     "name" : "terrorblade",
     "atkRange" : "melee",
-    "roles" : ["carry", "nuker", "pusher"]
+    "roles" : ["carry", "nuker", "pusher"],
+    "isActive" : false
   }, {
     "attribute" : "STRENGTH",
     "id" : 110,
     "name" : "phoenix",
     "atkRange" : "ranged",
-    "roles" : ["disabler", "escape", "initiator", "nuker", "support"]
+    "roles" : ["disabler", "escape", "initiator", "nuker", "support"],
+    "isActive" : false
   }, {
     "attribute" : "INTELLIGENCE",
     "id" : 111,
     "name" : "oracle",
     "atkRange" : "ranged",
-    "roles" : ["disabler", "escape", "nuker", "support"]
+    "roles" : ["disabler", "escape", "nuker", "support"],
+    "isActive" : false
   }, {
     "attribute" : "INTELLIGENCE",
     "id" : 105,
     "name" : "techies",
     "atkRange" : "ranged",
-    "roles" : ["disabler", "nuker"]
+    "roles" : ["disabler", "nuker"],
+    "isActive" : false
   }, {
     "attribute" : "INTELLIGENCE",
     "id" : 112,
     "name" : "winter_wyvern",
     "atkRange" : "ranged",
-    "roles" : ["disabler", "nuker", "support"]
+    "roles" : ["disabler", "nuker", "support"],
+    "isActive" : false
   }, {
     "attribute" : "AGILITY",
     "id" : 113,
     "name" : "arc_warden",
     "atkRange" : "ranged",
-    "roles" : ["carry", "escape", "nuker"]
+    "roles" : ["carry", "escape", "nuker"],
+    "isActive" : false
   }, {
     "attribute" : "STRENGTH",
     "id" : 108,
     "name" : "abyssal_underlord",
     "atkRange" : "melee",
-    "roles" : ["disabler", "durable", "escape", "nuker", "support"]
+    "roles" : ["disabler", "durable", "escape", "nuker", "support"],
+    "isActive" : false
   } ]

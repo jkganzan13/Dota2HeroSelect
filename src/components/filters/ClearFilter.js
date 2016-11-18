@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import { Row, Col } from  'react-flexbox-grid';
 
 const ClearFilter = ({ onClickClear }) => {
     return (

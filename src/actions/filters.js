@@ -1,5 +1,4 @@
-import * as _ from 'lodash';
-import * as R from 'ramda';
+import R from 'ramda';
 
 export const CLEAR_FILTERS = 'CLEAR_FILTERS';
 export const FILTER_HEROES = 'FILTER_HEROES';
@@ -17,28 +16,21 @@ function filterHeroes(state) {
     let { activeFilters, heroes } = state.dota2;
 
     const filterAll = hero => {
-        let filtersInRoles = () => _.intersection(hero.roles, activeFilters);
-        let hasFilters = () => _.difference(activeFilters, filtersInRoles());
+        const isFilterNotInRoles = filterable => !R.contains(filterable, hero.roles);
+        const filtersNotInRoles = R.filter(isFilterNotInRoles, activeFilters);
 
-        if (R.isEmpty(activeFilters)) {
-            hero.isActive = false;
-        } else {
-            if (R.isEmpty(hasFilters())) hero.isActive = true;
-            else if (hasFilters().length == 1) {
-                hero.isActive = R.contains(hero.atkRange, hasFilters());
-            } else {
-                hero.isActive = false;
-            }
-        }
+        hero.isActive = (
+            !R.isEmpty(activeFilters) &&
+            (R.isEmpty(filtersNotInRoles) ||
+            (filtersNotInRoles.length == 1 && R.contains(hero.atkRange, filtersNotInRoles)))
+        );
 
         return hero;
     };
 
-    const filterHeroesByAttr = heroesByAttr => R.map(filterAll, heroesByAttr);
-
     return {
         type: FILTER_HEROES,
-        heroes: R.map(filterHeroesByAttr, heroes)
+        heroes: R.map(filterAll, heroes)
     }
 }
 
