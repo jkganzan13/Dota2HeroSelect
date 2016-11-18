@@ -8,11 +8,11 @@ const VerticalText = ({ attribute }) => {
 			</div>
 		</div>
 	)
-}
+};
 
 VerticalText.propTypes = {
 	attribute: PropTypes.string.isRequired
-}
+};
 
 export default VerticalText;
 

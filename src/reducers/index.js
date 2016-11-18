@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import * as R from 'ramda';
+import R from 'ramda';
 
 import { REQUEST_DATA, GET_HEROES } from '../actions';
 import { CLEAR_FILTERS, FILTER_HEROES, REMOVE_FILTERS, UPDATE_FILTERS } from '../actions/filters';
 
-function dota2(state = { heroes: {}, isLoading: false, activeFilters: [] }, action) {
+function dota2(state = { heroes: [], isLoading: false, activeFilters: [] }, action) {
 	switch (action.type) {
 		case REQUEST_DATA:
 			return Object.assign({}, state, {
